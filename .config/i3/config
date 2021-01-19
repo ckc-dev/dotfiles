@@ -1,0 +1,224 @@
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html and https://github.com/Airblader/i3 (i3-gaps) for a complete reference.
+# Initialize $MOD to Super key.
+set $MOD Mod4
+
+# Use $MOD+Mouse to drag floating windows.
+floating_modifier $MOD
+
+# Font for window titles. Will also be used by the bar unless a different font is specified in the bar {} block.
+font pango:monospace 8
+
+# Start windows with a 2 pixel border without a title bar.
+default_border pixel 2
+
+# Useless gaps between windows.
+gaps inner 10
+
+# Only enable gaps on a workspace when there is at least one window.
+smart_gaps on
+
+# Hide window borders when there is only one window visible with no gaps.
+hide_edge_borders smart_no_gaps
+
+# Initialize names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $WS1 "1"
+set $WS2 "2"
+set $WS3 "3"
+set $WS4 "4"
+set $WS5 "5"
+set $WS6 "6"
+set $WS7 "7"
+set $WS8 "8"
+set $WS9 "9"
+set $WS10 "10"
+
+# After switching to a workspace, pressing that workspace's shortcut again switches back to previous workspace.
+workspace_auto_back_and_forth yes
+
+# Window decoration colors.
+# class	                border  backgr. text    indicator   child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4     #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50     #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e     #222222
+client.urgent           #2f343a #900000 #ffffff #900000     #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000     #0c0c0c
+client.background       #ffffff
+
+# Bind common XF86 keys.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
+bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute        exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioPlay           exec --no-startup-id playerctl play
+bindsym XF86AudioPause          exec --no-startup-id playerctl pause
+bindsym XF86AudioNext           exec --no-startup-id playerctl next
+bindsym XF86AudioPrev           exec --no-startup-id playerctl previous
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 10
+
+# Start a terminal.
+bindsym $MOD+Return exec i3-sensible-terminal
+
+# Kill focused window.
+bindsym $MOD+Shift+q kill
+
+# Start Rofi as a program launcher.
+bindsym $MOD+d exec --no-startup-id rofi -show run
+
+# Start Rofi as a window switcher.
+bindsym $MOD+Shift+d exec --no-startup-id rofi -show window
+
+# Change focused window, using either arrow keys or Vim keybindings.
+bindsym $MOD+h      focus left
+bindsym $MOD+Left   focus left
+bindsym $MOD+j      focus down
+bindsym $MOD+Down   focus down
+bindsym $MOD+k      focus up
+bindsym $MOD+Up     focus up
+bindsym $MOD+l      focus right
+bindsym $MOD+Right  focus right
+
+# Move focused window, using either arrow keys or Vim keybindings.
+bindsym $MOD+Shift+h        move left
+bindsym $MOD+Shift+Left     move left
+bindsym $MOD+Shift+j        move down
+bindsym $MOD+Shift+Down     move down
+bindsym $MOD+Shift+k        move up
+bindsym $MOD+Shift+Up       move up
+bindsym $MOD+Shift+l        move right
+bindsym $MOD+Shift+Right    move right
+
+# Change container layout (stacked, tabbed, toggle split).
+bindsym $MOD+s layout stacking
+bindsym $MOD+w layout tabbed
+bindsym $MOD+e layout toggle split
+
+# Toggle split orientation.
+bindsym $MOD+v split toggle
+
+# Toggle fullscreen mode for focused window.
+bindsym $MOD+f fullscreen toggle
+
+# Toggle tiling/floating mode for focused window.
+bindsym $MOD+Shift+space floating toggle
+
+# Toggle sticky mode (when floating) for focused window.
+bindsym $MOD+Shift+s sticky toggle
+
+# Change focus between tiling/floating windows.
+bindsym $MOD+space focus mode_toggle
+
+# Focus parent container.
+bindsym $MOD+a focus parent
+
+# Switch to workspace.
+bindsym $MOD+1 workspace $WS1
+bindsym $MOD+2 workspace $WS2
+bindsym $MOD+3 workspace $WS3
+bindsym $MOD+4 workspace $WS4
+bindsym $MOD+5 workspace $WS5
+bindsym $MOD+6 workspace $WS6
+bindsym $MOD+7 workspace $WS7
+bindsym $MOD+8 workspace $WS8
+bindsym $MOD+9 workspace $WS9
+bindsym $MOD+0 workspace $WS10
+
+# Switch to workspace using either arrow keys or Vim keybindings.
+bindsym $MOD+Ctrl+Left workspace prev
+bindsym $MOD+Ctrl+Right workspace next
+
+# Move focused container to workspace.
+bindsym $MOD+Shift+1 move container to workspace $WS1
+bindsym $MOD+Shift+2 move container to workspace $WS2
+bindsym $MOD+Shift+3 move container to workspace $WS3
+bindsym $MOD+Shift+4 move container to workspace $WS4
+bindsym $MOD+Shift+5 move container to workspace $WS5
+bindsym $MOD+Shift+6 move container to workspace $WS6
+bindsym $MOD+Shift+7 move container to workspace $WS7
+bindsym $MOD+Shift+8 move container to workspace $WS8
+bindsym $MOD+Shift+9 move container to workspace $WS9
+bindsym $MOD+Shift+0 move container to workspace $WS10
+
+# Move focused window to workspace using either arrow keys or Vim keybindings.
+bindsym $MOD+Ctrl+Shift+Left move container to workspace prev
+bindsym $MOD+Ctrl+Shift+Right move container to workspace next
+
+# Reload the configuration file.
+bindsym $MOD+Shift+c reload
+
+# Restart i3 inplace (preserves layout/session, can be used to upgrade i3).
+bindsym $MOD+Shift+r restart
+
+# Exit i3.
+bindsym $MOD+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window, using either arrow keys or Vim keybindings.
+mode "RESIZE" {
+    # These bindings trigger as soon as resize mode is entered.
+    # Pressing left will shrink the window’s width.
+    bindsym h       resize shrink width 10 px or 10 ppt
+    bindsym Left    resize shrink width 10 px or 10 ppt
+
+    # Pressing down will shrink the window’s height.
+    bindsym j       resize shrink height 10 px or 10 ppt
+    bindsym Down    resize shrink height 10 px or 10 ppt
+
+    # Pressing up will grow the window’s height.
+    bindsym k       resize grow height 10 px or 10 ppt
+    bindsym Up      resize grow height 10 px or 10 ppt
+
+    # Pressing right will grow the window’s width.
+    bindsym l       resize grow width 10 px or 10 ppt
+    bindsym Right   resize grow width 10 px or 10 ppt
+
+    # Back to normal mode: Enter, Escape or $MOD+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $MOD+r mode "default"
+}
+bindsym $MOD+r mode "RESIZE"
+
+# Show the next scratchpad window and center it, or hide the focused scratchpad window. If there are multiple scratchpad windows, cycle through them.
+bindsym $MOD+minus scratchpad show, move position center
+
+# Move currently focused window to scratchpad.
+bindsym $MOD+Shift+minus move scratchpad
+
+# Start a scratchpad terminal on startup.
+for_window [instance="__scratchpad"] move scratchpad
+for_window [instance="__scratchpad"] resize set width 1200 height 700
+exec --no-startup-id i3-sensible-terminal --name __scratchpad
+
+# Start i3bar to display a workspace bar.
+bar {
+    # Support transparency.
+    i3bar_command i3bar --transparency
+
+    # Show system information i3status finds.
+    status_command i3status
+
+    # Set position to top.
+    position top
+
+    # Strip numbers from workspace names such as "1:NAME".
+    strip_workspace_numbers yes
+
+    # Bar colors.
+    colors {
+        #class              border  backgr. text
+        background          #000000
+        focused_background  #000000
+        statusline          #ffffff
+        focused_statusline  #ffffff
+        separator           #666666
+        focused_separator   #666666
+        focused_workspace   #4c7899 #285577 #ffffff
+        active_workspace    #333333 #5f676a #ffffff
+        inactive_workspace  #333333 #222222 #888888
+        urgent_workspace    #2f343a #900000 #ffffff
+        binding_mode        #2f343a #900000 #ffffff
+    }
+}
