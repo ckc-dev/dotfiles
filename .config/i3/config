@@ -3,6 +3,12 @@
 # Initialize $MOD to Super key.
 set $MOD Mod4
 
+# Initialize Vim keybindings.
+set $VIM_LEFT    h
+set $VIM_DOWN    j
+set $VIM_UP      k
+set $VIM_RIGHT   l
+
 # Use $MOD+Mouse to drag floating windows.
 floating_modifier $MOD
 
@@ -72,24 +78,24 @@ bindsym $MOD+d exec --no-startup-id rofi -show run
 bindsym $MOD+Shift+d exec --no-startup-id rofi -show window
 
 # Change focused window, using either arrow keys or Vim keybindings.
-bindsym $MOD+h      focus left
-bindsym $MOD+Left   focus left
-bindsym $MOD+j      focus down
-bindsym $MOD+Down   focus down
-bindsym $MOD+k      focus up
-bindsym $MOD+Up     focus up
-bindsym $MOD+l      focus right
-bindsym $MOD+Right  focus right
+bindsym $MOD+$VIM_LEFT  focus left
+bindsym $MOD+Left       focus left
+bindsym $MOD+$VIM_DOWN  focus down
+bindsym $MOD+Down       focus down
+bindsym $MOD+$VIM_UP    focus up
+bindsym $MOD+Up         focus up
+bindsym $MOD+$VIM_RIGHT focus right
+bindsym $MOD+Right      focus right
 
 # Move focused window, using either arrow keys or Vim keybindings.
-bindsym $MOD+Shift+h        move left
-bindsym $MOD+Shift+Left     move left
-bindsym $MOD+Shift+j        move down
-bindsym $MOD+Shift+Down     move down
-bindsym $MOD+Shift+k        move up
-bindsym $MOD+Shift+Up       move up
-bindsym $MOD+Shift+l        move right
-bindsym $MOD+Shift+Right    move right
+bindsym $MOD+Shift+$VIM_LEFT    move left
+bindsym $MOD+Shift+Left         move left
+bindsym $MOD+Shift+$VIM_DOWN    move down
+bindsym $MOD+Shift+Down         move down
+bindsym $MOD+Shift+$VIM_UP      move up
+bindsym $MOD+Shift+Up           move up
+bindsym $MOD+Shift+$VIM_RIGHT   move right
+bindsym $MOD+Shift+Right        move right
 
 # Change container layout (stacked, tabbed, toggle split).
 bindsym $MOD+s layout stacking
@@ -159,20 +165,20 @@ bindsym $MOD+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "RESIZE" {
     # These bindings trigger as soon as resize mode is entered.
     # Pressing left will shrink the window’s width.
-    bindsym h       resize shrink width 10 px or 10 ppt
-    bindsym Left    resize shrink width 10 px or 10 ppt
+    bindsym $VIM_LEFT   resize shrink width 10 px or 10 ppt
+    bindsym Left        resize shrink width 10 px or 10 ppt
 
     # Pressing down will shrink the window’s height.
-    bindsym j       resize shrink height 10 px or 10 ppt
-    bindsym Down    resize shrink height 10 px or 10 ppt
+    bindsym $VIM_DOWN   resize shrink height 10 px or 10 ppt
+    bindsym Down        resize shrink height 10 px or 10 ppt
 
     # Pressing up will grow the window’s height.
-    bindsym k       resize grow height 10 px or 10 ppt
-    bindsym Up      resize grow height 10 px or 10 ppt
+    bindsym $VIM_UP     resize grow height 10 px or 10 ppt
+    bindsym Up          resize grow height 10 px or 10 ppt
 
     # Pressing right will grow the window’s width.
-    bindsym l       resize grow width 10 px or 10 ppt
-    bindsym Right   resize grow width 10 px or 10 ppt
+    bindsym $VIM_RIGHT  resize grow width 10 px or 10 ppt
+    bindsym Right       resize grow width 10 px or 10 ppt
 
     # Back to normal mode: Enter, Escape or $MOD+r
     bindsym Return mode "default"
