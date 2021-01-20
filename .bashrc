@@ -5,16 +5,19 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+# Prompt.
 PS1='[\u@\h \W]\$ '
 
 # Fix some issues with GPG2.
 export GPG_TTY=$(tty)
 
-# Dotfiles git alias.
+# Control .dotfiles git repository.
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# List files alias.
+# Display colors with "ls" command.
+alias ls='ls --color=auto'
+
+# Detailed file listing.
 alias ll='ls -ashl'
 
 # Reboot directly to Windows. (source: https://unix.stackexchange.com/a/112284)
