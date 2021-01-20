@@ -28,3 +28,7 @@ reboot_to_windows ()
 }
 alias reboot-to-windows='reboot_to_windows'
 
+# Create and load a Python virtual environment.
+alias ve='python -m venv ./venv'
+alias va='source venv/bin/activate'
+
