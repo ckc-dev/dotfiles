@@ -1,5 +1,9 @@
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html and https://github.com/Airblader/i3 (i3-gaps) for a complete reference.
+
+# Initialize configuration path.
+set $CONFIG_PATH ~/.config/i3
+
 # Initialize $MOD to Super key.
 set $MOD Mod4
 
@@ -208,7 +212,7 @@ bar {
     i3bar_command i3bar --transparency
 
     # Show system information i3status finds.
-    status_command i3status
+    status_command i3status -c $CONFIG_PATH/i3status.conf
 
     # Set position to top.
     position top
