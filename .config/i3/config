@@ -133,8 +133,10 @@ bindsym $MOD+9 workspace $WS9
 bindsym $MOD+0 workspace $WS10
 
 # Switch to workspace using either arrow keys or Vim keybindings.
-bindsym $MOD+Ctrl+Left workspace prev
-bindsym $MOD+Ctrl+Right workspace next
+bindsym $MOD+Ctrl+Left          workspace prev
+bindsym $MOD+Ctrl+$VIM_LEFT     workspace prev
+bindsym $MOD+Ctrl+Right         workspace next
+bindsym $MOD+Ctrl+$VIM_RIGHT    workspace next
 
 # Move focused container to workspace.
 bindsym $MOD+Shift+1 move container to workspace $WS1
@@ -149,8 +151,10 @@ bindsym $MOD+Shift+9 move container to workspace $WS9
 bindsym $MOD+Shift+0 move container to workspace $WS10
 
 # Move focused window to workspace using either arrow keys or Vim keybindings.
-bindsym $MOD+Ctrl+Shift+Left move container to workspace prev
-bindsym $MOD+Ctrl+Shift+Right move container to workspace next
+bindsym $MOD+Ctrl+Shift+Left        move container to workspace prev
+bindsym $MOD+Ctrl+Shift+$VIM_LEFT   move container to workspace prev
+bindsym $MOD+Ctrl+Shift+Right       move container to workspace next
+bindsym $MOD+Ctrl+Shift+$VIM_RIGHT  move container to workspace next
 
 # Reload the configuration file.
 bindsym $MOD+Shift+c reload
