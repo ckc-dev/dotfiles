@@ -5,8 +5,12 @@
 # If not running interactively, don"t do anything.
 [[ $- != *i* ]] && return
 
+# Load git prompt script. (source: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
+. ~/.bash/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 # Prompt.
-PS1="[\u@\h \W]\$ "
+PS1='[\u@\h \W]$(__git_ps1 " (%s)")\$ '
 
 # Fix some issues with GPG2.
 export GPG_TTY=$(tty)
@@ -53,3 +57,4 @@ paclist ()
 
     printf "NATIVE:\n%s\nTOTAL: %s\n\nAUR:\n%s\nTOTAL: %s\nTOTAL ALL:%s\n" "$package_list_native" "$package_count_native" "$package_list_aur" "$package_count_aur" "$packages_count_all"
 }
+
