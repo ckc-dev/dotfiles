@@ -23,6 +23,9 @@ shopt -s cdspell
 shopt -s dirspell
 shopt -s direxpand
 
+# Avoid duplicate entries in history.
+export HISTCONTROL=ignoredups
+
 # Control .dotfiles git repository.
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
