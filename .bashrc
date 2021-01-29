@@ -45,3 +45,16 @@ alias ......='cd ../../../../..'
 # Remove unused packages.
 alias pacremove='pacman -Qtdq | sudo pacman -Rns -'
 
+# List explicitly installed packages that are not dependencies.
+paclist ()
+{
+    package_list_native=$(pacman -Qent)
+    package_count_native=$(printf "$package_list_native\n" | wc -l)
+
+    package_list_aur=$(pacman -Qm)
+    package_count_aur=$(printf "$package_list_aur\n" | wc -l)
+
+    packages_count_all=$(printf "$package_list_native\n$package_list_aur\n" | wc -l)
+
+    printf "NATIVE:\n%s\nTOTAL: %s\n\nAUR:\n%s\nTOTAL: %s\nTOTAL ALL:%s\n" "$package_list_native" "$package_count_native" "$package_list_aur" "$package_count_aur" "$packages_count_all"
+}
