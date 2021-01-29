@@ -39,3 +39,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+# Load git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
+. ~/.bash/git-completion.bash
+
