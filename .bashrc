@@ -18,6 +18,11 @@ export GPG_TTY=$(tty)
 # Automatically cd into directories.
 shopt -s autocd
 
+# Automatically fix minor misspellings in directory names.
+shopt -s cdspell
+shopt -s dirspell
+shopt -s direxpand
+
 # Control .dotfiles git repository.
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
