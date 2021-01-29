@@ -32,3 +32,10 @@ alias reboot-to-windows='reboot_to_windows'
 alias ve='python -m venv ./venv'
 alias va='source venv/bin/activate'
 
+# Move up directories.
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
