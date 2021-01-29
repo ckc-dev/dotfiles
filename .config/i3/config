@@ -1,6 +1,14 @@
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html and https://github.com/Airblader/i3 (i3-gaps) for a complete reference.
 
+# Requirements:
+# PulseAudio/pactl:     Audio shortcuts.
+# playerctl:            Media shortcuts.
+# xbackilight:          Monitor brightness adjustment.
+# rofi:                 Window switcher and application menu.
+# i3status:             Status bar generator for i3bar.
+# (optional) termite:   Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
+
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
 
@@ -236,3 +244,4 @@ bar {
         binding_mode        #2f343a #900000 #ffffff
     }
 }
+
