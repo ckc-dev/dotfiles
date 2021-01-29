@@ -49,7 +49,7 @@ paclist ()
     package_list_aur=$(pacman -Qm)
     package_count_aur=$(printf "$package_list_aur\n" | wc -l)
 
-    packages_count_all=$(printf "$package_list_native\n$package_list_aur\n" | wc -l)
+    packages_count_all=$(expr $package_count_native + $package_count_aur)
 
     printf "NATIVE:\n%s\nTOTAL: %s\n\nAUR:\n%s\nTOTAL: %s\nTOTAL ALL:%s\n" "$package_list_native" "$package_count_native" "$package_list_aur" "$package_count_aur" "$packages_count_all"
 }
