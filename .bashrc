@@ -11,6 +11,9 @@ PS1="[\u@\h \W]\$ "
 # Fix some issues with GPG2.
 export GPG_TTY=$(tty)
 
+# Automatically cd into directories.
+shopt -s autocd
+
 # Control .dotfiles git repository.
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
@@ -30,13 +33,6 @@ reboot_to_windows ()
 # Create and load a Python virtual environment.
 alias ve="python -m venv ./venv"
 alias va="source venv/bin/activate"
-
-# Move up directories.
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
 
 # Load git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 . ~/.bash/git-completion.bash
