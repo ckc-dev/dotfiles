@@ -84,7 +84,7 @@ bindsym $MOD+Return exec i3-sensible-terminal
 bindsym $MOD+Shift+q kill
 
 # Start Rofi as a program launcher.
-bindsym $MOD+d exec --no-startup-id rofi -show run
+bindsym $MOD+d exec --no-startup-id rofi -show drun
 
 # Start Rofi as a window switcher.
 bindsym $MOD+Shift+d exec --no-startup-id rofi -show window
