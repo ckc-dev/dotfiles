@@ -57,12 +57,12 @@ workspace_auto_back_and_forth yes
 
 # Window decoration colors.
 # class	                border  backgr. text    indicator   child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4     #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50     #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e     #222222
-client.urgent           #2f343a #900000 #ffffff #900000     #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000     #0c0c0c
-client.background       #ffffff
+client.focused          #83A598 #83A598 #282828 #458588     #83A598
+client.focused_inactive #3C3836 #3C3836 #EBDBB2 #3C3836     #3C3836
+client.unfocused        #282828 #282828 #928374 #282828     #282828
+client.urgent           #FB4934 #FB4934 #282828 #FB4934     #FB4934
+client.placeholder      #282828 #282828 #EBDBB2 #282828     #282828
+client.background       #EBDBB2
 
 # Bind common XF86 keys.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -214,6 +214,9 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal --name __scratchpad
 
+# Set background color on startup.
+exec --no-startup-id xsetroot -solid "#3C3836"
+
 # Start i3bar to display a workspace bar.
 bar {
     # Support transparency.
@@ -231,17 +234,17 @@ bar {
     # Bar colors.
     colors {
         #class              border  backgr. text
-        background          #000000
-        focused_background  #000000
-        statusline          #ffffff
-        focused_statusline  #ffffff
-        separator           #666666
-        focused_separator   #666666
-        focused_workspace   #4c7899 #285577 #ffffff
-        active_workspace    #333333 #5f676a #ffffff
-        inactive_workspace  #333333 #222222 #888888
-        urgent_workspace    #2f343a #900000 #ffffff
-        binding_mode        #2f343a #900000 #ffffff
+        background          #282828
+        focused_background  #282828
+        statusline          #EBDBB2
+        focused_statusline  #EBDBB2
+        separator           #EBDBB2
+        focused_separator   #EBDBB2
+        focused_workspace   #83A598 #83A598 #282828
+        active_workspace    #282828 #282828 #EBDBB2
+        inactive_workspace  #282828 #282828 #928374
+        urgent_workspace    #282828 #FB4934 #282828
+        binding_mode        #282828 #FB4934 #282828
     }
 }
 
