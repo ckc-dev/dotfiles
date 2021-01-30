@@ -240,7 +240,7 @@ for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal -name __scratchpad
 
 # Reload .Xresourses on startup.
-exec_always xrdb ~/.Xresourses
+exec_always --no-startup-id xrdb ~/.Xresourses
 
 # Set background color on startup.
 exec_always --no-startup-id xsetroot -solid "$background_alt"
