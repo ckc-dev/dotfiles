@@ -1,0 +1,41 @@
+!Gruvbox Dark. (source: https://github.com/morhetz/gruvbox)
+
+!Background
+#define cbg #282828
+#define cbg_alt #3c3836
+
+!Foreground
+#define cfg #ebdbb2
+#define cfg_alt #d5c4a1
+
+!Black
+#define c00 #282828
+#define c08 #928374
+
+!Red
+#define c01 #cc241d
+#define c09 #fb4934
+
+!Green
+#define c02 #98971a
+#define c10 #b8bb26
+
+!Yellow
+#define c03 #d79921
+#define c11 #fabd2f
+
+!Blue
+#define c04 #458588
+#define c12 #83a598
+
+!Magenta
+#define c05 #b16286
+#define c13 #d3869b
+
+!Cyan
+#define c06 #689d6a
+#define c14 #8ec07c
+
+!White
+#define c07 #a89984
+#define c15 #ebdbb2

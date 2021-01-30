@@ -9,7 +9,7 @@
 # i3status:             Status bar generator for i3bar.
 # xorg-xsetroot:        Used to set a background color or pattern.
 # xorg-xrdb:            X resource database utility.
-# URxvt:              	Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
+# URxvt:                Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
@@ -58,30 +58,30 @@ set $WS10 "10"
 workspace_auto_back_and_forth yes
 
 # Get colors from ".Xresourses".
-#                   name            resource_name   fallback
-set_from_resource   $background     background      #000000
-set_from_resource   $background_alt background_alt  #101010
-set_from_resource   $foreground     foreground      #ffffff
-set_from_resource   $foreground_alt foreground_alt  #f0f0f0
-set_from_resource   $color0         color0          #000000
-set_from_resource   $color1         color1          #cc0403
-set_from_resource   $color2         color2          #19cb00
-set_from_resource   $color3         color3          #cecb00
-set_from_resource   $color4         color4          #001cd1
-set_from_resource   $color5         color5          #cb1ed1
-set_from_resource   $color6         color6          #0dcdcd
-set_from_resource   $color7         color7          #e5e5e5
-set_from_resource   $color8         color8          #4d4d4d
-set_from_resource   $color9         color9          #3e0605
-set_from_resource   $color10        color10         #23fd00
-set_from_resource   $color11        color11         #fffd00
-set_from_resource   $color12        color12         #0026ff
-set_from_resource   $color13        color13         #fd28ff
-set_from_resource   $color14        color14         #14ffff
-set_from_resource   $color15        color15         #ffffff
+#                   name            resource_name       fallback
+set_from_resource   $background     i3.background       #000000
+set_from_resource   $background_alt i3.background_alt   #101010
+set_from_resource   $foreground     i3.foreground       #ffffff
+set_from_resource   $foreground_alt i3.foreground_alt   #f0f0f0
+set_from_resource   $color0         i3.color0           #000000
+set_from_resource   $color1         i3.color1           #cc0403
+set_from_resource   $color2         i3.color2           #19cb00
+set_from_resource   $color3         i3.color3           #cecb00
+set_from_resource   $color4         i3.color4           #001cd1
+set_from_resource   $color5         i3.color5           #cb1ed1
+set_from_resource   $color6         i3.color6           #0dcdcd
+set_from_resource   $color7         i3.color7           #e5e5e5
+set_from_resource   $color8         i3.color8           #4d4d4d
+set_from_resource   $color9         i3.color9           #3e0605
+set_from_resource   $color10        i3.color10          #23fd00
+set_from_resource   $color11        i3.color11          #fffd00
+set_from_resource   $color12        i3.color12          #0026ff
+set_from_resource   $color13        i3.color13          #fd28ff
+set_from_resource   $color14        i3.color14          #14ffff
+set_from_resource   $color15        i3.color15          #ffffff
 
 # Window decoration colors.
-# class	                border          backgr.         text        indicator       child_border
+# class                 border          backgr.         text        indicator       child_border
 client.focused          $color12        $color12        $color0     $color4         $color12
 client.focused_inactive $background_alt $background_alt $foreground $background_alt $background_alt
 client.unfocused        $color0         $color0         $color8     $color0         $color0
@@ -246,7 +246,7 @@ exec_always --no-startup-id xrdb ~/.Xresourses
 exec_always --no-startup-id xsetroot -solid "$background_alt"
 
 # Generate i3status config file every time i3 is (re)started.
-exec_always --no-startup-id sed "s/%color9/$color9/g ; s/%color11/$color11/g ; s/%color12/$color12/g" $CONFIG_PATH/i3status > $CONFIG_PATH/i3status.conf
+exec_always --no-startup-id sed "s/%color_bad/$color9/g ; s/%color_degraded/$color11/g ; s/%color_good/$color12/g" $CONFIG_PATH/i3status > $CONFIG_PATH/i3status.conf
 
 # Start i3bar to display a workspace bar.
 bar {
@@ -278,4 +278,3 @@ bar {
         binding_mode        $color0     $color9     $color0
     }
 }
-
