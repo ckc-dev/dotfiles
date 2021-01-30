@@ -1,4 +1,4 @@
-!Gruvbox Dark (source: https://github.com/morhetz/gruvbox)
+!Gruvbox Dark. (source: https://github.com/morhetz/gruvbox)
 
 *background:        #282828
 *background_alt:    #3c3836
@@ -20,3 +20,7 @@
 *color13:           #d3869b
 *color14:           #8ec07c
 *color15:           #ebdbb2
+
+!Source program specific files.
+#include ".config/.xresources/urxvt"
+

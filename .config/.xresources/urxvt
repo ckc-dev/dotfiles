@@ -1,0 +1,6 @@
+!URxvt config file.
+
+URxvt.scrollBar: false
+URxvt.font: xft:monospace:size=10
+URxvt.letterSpace: -1
+
