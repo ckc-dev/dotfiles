@@ -6,23 +6,23 @@
 SCRIPTS_PATH=~/.config/.bash
 
 # Initialize color variables.
-color_reset="\[\033[0m\]"
-color_bold="\[\033[1m\]"
-color_bold_reset="\[\033[21m\]"
-color_italic="\[\033[3m\]"
-color_italic_reset="\[\033[23m\]"
-color_underline="\[\033[4m\]"
-color_underline_reset="\[\033[24m\]"
-color_reverse="\[\033[7m\]"
-color_reverse_reset="\[\033[27m\]"
-color0="$(echo -e "\033[30m")"
-color1="$(echo -e "\033[31m")"
-color2="$(echo -e "\033[32m")"
-color3="$(echo -e "\033[33m")"
-color4="$(echo -e "\033[34m")"
-color5="$(echo -e "\033[35m")"
-color6="$(echo -e "\033[36m")"
-color7="$(echo -e "\033[37m")"
+COLOR_RESET="$(echo -e "\033[0m")"
+COLOR_BOLD="$(echo -e "\033[1m")"
+COLOR_BOLD_RESET="$(echo -e "\033[21")]"
+COLOR_ITALIC="$(echo -e "\033[3m")"
+COLOR_ITALIC_RESET="$(echo -e "\033[23")]"
+COLOR_UNDERLINE="$(echo -e "\033[4m")"
+COLOR_UNDERLINE_RESET="$(echo -e "\033[24")]"
+COLOR_REVERSE="$(echo -e "\033[7m")"
+COLOR_REVERSE_RESET="$(echo -e "\033[27")]"
+COLOR0="$(echo -e "\033[30m")"
+COLOR1="$(echo -e "\033[31m")"
+COLOR2="$(echo -e "\033[32m")"
+COLOR3="$(echo -e "\033[33m")"
+COLOR4="$(echo -e "\033[34m")"
+COLOR5="$(echo -e "\033[35m")"
+COLOR6="$(echo -e "\033[36m")"
+COLOR7="$(echo -e "\033[37m")"
 
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
@@ -32,7 +32,7 @@ color7="$(echo -e "\033[37m")"
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # Prompt.
-PS1="[\u@${color_bold}\h${color_bold_reset} ${color4}\W${color_reset}] ${color5}$(__git_ps1 "(%s)")${color_reset}$ "
+PS1="[\u@${COLOR_BOLD}\h${COLOR_BOLD_RESET} ${COLOR4}\W${COLOR_RESET}] ${COLOR5}$(__git_ps1 "(%s)")${COLOR_RESET}$ "
 
 # Fix some issues with GPG2.
 export GPG_TTY=$(tty)
