@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+# Initialize external scripts path.
+SCRIPTS_PATH=~/.config/.bash
+
 # Initialize color variables.
 color_reset="\[\033[0m\]"
 color_bold="\[\033[1m\]"
@@ -25,7 +28,7 @@ color7="$(echo -e "\033[37m")"
 [[ $- != *i* ]] && return
 
 # Load git prompt script. (source: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
-. ~/.bash/git-prompt.sh
+. $SCRIPTS_PATH/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # Prompt.
@@ -66,7 +69,7 @@ alias ve="python -m venv ./venv"
 alias va="source venv/bin/activate"
 
 # Load git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
-. ~/.bash/git-completion.bash
+. $SCRIPTS_PATH/git-completion.bash
 
 # Remove unused packages.
 alias pacremove="pacman -Qtdq | sudo pacman -Rns -"
