@@ -9,7 +9,7 @@
 # i3status:             Status bar generator for i3bar.
 # xorg-xsetroot:        Used to set a background color or pattern.
 # xorg-xrdb:            X resource database utility.
-# termite:              Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
+# URxvt:              	Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
@@ -237,7 +237,7 @@ bindsym $MOD+Shift+minus move scratchpad
 # Start a scratchpad terminal on startup.
 for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
-exec --no-startup-id i3-sensible-terminal --name __scratchpad
+exec --no-startup-id i3-sensible-terminal -name __scratchpad
 
 # Reload .Xresourses on startup.
 exec_always xrdb ~/.Xresourses
@@ -278,3 +278,4 @@ bar {
         binding_mode        $color0     $color9     $color0
     }
 }
+
