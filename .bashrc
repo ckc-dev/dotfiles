@@ -2,7 +2,26 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don"t do anything.
+# Initialize color variables.
+color_reset="\[\033[0m\]"
+color_bold="\[\033[1m\]"
+color_bold_reset="\[\033[21m\]"
+color_italic="\[\033[3m\]"
+color_italic_reset="\[\033[23m\]"
+color_underline="\[\033[4m\]"
+color_underline_reset="\[\033[24m\]"
+color_reverse="\[\033[7m\]"
+color_reverse_reset="\[\033[27m\]"
+color0="$(echo -e "\033[30m")"
+color1="$(echo -e "\033[31m")"
+color2="$(echo -e "\033[32m")"
+color3="$(echo -e "\033[33m")"
+color4="$(echo -e "\033[34m")"
+color5="$(echo -e "\033[35m")"
+color6="$(echo -e "\033[36m")"
+color7="$(echo -e "\033[37m")"
+
+# If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
 # Load git prompt script. (source: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
@@ -10,7 +29,7 @@
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # Prompt.
-PS1='[\u@\h \W]$(__git_ps1 " (%s)")\$ '
+PS1="[\u@${color_bold}\h${color_bold_reset} ${color4}\W${color_reset}] ${color5}$(__git_ps1 "(%s)")${color_reset}$ "
 
 # Fix some issues with GPG2.
 export GPG_TTY=$(tty)
@@ -65,4 +84,3 @@ paclist ()
 
     printf "NATIVE:\n%s\nTOTAL: %s\n\nAUR:\n%s\nTOTAL: %s\nTOTAL ALL:%s\n" "$package_list_native" "$package_count_native" "$package_list_aur" "$package_count_aur" "$packages_count_all"
 }
-
