@@ -4,10 +4,12 @@
 # Requirements:
 # PulseAudio/pactl:     Audio shortcuts.
 # playerctl:            Media shortcuts.
-# xbackilight:          Monitor brightness adjustment.
+# acpilight:            Monitor brightness adjustment.
 # rofi:                 Window switcher and application menu.
 # i3status:             Status bar generator for i3bar.
-# (optional) termite:   Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
+# xorg-xsetroot:        Used to set a background color or pattern.
+# xorg-xrdb:            X resource database utility.
+# termite:              Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
