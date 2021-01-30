@@ -8,9 +8,9 @@ general {
     # Get text colors from ".Xresourses". This is not supported by default,
     # sed is used to generate the i3status config file when i3 runs,
     # by substituting color variables with actual color codes.
-    color_bad =         "%color9"
-    color_degraded =    "%color11"
-    color_good =        "%color12"
+    color_bad =         "%color_bad"
+    color_degraded =    "%color_degraded"
+    color_good =        "%color_good"
 
     # Update every 5 seconds.
     interval = 5
