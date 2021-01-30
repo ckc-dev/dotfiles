@@ -55,14 +55,37 @@ set $WS10 "10"
 # After switching to a workspace, pressing that workspace's shortcut again switches back to previous workspace.
 workspace_auto_back_and_forth yes
 
+# Get colors from ".Xresourses".
+#                   name            resource_name   fallback
+set_from_resource   $background     background      #000000
+set_from_resource   $background_alt background_alt  #101010
+set_from_resource   $foreground     foreground      #ffffff
+set_from_resource   $foreground_alt foreground_alt  #f0f0f0
+set_from_resource   $color0         color0          #000000
+set_from_resource   $color1         color1          #cc0403
+set_from_resource   $color2         color2          #19cb00
+set_from_resource   $color3         color3          #cecb00
+set_from_resource   $color4         color4          #001cd1
+set_from_resource   $color5         color5          #cb1ed1
+set_from_resource   $color6         color6          #0dcdcd
+set_from_resource   $color7         color7          #e5e5e5
+set_from_resource   $color8         color8          #4d4d4d
+set_from_resource   $color9         color9          #3e0605
+set_from_resource   $color10        color10         #23fd00
+set_from_resource   $color11        color11         #fffd00
+set_from_resource   $color12        color12         #0026ff
+set_from_resource   $color13        color13         #fd28ff
+set_from_resource   $color14        color14         #14ffff
+set_from_resource   $color15        color15         #ffffff
+
 # Window decoration colors.
-# class	                border  backgr. text    indicator   child_border
-client.focused          #83A598 #83A598 #282828 #458588     #83A598
-client.focused_inactive #3C3836 #3C3836 #EBDBB2 #3C3836     #3C3836
-client.unfocused        #282828 #282828 #928374 #282828     #282828
-client.urgent           #FB4934 #FB4934 #282828 #FB4934     #FB4934
-client.placeholder      #282828 #282828 #EBDBB2 #282828     #282828
-client.background       #EBDBB2
+# class	                border          backgr.         text        indicator       child_border
+client.focused          $color12        $color12        $color0     $color4         $color12
+client.focused_inactive $background_alt $background_alt $foreground $background_alt $background_alt
+client.unfocused        $color0         $color0         $color8     $color0         $color0
+client.urgent           $color9         $color9         $color0     $color9         $color9
+client.placeholder      $color0         $color0         $foreground $color0         $color0
+client.background       $foreground
 
 # Bind common XF86 keys.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -214,8 +237,14 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal --name __scratchpad
 
+# Reload .Xresourses on startup.
+exec_always xrdb ~/.Xresourses
+
 # Set background color on startup.
-exec --no-startup-id xsetroot -solid "#3C3836"
+exec_always --no-startup-id xsetroot -solid "$background_alt"
+
+# Generate i3status config file on startup.
+exec_always --no-startup-id sed "s/%color9/$color9/g ; s/%color11/$color11/g ; s/%color12/$color12/g" $CONFIG_PATH/i3status > $CONFIG_PATH/i3status.conf
 
 # Start i3bar to display a workspace bar.
 bar {
@@ -233,18 +262,17 @@ bar {
 
     # Bar colors.
     colors {
-        #class              border  backgr. text
-        background          #282828
-        focused_background  #282828
-        statusline          #EBDBB2
-        focused_statusline  #EBDBB2
-        separator           #EBDBB2
-        focused_separator   #EBDBB2
-        focused_workspace   #83A598 #83A598 #282828
-        active_workspace    #282828 #282828 #EBDBB2
-        inactive_workspace  #282828 #282828 #928374
-        urgent_workspace    #282828 #FB4934 #282828
-        binding_mode        #282828 #FB4934 #282828
+        #class              border      backgr.     text
+        background          $color0
+        focused_background  $color0
+        statusline          $foreground
+        focused_statusline  $foreground
+        separator           $foreground
+        focused_separator   $foreground
+        focused_workspace   $color12    $color12    $color0
+        active_workspace    $color0     $color0     $foreground
+        inactive_workspace  $color0     $color0     $color8
+        urgent_workspace    $color0     $color9     $color0
+        binding_mode        $color0     $color9     $color0
     }
 }
-
