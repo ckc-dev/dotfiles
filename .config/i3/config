@@ -239,13 +239,13 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal -name __scratchpad
 
-# Reload .Xresourses on startup.
+# Reload ".Xresourses" every time i3 is (re)started.
 exec_always --no-startup-id xrdb ~/.Xresourses
 
-# Set background color on startup.
+# Set background color every time i3 is (re)started.
 exec_always --no-startup-id xsetroot -solid "$background_alt"
 
-# Generate i3status config file on startup.
+# Generate i3status config file every time i3 is (re)started.
 exec_always --no-startup-id sed "s/%color9/$color9/g ; s/%color11/$color11/g ; s/%color12/$color12/g" $CONFIG_PATH/i3status > $CONFIG_PATH/i3status.conf
 
 # Start i3bar to display a workspace bar.
