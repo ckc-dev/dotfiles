@@ -5,10 +5,12 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-    # Text colors.
-    color_good = "#83A598"
-    color_degraded = "#FABD2F"
-    color_bad = "#FB4934"
+    # Get text colors from ".Xresourses". This is not supported by default,
+    # sed is used to generate the i3status config file when i3 runs,
+    # by substituting color variables with actual color codes.
+    color_bad =         "%color9"
+    color_degraded =    "%color11"
+    color_good =        "%color12"
 
     # Update every 5 seconds.
     interval = 5
@@ -150,4 +152,3 @@ load {
     # Format as "[LOAD: average of the computer’s load over a certain period of time]". E.g.:"LOAD: 1.15".
     format = "<b>LOAD</b>: %5min"
 }
-
