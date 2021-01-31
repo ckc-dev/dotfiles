@@ -1,41 +1,41 @@
 ! Gruvbox Dark. (source: https://github.com/morhetz/gruvbox)
 
 ! Background.
-#define cbg     #282828
-#define cbg_alt #3c3836
+#define _CBG        #282828
+#define _CBG_ALT    #3c3836
 
 ! Foreground.
-#define cfg     #ebdbb2
-#define cfg_alt #d5c4a1
+#define _CFG        #ebdbb2
+#define _CFG_ALT    #d5c4a1
 
 ! Black.
-#define c00 #282828
-#define c08 #928374
+#define _C00    #282828
+#define _C08    #928374
 
 ! Red.
-#define c01 #cc241d
-#define c09 #fb4934
+#define _C01    #cc241d
+#define _C09    #fb4934
 
 ! Green.
-#define c02 #98971a
-#define c10 #b8bb26
+#define _C02    #98971a
+#define _C10    #b8bb26
 
 ! Yellow.
-#define c03 #d79921
-#define c11 #fabd2f
+#define _C03    #d79921
+#define _C11    #fabd2f
 
 ! Blue.
-#define c04 #458588
-#define c12 #83a598
+#define _C04    #458588
+#define _C12    #83a598
 
 ! Magenta.
-#define c05 #b16286
-#define c13 #d3869b
+#define _C05    #b16286
+#define _C13    #d3869b
 
 ! Cyan.
-#define c06 #689d6a
-#define c14 #8ec07c
+#define _C06    #689d6a
+#define _C14    #8ec07c
 
 ! White
-#define c07 #a89984
-#define c15 #ebdbb2
+#define _C07    #a89984
+#define _C15    #ebdbb2

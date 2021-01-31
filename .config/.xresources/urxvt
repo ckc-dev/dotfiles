@@ -1,24 +1,24 @@
 ! URxvt xresources file.
 
 ! Colors.
-URxvt.background:   cbg
-URxvt.color0:       c00
-URxvt.color1:       c01
-URxvt.color2:       c02
-URxvt.color3:       c03
-URxvt.color4:       c04
-URxvt.color5:       c05
-URxvt.color6:       c06
-URxvt.color7:       c07
-URxvt.color8:       c08
-URxvt.color9:       c09
-URxvt.color10:      c10
-URxvt.color11:      c11
-URxvt.color12:      c12
-URxvt.color13:      c13
-URxvt.color14:      c14
-URxvt.color15:      c15
-URxvt.foreground:   cfg
+URxvt.background:   _CBG
+URxvt.color0:       _C00
+URxvt.color1:       _C01
+URxvt.color2:       _C02
+URxvt.color3:       _C03
+URxvt.color4:       _C04
+URxvt.color5:       _C05
+URxvt.color6:       _C06
+URxvt.color7:       _C07
+URxvt.color8:       _C08
+URxvt.color9:       _C09
+URxvt.color10:      _C10
+URxvt.color11:      _C11
+URxvt.color12:      _C12
+URxvt.color13:      _C13
+URxvt.color14:      _C14
+URxvt.color15:      _C15
+URxvt.foreground:   _CFG
 
 ! Use a blinking cursor.
 URxvt.cursorBlink: true

@@ -5,12 +5,12 @@ rofi.bw:    2
 rofi.width: 40
 
 ! Row colors.       bg,     fg,     bg_alt,     bg_highlight,   fg_highlight
-rofi.color-active:  cbg,    c04,    cbg_alt,    c04,            cfg
-rofi.color-normal:  cbg,    cfg,    cbg_alt,    cfg,            cbg
-rofi.color-urgent:  cbg,    c09,    cbg_alt,    c09,            cfg
+rofi.color-active:  _CBG,   _C04,   _CBG_ALT,   _C04,           _CFG
+rofi.color-normal:  _CBG,   _CFG,   _CBG_ALT,   _CFG,           _CBG
+rofi.color-urgent:  _CBG,   _C09,   _CBG_ALT,   _C09,           _CFG
 
 ! Window colors.    bg,     border, separator
-rofi.color-window:  cbg,    c12,    cfg
+rofi.color-window:  _CBG,   _C12,   _CFG
 
 ! Font.
 rofi.font: monospace 10
