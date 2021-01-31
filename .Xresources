@@ -4,3 +4,4 @@
 !Source program specific files.
 #include ".config/.xresources/urxvt"
 #include ".config/.xresources/i3"
+#include ".config/.xresources/rofi"
