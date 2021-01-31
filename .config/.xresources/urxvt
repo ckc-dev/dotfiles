@@ -1,4 +1,4 @@
-!URxvt config file.
+!URxvt xresources file.
 
 URxvt.background:           cbg
 URxvt.foreground:           cfg
