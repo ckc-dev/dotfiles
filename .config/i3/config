@@ -57,7 +57,7 @@ set $WS10 "10"
 # After switching to a workspace, pressing that workspace's shortcut again switches back to previous workspace.
 workspace_auto_back_and_forth yes
 
-# Get colors from ".Xresourses".
+# Get colors from ".xresources".
 #                   name            resource_name       fallback
 set_from_resource   $background     i3.background       #000000
 set_from_resource   $background_alt i3.background_alt   #101010
@@ -239,8 +239,8 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal -name __scratchpad
 
-# Reload ".Xresourses" every time i3 is (re)started.
-exec_always --no-startup-id xrdb ~/.Xresourses
+# Reload ".xresources" every time i3 is (re)started.
+exec_always --no-startup-id xrdb ~/.Xresources
 
 # Set background color every time i3 is (re)started.
 exec_always --no-startup-id xsetroot -solid "$background_alt"
