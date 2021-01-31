@@ -1,4 +1,4 @@
-!i3 config file.
+!i3 xresources file.
 
 i3.background:      cbg
 i3.background_alt:  cbg_alt
