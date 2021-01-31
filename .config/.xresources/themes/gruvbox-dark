@@ -1,5 +1,8 @@
 ! Gruvbox Dark. (source: https://github.com/morhetz/gruvbox)
 
+! Border size for applications such as i3 and Rofi. (Set to 0 if borders are unwanted.)
+#define _BW 2
+
 ! Background.
 #define _CBG        #282828
 #define _CBG_ALT    #3c3836
