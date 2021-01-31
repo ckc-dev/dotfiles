@@ -29,8 +29,10 @@ floating_modifier $MOD
 # Font for window titles. Will also be used by the bar unless a different font is specified in the bar {} block.
 font pango:monospace 8
 
-# Start windows with a 2 pixel border without a title bar.
-default_border pixel 2
+# Start windows with a border width loaded from ".Xresources" and without a title bar.
+#                   name            resource_name       fallback
+set_from_resource   $border_width   i3.border_width     0
+default_border pixel $border_width
 
 # Useless gaps between windows.
 gaps inner 10

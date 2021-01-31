@@ -1,7 +1,7 @@
 ! Rofi xresources file.
 
 ! Border and window width.
-rofi.bw:    2
+rofi.bw:    _BW
 rofi.width: 40
 
 ! Row colors.       bg,     fg,     bg_alt,     bg_highlight,   fg_highlight

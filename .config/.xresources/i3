@@ -21,3 +21,6 @@ i3.color14:         _C14
 i3.color15:         _C15
 i3.foreground_alt:  _CFG_ALT
 i3.foreground:      _CFG
+
+! Border width in pixels.
+i3.border_width: _BW
