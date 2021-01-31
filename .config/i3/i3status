@@ -5,7 +5,7 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-    # Get text colors from ".Xresourses". This is not supported by default,
+    # Get text colors from ".xresources". This is not supported by default,
     # sed is used to generate the i3status config file when i3 runs,
     # by substituting color variables with actual color codes.
     color_bad =         "%color_bad"
