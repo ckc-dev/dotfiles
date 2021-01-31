@@ -1,7 +1,7 @@
-!Source theme. Leave only one uncommented.
+! Source theme. Leave only one uncommented.
 #include ".config/.xresources/themes/gruvbox-dark"
 
-!Source program specific files.
-#include ".config/.xresources/urxvt"
+! Source program specific files.
 #include ".config/.xresources/i3"
 #include ".config/.xresources/rofi"
+#include ".config/.xresources/urxvt"

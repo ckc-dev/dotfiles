@@ -2,14 +2,14 @@
 # Please see https://i3wm.org/docs/userguide.html and https://github.com/Airblader/i3 (i3-gaps) for a complete reference.
 
 # Requirements:
-# PulseAudio/pactl:     Audio shortcuts.
-# playerctl:            Media shortcuts.
-# acpilight:            Monitor brightness adjustment.
-# rofi:                 Window switcher and application menu.
-# i3status:             Status bar generator for i3bar.
-# xorg-xsetroot:        Used to set a background color or pattern.
-# xorg-xrdb:            X resource database utility.
-# URxvt:                Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
+# acpilight:                        Monitor brightness adjustment.
+# i3status:                         Status bar generator for i3bar.
+# playerctl:                        Media shortcuts.
+# PulseAudio/pactl:                 Audio shortcuts.
+# rofi:                             Window switcher and application menu.
+# URxvt:                            Terminal emulator. If another terminal is used, change command used to launch a scratchpad window on startup.
+# xorg-xrdb (and .Xresources file): X resource database utility.
+# xorg-xsetroot:                    Used to set a background color or pattern.
 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
@@ -18,10 +18,10 @@ set $CONFIG_PATH ~/.config/i3
 set $MOD Mod4
 
 # Initialize Vim keybindings.
-set $VIM_LEFT    h
-set $VIM_DOWN    j
-set $VIM_UP      k
-set $VIM_RIGHT   l
+set $VIM_DOWN   j
+set $VIM_LEFT   h
+set $VIM_RIGHT  l
+set $VIM_UP     k
 
 # Use $MOD+Mouse to drag floating windows.
 floating_modifier $MOD
@@ -43,26 +43,24 @@ hide_edge_borders smart_no_gaps
 
 # Initialize names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $WS1 "1"
-set $WS2 "2"
-set $WS3 "3"
-set $WS4 "4"
-set $WS5 "5"
-set $WS6 "6"
-set $WS7 "7"
-set $WS8 "8"
-set $WS9 "9"
-set $WS10 "10"
+set $WS1    "1"
+set $WS2    "2"
+set $WS3    "3"
+set $WS4    "4"
+set $WS5    "5"
+set $WS6    "6"
+set $WS7    "7"
+set $WS8    "8"
+set $WS9    "9"
+set $WS10   "10"
 
 # After switching to a workspace, pressing that workspace's shortcut again switches back to previous workspace.
 workspace_auto_back_and_forth yes
 
-# Get colors from ".xresources".
+# Get colors from ".Xresources".
 #                   name            resource_name       fallback
 set_from_resource   $background     i3.background       #000000
 set_from_resource   $background_alt i3.background_alt   #101010
-set_from_resource   $foreground     i3.foreground       #ffffff
-set_from_resource   $foreground_alt i3.foreground_alt   #f0f0f0
 set_from_resource   $color0         i3.color0           #000000
 set_from_resource   $color1         i3.color1           #cc0403
 set_from_resource   $color2         i3.color2           #19cb00
@@ -79,28 +77,33 @@ set_from_resource   $color12        i3.color12          #0026ff
 set_from_resource   $color13        i3.color13          #fd28ff
 set_from_resource   $color14        i3.color14          #14ffff
 set_from_resource   $color15        i3.color15          #ffffff
+set_from_resource   $foreground     i3.foreground       #ffffff
+set_from_resource   $foreground_alt i3.foreground_alt   #f0f0f0
 
 # Window decoration colors.
 # class                 border          backgr.         text        indicator       child_border
+client.background       $foreground
 client.focused          $color12        $color12        $color0     $color4         $color12
 client.focused_inactive $background_alt $background_alt $foreground $background_alt $background_alt
+client.placeholder      $color0         $color0         $foreground $color0         $color0
 client.unfocused        $color0         $color0         $color8     $color0         $color0
 client.urgent           $color9         $color9         $color0     $color9         $color9
-client.placeholder      $color0         $color0         $foreground $color0         $color0
-client.background       $foreground
 
 # Bind common XF86 keys.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
-bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
-bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute        exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86AudioPlay           exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPause          exec --no-startup-id playerctl play-pause
+set $I3STATUS_REFRESH   killall -SIGUSR1 i3status
+set $PACTL_UNMUTE       pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume    exec --no-startup-id $PACTL_UNMUTE && pactl set-sink-volume @DEFAULT_SINK@ -2% && $I3STATUS_REFRESH
+bindsym XF86AudioMicMute        exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $I3STATUS_REFRESH
+bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $I3STATUS_REFRESH
+bindsym XF86AudioRaiseVolume    exec --no-startup-id $PACTL_UNMUTE && pactl set-sink-volume @DEFAULT_SINK@ +2% && $I3STATUS_REFRESH
+
 bindsym XF86AudioNext           exec --no-startup-id playerctl next
+bindsym XF86AudioPause          exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlay           exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPrev           exec --no-startup-id playerctl previous
-bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10
+
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10
 
 # Start a terminal.
 bindsym $MOD+Return exec i3-sensible-terminal
@@ -115,29 +118,29 @@ bindsym $MOD+d exec --no-startup-id rofi -show drun
 bindsym $MOD+Shift+d exec --no-startup-id rofi -show window
 
 # Change focused window, using either arrow keys or Vim keybindings.
-bindsym $MOD+$VIM_LEFT  focus left
-bindsym $MOD+Left       focus left
 bindsym $MOD+$VIM_DOWN  focus down
-bindsym $MOD+Down       focus down
-bindsym $MOD+$VIM_UP    focus up
-bindsym $MOD+Up         focus up
+bindsym $MOD+$VIM_LEFT  focus left
 bindsym $MOD+$VIM_RIGHT focus right
+bindsym $MOD+$VIM_UP    focus up
+bindsym $MOD+Down       focus down
+bindsym $MOD+Left       focus left
 bindsym $MOD+Right      focus right
+bindsym $MOD+Up         focus up
 
 # Move focused window, using either arrow keys or Vim keybindings.
-bindsym $MOD+Shift+$VIM_LEFT    move left
-bindsym $MOD+Shift+Left         move left
 bindsym $MOD+Shift+$VIM_DOWN    move down
-bindsym $MOD+Shift+Down         move down
-bindsym $MOD+Shift+$VIM_UP      move up
-bindsym $MOD+Shift+Up           move up
+bindsym $MOD+Shift+$VIM_LEFT    move left
 bindsym $MOD+Shift+$VIM_RIGHT   move right
+bindsym $MOD+Shift+$VIM_UP      move up
+bindsym $MOD+Shift+Down         move down
+bindsym $MOD+Shift+Left         move left
 bindsym $MOD+Shift+Right        move right
+bindsym $MOD+Shift+Up           move up
 
 # Change container layout (stacked, tabbed, toggle split).
+bindsym $MOD+e layout toggle split
 bindsym $MOD+s layout stacking
 bindsym $MOD+w layout tabbed
-bindsym $MOD+e layout toggle split
 
 # Toggle split orientation.
 bindsym $MOD+v split toggle
@@ -169,12 +172,6 @@ bindsym $MOD+8 workspace $WS8
 bindsym $MOD+9 workspace $WS9
 bindsym $MOD+0 workspace $WS10
 
-# Switch to workspace using either arrow keys or Vim keybindings.
-bindsym $MOD+Ctrl+Left          workspace prev
-bindsym $MOD+Ctrl+$VIM_LEFT     workspace prev
-bindsym $MOD+Ctrl+Right         workspace next
-bindsym $MOD+Ctrl+$VIM_RIGHT    workspace next
-
 # Move focused container to workspace.
 bindsym $MOD+Shift+1 move container to workspace $WS1
 bindsym $MOD+Shift+2 move container to workspace $WS2
@@ -187,11 +184,17 @@ bindsym $MOD+Shift+8 move container to workspace $WS8
 bindsym $MOD+Shift+9 move container to workspace $WS9
 bindsym $MOD+Shift+0 move container to workspace $WS10
 
+# Switch to workspace using either arrow keys or Vim keybindings.
+bindsym $MOD+Ctrl+$VIM_LEFT     workspace prev
+bindsym $MOD+Ctrl+$VIM_RIGHT    workspace next
+bindsym $MOD+Ctrl+Left          workspace prev
+bindsym $MOD+Ctrl+Right         workspace next
+
 # Move focused window to workspace using either arrow keys or Vim keybindings.
-bindsym $MOD+Ctrl+Shift+Left        move container to workspace prev
 bindsym $MOD+Ctrl+Shift+$VIM_LEFT   move container to workspace prev
-bindsym $MOD+Ctrl+Shift+Right       move container to workspace next
 bindsym $MOD+Ctrl+Shift+$VIM_RIGHT  move container to workspace next
+bindsym $MOD+Ctrl+Shift+Left        move container to workspace prev
+bindsym $MOD+Ctrl+Shift+Right       move container to workspace next
 
 # Reload the configuration file.
 bindsym $MOD+Shift+c reload
@@ -205,26 +208,26 @@ bindsym $MOD+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Resize window, using either arrow keys or Vim keybindings.
 mode "RESIZE" {
     # These bindings trigger as soon as resize mode is entered.
-    # Pressing left will shrink the window’s width.
-    bindsym $VIM_LEFT   resize shrink width 10 px or 10 ppt
-    bindsym Left        resize shrink width 10 px or 10 ppt
-
     # Pressing down will shrink the window’s height.
     bindsym $VIM_DOWN   resize shrink height 10 px or 10 ppt
     bindsym Down        resize shrink height 10 px or 10 ppt
 
-    # Pressing up will grow the window’s height.
-    bindsym $VIM_UP     resize grow height 10 px or 10 ppt
-    bindsym Up          resize grow height 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    bindsym $VIM_LEFT   resize shrink width 10 px or 10 ppt
+    bindsym Left        resize shrink width 10 px or 10 ppt
 
     # Pressing right will grow the window’s width.
     bindsym $VIM_RIGHT  resize grow width 10 px or 10 ppt
     bindsym Right       resize grow width 10 px or 10 ppt
 
+    # Pressing up will grow the window’s height.
+    bindsym $VIM_UP     resize grow height 10 px or 10 ppt
+    bindsym Up          resize grow height 10 px or 10 ppt
+
     # Back to normal mode: Enter, Escape or $MOD+r
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
     bindsym $MOD+r mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
 }
 bindsym $MOD+r mode "RESIZE"
 
@@ -239,7 +242,7 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal -name __scratchpad
 
-# Reload ".xresources" every time i3 is (re)started.
+# Reload ".Xresources" every time i3 is (re)started.
 exec_always --no-startup-id xrdb ~/.Xresources
 
 # Set background color every time i3 is (re)started.
@@ -250,31 +253,35 @@ exec_always --no-startup-id sed "s/%color_bad/$color9/g ; s/%color_degraded/$col
 
 # Start i3bar to display a workspace bar.
 bar {
+    # Bar colors.
+    colors {
+        #class              border      backgr.     text
+        active_workspace    $color0     $color0     $foreground
+        focused_workspace   $color12    $color12    $color0
+        inactive_workspace  $color0     $color0     $color8
+        urgent_workspace    $color0     $color9     $color0
+
+        background          $color0
+        focused_background  $color0
+
+        binding_mode        $color0     $color9     $color0
+
+        separator           $foreground
+        focused_separator   $foreground
+
+        statusline          $foreground
+        focused_statusline  $foreground
+    }
+
     # Support transparency.
     i3bar_command i3bar --transparency
 
     # Show system information i3status finds.
     status_command i3status -c $CONFIG_PATH/i3status.conf
 
-    # Set position to top.
-    position top
-
     # Strip numbers from workspace names such as "1:NAME".
     strip_workspace_numbers yes
 
-    # Bar colors.
-    colors {
-        #class              border      backgr.     text
-        background          $color0
-        focused_background  $color0
-        statusline          $foreground
-        focused_statusline  $foreground
-        separator           $foreground
-        focused_separator   $foreground
-        focused_workspace   $color12    $color12    $color0
-        active_workspace    $color0     $color0     $foreground
-        inactive_workspace  $color0     $color0     $color8
-        urgent_workspace    $color0     $color9     $color0
-        binding_mode        $color0     $color9     $color0
-    }
+    # Set position to top.
+    position top
 }

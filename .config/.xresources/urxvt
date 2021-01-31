@@ -1,31 +1,41 @@
-!URxvt xresources file.
+! URxvt xresources file.
 
-URxvt.background:           cbg
-URxvt.foreground:           cfg
-URxvt.color0:               c00
-URxvt.color1:               c01
-URxvt.color10:              c10
-URxvt.color11:              c11
-URxvt.color12:              c12
-URxvt.color13:              c13
-URxvt.color14:              c14
-URxvt.color15:              c15
-URxvt.color2:               c02
-URxvt.color3:               c03
-URxvt.color4:               c04
-URxvt.color5:               c05
-URxvt.color6:               c06
-URxvt.color7:               c07
-URxvt.color8:               c08
-URxvt.color9:               c09
-URxvt.cursorBlink:          true
-URxvt.font:                 xft:monospace:size=10
-URxvt.geometry:             920x24
+! Colors.
+URxvt.background:   cbg
+URxvt.color0:       c00
+URxvt.color1:       c01
+URxvt.color2:       c02
+URxvt.color3:       c03
+URxvt.color4:       c04
+URxvt.color5:       c05
+URxvt.color6:       c06
+URxvt.color7:       c07
+URxvt.color8:       c08
+URxvt.color9:       c09
+URxvt.color10:      c10
+URxvt.color11:      c11
+URxvt.color12:      c12
+URxvt.color13:      c13
+URxvt.color14:      c14
+URxvt.color15:      c15
+URxvt.foreground:   cfg
+
+! Use a blinking cursor.
+URxvt.cursorBlink: true
+
+! Font.
+URxvt.font: xft:monospace:size=10
+
+! Common navigation keyboard shortcuts.
 URxvt.keysym.Control-Down:  \033[1;5B
 URxvt.keysym.Control-Left:  \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Up:    \033[1;5A
 URxvt.keysym.Shift-Down:    command:\033]721;1\007
 URxvt.keysym.Shift-Up:      command:\033]720;1\007
-URxvt.letterSpace:          -1
-URxvt.scrollBar:            false
+
+! Default distance between characters is too wide, reduce by one pixel.
+URxvt.letterSpace: -1
+
+! Diable scrollbar.
+URxvt.scrollBar: false
