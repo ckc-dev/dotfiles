@@ -2,19 +2,22 @@
 # ~/.bashrc
 #
 
+# If not running interactively, don't do anything.
+[[ $- != *i* ]] && return
+
 # Initialize external scripts path.
 SCRIPTS_PATH=~/.config/.bash
 
 # Initialize color variables.
-COLOR_RESET="$(echo -e "\033[0m")"
 COLOR_BOLD="$(echo -e "\033[1m")"
-COLOR_BOLD_RESET="$(echo -e "\033[21")]"
+COLOR_BOLD_RESET="$(echo -e "\033[21m")"
 COLOR_ITALIC="$(echo -e "\033[3m")"
-COLOR_ITALIC_RESET="$(echo -e "\033[23")]"
-COLOR_UNDERLINE="$(echo -e "\033[4m")"
-COLOR_UNDERLINE_RESET="$(echo -e "\033[24")]"
+COLOR_ITALIC_RESET="$(echo -e "\033[23m")"
+COLOR_RESET="$(echo -e "\033[0m")"
 COLOR_REVERSE="$(echo -e "\033[7m")"
-COLOR_REVERSE_RESET="$(echo -e "\033[27")]"
+COLOR_REVERSE_RESET="$(echo -e "\033[27m")"
+COLOR_UNDERLINE="$(echo -e "\033[4m")"
+COLOR_UNDERLINE_RESET="$(echo -e "\033[24m")"
 COLOR0="$(echo -e "\033[30m")"
 COLOR1="$(echo -e "\033[31m")"
 COLOR2="$(echo -e "\033[32m")"
@@ -23,9 +26,6 @@ COLOR4="$(echo -e "\033[34m")"
 COLOR5="$(echo -e "\033[35m")"
 COLOR6="$(echo -e "\033[36m")"
 COLOR7="$(echo -e "\033[37m")"
-
-# If not running interactively, don't do anything.
-[[ $- != *i* ]] && return
 
 # Load git prompt script. (source: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
 . $SCRIPTS_PATH/git-prompt.sh
@@ -42,8 +42,8 @@ shopt -s autocd
 
 # Automatically fix minor misspellings in directory names.
 shopt -s cdspell
-shopt -s dirspell
 shopt -s direxpand
+shopt -s dirspell
 
 # Avoid duplicate entries in history.
 export HISTCONTROL=ignoredups
@@ -65,8 +65,8 @@ reboot_to_windows ()
 }
 
 # Create and load a Python virtual environment.
-alias ve="python -m venv ./venv"
 alias va="source venv/bin/activate"
+alias ve="python -m venv ./venv"
 
 # Load git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 . $SCRIPTS_PATH/git-completion.bash

@@ -1,9 +1,8 @@
-!i3 xresources file.
+! i3 xresources file.
 
-i3.background:      cbg
+! Color variables, which will be loaded in the i3 config file.
 i3.background_alt:  cbg_alt
-i3.foreground:      cfg
-i3.foreground_alt:  cfg_alt
+i3.background:      cbg
 i3.color0:          c00
 i3.color1:          c01
 i3.color2:          c02
@@ -20,3 +19,5 @@ i3.color12:         c12
 i3.color13:         c13
 i3.color14:         c14
 i3.color15:         c15
+i3.foreground_alt:  cfg_alt
+i3.foreground:      cfg

@@ -48,14 +48,14 @@ order += "time"
 
 # Display volume:
 volume master {
+    # Get volume from PulseAudio's default sink.
+    device = "pulse"
+
     # By default, format as "[VOL: volume%]". E.g.: "VOL: 20%".
     format = "<b>VOL:</b> %volume"
 
     # When muted, format as "[VOL: MUTED (volume%)]". E.g.: "VOL: MUTED (20%)".
     format_muted = "<i><b>VOL:</b> MUTED (%volume)</i>"
-
-    # Get volume from PulseAudio's default sink.
-    device = "pulse"
 }
 
 # Display wireless network info: (the interface name must be the same as the order's interface name. E.g.: "wlan0").
@@ -105,10 +105,10 @@ battery all {
     path = "/sys/class/power_supply/BAT%d/uevent"
 
     # Assign status messages.
-    status_chr = "CHR"
-    status_bat = "BAT"
-    status_unk = "UNK"
-    status_full = "FULL"
+    status_bat =    "BAT"
+    status_chr =    "CHR"
+    status_full =   "FULL"
+    status_unk =    "UNK"
 
     # By default, format as "[status percentage% remaining usage time]". E.g.: "BAT 75% 02:55".
     # "%status" is the current battery status (charging, discharging, unknown, full).
@@ -120,7 +120,7 @@ battery all {
     format_down = "NO BAT"
 
     # Set low battery threshold to 25%.
-    low_threshold = 25
+    low_threshold =  25
     threshold_type = percentage
 
     # Show battery capacity as an integer. E.g.: 75% instead of 75.43%.
@@ -143,8 +143,8 @@ memory {
     format = "<b>RAM</b>: %percentage_used (%used/%total)"
 
     # Assign "warning" and "danger" thresholds (available RAM is under N%).
-    threshold_degraded = "20%"
     threshold_critical = "10%"
+    threshold_degraded = "20%"
 }
 
 # Display system load: (number of processes waiting for CPU time in the last 1, 5 or 15 minutes).
