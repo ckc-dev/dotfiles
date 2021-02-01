@@ -32,7 +32,7 @@ COLOR7="$(echo -e "\[\033[37m\]")"
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # Prompt.
-PS1="[\u@${COLOR_BOLD}\h${COLOR_BOLD_RESET} ${COLOR4}\W${COLOR_RESET}] ${COLOR5}$(__git_ps1 "(%s)")${COLOR_RESET}$ "
+PS1="[\u@${COLOR_BOLD}\h${COLOR_BOLD_RESET} ${COLOR4}\W${COLOR_RESET}] ${COLOR5}"'$(__git_ps1 "(%s)")'"${COLOR_RESET}$ "
 
 # Fix some issues with GPG2.
 export GPG_TTY=$(tty)
