@@ -1,4 +1,4 @@
-! URxvt xresources file.
+! URxvt Xresources file.
 
 ! Colors.
 URxvt.background:   _CBG
@@ -37,5 +37,5 @@ URxvt.keysym.Shift-Up:      command:\033]720;1\007
 ! Default distance between characters is too wide, reduce by one pixel.
 URxvt.letterSpace: -1
 
-! Diable scrollbar.
+! Disable scrollbar.
 URxvt.scrollBar: false

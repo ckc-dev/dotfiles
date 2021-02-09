@@ -48,7 +48,7 @@ shopt -s dirspell
 # Avoid duplicate entries in history.
 export HISTCONTROL=ignoredups
 
-# Control .dotfiles git repository.
+# Control .dotfiles Git repository.
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # Display colors with "ls" command.
@@ -68,7 +68,7 @@ reboot_to_windows ()
 alias va="source venv/bin/activate"
 alias ve="python -m venv ./venv"
 
-# Load git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
+# Load Git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 . $SCRIPTS_PATH/git-completion.bash
 
 # Remove unused packages.
