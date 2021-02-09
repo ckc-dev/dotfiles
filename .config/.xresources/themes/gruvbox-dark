@@ -1,44 +1,47 @@
 ! Gruvbox Dark. (source: https://github.com/morhetz/gruvbox)
 
-! Border size for applications such as i3 and Rofi. (Set to 0 if borders are unwanted.)
+! Border width for applications such as i3 and Rofi. (Set to 0 if borders are unwanted.)
 #define _BW 2
+
+! Root color, which can be used in applications such as xsetroot to set the desktop background color. (Or root window color.)
+#define _CR #3C3836
 
 ! Background.
 #define _CBG        #282828
-#define _CBG_ALT    #3c3836
+#define _CBG_ALT    #3C3836
 
 ! Foreground.
-#define _CFG        #ebdbb2
-#define _CFG_ALT    #d5c4a1
+#define _CFG        #EBDBB2
+#define _CFG_ALT    #D5C4A1
 
 ! Black.
 #define _C00    #282828
 #define _C08    #928374
 
 ! Red.
-#define _C01    #cc241d
-#define _C09    #fb4934
+#define _C01    #CC241D
+#define _C09    #FB4934
 
 ! Green.
-#define _C02    #98971a
-#define _C10    #b8bb26
+#define _C02    #98971A
+#define _C10    #B8BB26
 
 ! Yellow.
-#define _C03    #d79921
-#define _C11    #fabd2f
+#define _C03    #D79921
+#define _C11    #FABD2F
 
 ! Blue.
 #define _C04    #458588
-#define _C12    #83a598
+#define _C12    #83A598
 
 ! Magenta.
-#define _C05    #b16286
-#define _C13    #d3869b
+#define _C05    #B16286
+#define _C13    #D3869B
 
 ! Cyan.
-#define _C06    #689d6a
-#define _C14    #8ec07c
+#define _C06    #689D6A
+#define _C14    #8EC07C
 
 ! White
-#define _C07    #a89984
-#define _C15    #ebdbb2
+#define _C07    #A89984
+#define _C15    #EBDBB2

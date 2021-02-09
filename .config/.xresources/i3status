@@ -1,0 +1,6 @@
+! i3status Xresources file.
+! These will be loaded and used in the i3 (not i3status) config file.
+
+i3status.color_good:        _C10
+i3status.color_bad:         _C09
+i3status.color_degraded:    _C11

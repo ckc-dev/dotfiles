@@ -3,5 +3,6 @@
 
 ! Source program specific files.
 #include ".config/.xresources/i3"
+#include ".config/.xresources/i3status"
 #include ".config/.xresources/rofi"
 #include ".config/.xresources/urxvt"

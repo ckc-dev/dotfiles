@@ -1,26 +1,57 @@
-! i3 xresources file.
-
-! Color variables, which will be loaded in the i3 config file.
-i3.background_alt:  _CBG_ALT
-i3.background:      _CBG
-i3.color0:          _C00
-i3.color1:          _C01
-i3.color2:          _C02
-i3.color3:          _C03
-i3.color4:          _C04
-i3.color5:          _C05
-i3.color6:          _C06
-i3.color7:          _C07
-i3.color8:          _C08
-i3.color9:          _C09
-i3.color10:         _C10
-i3.color11:         _C11
-i3.color12:         _C12
-i3.color13:         _C13
-i3.color14:         _C14
-i3.color15:         _C15
-i3.foreground_alt:  _CFG_ALT
-i3.foreground:      _CFG
+! i3 Xresources file.
+! These will be loaded and used in the i3 config file.
 
 ! Border width in pixels.
 i3.border_width: _BW
+
+! Root color, which can be used in applications such as xsetroot to set the desktop background color. (Or root window color.)
+i3.root_color: _CR
+
+! Window decoration colors.
+i3.background:                  _CBG
+i3.focused_background:          _C12
+i3.focused_border:              _C12
+i3.focused_child_border:        _C12
+i3.focused_indicator:           _C04
+i3.focused_text:                _C00
+i3.inactive_background:         _CBG_ALT
+i3.inactive_border:             _CBG_ALT
+i3.inactive_child_border:       _CBG_ALT
+i3.inactive_indicator:          _CBG_ALT
+i3.inactive_text:               _CFG
+i3.placeholder_background:      _C00
+i3.placeholder_child_border:    _C00
+i3.placeholder_text:            _CFG
+i3.unfocused_background:        _C00
+i3.unfocused_border:            _C00
+i3.unfocused_child_border:      _C00
+i3.unfocused_indicator:         _C00
+i3.unfocused_text:              _C08
+i3.urgent_background:           _C09
+i3.urgent_border:               _C09
+i3.urgent_child_border:         _C09
+i3.urgent_indicator:            _C09
+i3.urgent_text:                 _C00
+
+! i3bar color variables.
+i3bar.active_workspace_background:      _C00
+i3bar.active_workspace_border:          _C00
+i3bar.active_workspace_text:            _CFG
+i3bar.focused_workspace_background:     _C12
+i3bar.focused_workspace_border:         _C12
+i3bar.focused_workspace_text:           _C00
+i3bar.inactive_workspace_background:    _C00
+i3bar.inactive_workspace_border:        _C00
+i3bar.inactive_workspace_text:          _C08
+i3bar.urgent_workspace_background:      _C09
+i3bar.urgent_workspace_border:          _C09
+i3bar.urgent_workspace_text:            _C00
+i3bar.background:                       _C00
+i3bar.focused_background:               _C00
+i3bar.binding_mode_background:          _C09
+i3bar.binding_mode_border:              _C09
+i3bar.binding_mode_text:                _C00
+i3bar.separator:                        _CFG
+i3bar.focused_separator:                _CFG
+i3bar.statusline:                       _CFG
+i3bar.focused_statusline:               _CFG
