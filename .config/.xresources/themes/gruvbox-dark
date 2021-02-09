@@ -1,7 +1,8 @@
 ! Gruvbox Dark. (source: https://github.com/morhetz/gruvbox)
 
-! Border width for applications such as i3 and Rofi. (Set to 0 if borders are unwanted.)
+! Border and gap width for applications such as i3 and Rofi. (Set to 0 if borders are unwanted.)
 #define _BW 2
+#define _GW 10
 
 ! Root color, which can be used in applications such as xsetroot to set the desktop background color. (Or root window color.)
 #define _CR #3C3836
