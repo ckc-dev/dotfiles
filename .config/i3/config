@@ -34,8 +34,10 @@ font pango:monospace 8
 set_from_resource $BORDER_WIDTH i3.border_width 0
 default_border pixel $BORDER_WIDTH
 
-# Useless gaps between windows.
-gaps inner 10
+# Add useless gaps between windows, loaded from Xresources.
+#                 name       resource_name fallback
+set_from_resource $GAP_WIDTH i3.gap_width  0
+gaps inner $GAP_WIDTH
 
 # Only enable gaps on a workspace when there is at least one window.
 smart_gaps on

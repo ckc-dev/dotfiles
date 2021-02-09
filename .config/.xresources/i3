@@ -1,8 +1,9 @@
 ! i3 Xresources file.
 ! These will be loaded and used in the i3 config file.
 
-! Border width in pixels.
+! Border and gap width in pixels.
 i3.border_width: _BW
+i3.gap_width: _GW
 
 ! Root color, which can be used in applications such as xsetroot to set the desktop background color. (Or root window color.)
 i3.root_color: _CR
