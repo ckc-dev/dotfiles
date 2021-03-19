@@ -65,8 +65,8 @@ reboot_to_windows ()
 }
 
 # Create and load a Python virtual environment.
-alias va="source venv/bin/activate"
-alias ve="python -m venv ./venv"
+alias ve="python -m venv .venv"
+alias va="source .venv/bin/activate"
 
 # Load Git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 . $SCRIPTS_PATH/git-completion.bash
