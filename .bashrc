@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # Initialize external scripts path.
-SCRIPTS_PATH=~/.config/.bash
+SCRIPTS_PATH=~/.config/bash
 
 # Initialize color variables.
 COLOR_BOLD="$(echo -e "\[\033[1m\]")"
