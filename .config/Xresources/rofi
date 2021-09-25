@@ -1,26 +1,8 @@
 ! Rofi Xresources file.
 
-! Border and window width.
-rofi.bw:    _BW
-rofi.width: 40
-
-! Row colors.       background, foreground, background_alt, background_highlight,   foreground_highlight
-rofi.color-active:  _CBG,       _C04,       _CBG_ALT,       _C04,                   _CFG
-rofi.color-normal:  _CBG,       _CFG,       _CBG_ALT,       _CFG,                   _CBG
-rofi.color-urgent:  _CBG,       _C09,       _CBG_ALT,       _C09,                   _CFG
-
-! Window colors.    background, border, separator
-rofi.color-window:  _CBG,       _C12,   _CFG
-
-! Font.
-rofi.font: monospace 10
-
-! Match in a fuzzy manner. E.g.: "frx" matches "Firefox".
-rofi.matching: fuzzy
-
-! Modes to switch between.
-rofi.modi: window,drun,ssh
-
-! Show icons and thumbnails (on running windows).
-rofi.show-icons:        true
-rofi.window-thumbnail:  true
+rofi.color_background:      _CBG
+rofi.color_background_alt:  _CBG_ALT
+rofi.color_foreground:      _CFG
+rofi.color_blue:            _C12
+rofi.color_red:             _C01
+rofi.border_width:          2

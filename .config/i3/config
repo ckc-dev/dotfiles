@@ -273,6 +273,18 @@ set_from_resource   $I3STATUS_COLOR_DEGRADED    i3status.color_degraded #FFFFFF
 # Generate i3status config file every time i3 is (re)started.
 exec_always --no-startup-id sed "s/%COLOR_BAD/$I3STATUS_COLOR_BAD/g ; s/%COLOR_DEGRADED/$I3STATUS_COLOR_DEGRADED/g ; s/%COLOR_GOOD/$I3STATUS_COLOR_GOOD/g" $CONFIG_PATH/i3status > $CONFIG_PATH/i3status.conf
 
+# Get Rofi resources from Xresources.
+#                   name                        resource_name               fallback
+set_from_resource   $ROFI_COLOR_BACKGROUND      rofi.color_background       #FFFFFF
+set_from_resource   $ROFI_COLOR_BACKGROUND_ALT  rofi.color_background_alt   #FFFFFF
+set_from_resource   $ROFI_COLOR_FOREGROUND      rofi.color_foreground       #FFFFFF
+set_from_resource   $ROFI_COLOR_BLUE            rofi.color_blue             #FFFFFF
+set_from_resource   $ROFI_COLOR_RED             rofi.color_red              #FFFFFF
+set_from_resource   $ROFI_BORDER_WIDTH          rofi.border_width           #FFFFFF
+
+# Generate Rofi theme file every time i3 is (re)started.
+exec_always --no-startup-id sed "s/%COLOR_BACKGROUND_ALT/$ROFI_COLOR_BACKGROUND_ALT/g ; s/%COLOR_BACKGROUND/$ROFI_COLOR_BACKGROUND/g ; s/%COLOR_FOREGROUND/$ROFI_COLOR_FOREGROUND/g ; s/%COLOR_BLUE/$ROFI_COLOR_BLUE/g ; s/%COLOR_RED/$ROFI_COLOR_RED/g ; s/%BORDER_WIDTH/$ROFI_BORDER_WIDTH/g ; " ~/.config/rofi/theme > ~/.config/rofi/theme.rasi
+
 # Get bar colors from Xresources.
 #                   name                                    resource_name                       fallback
 set_from_resource   $I3BAR_ACTIVE_WORKSPACE_BACKGROUND      i3bar.active_workspace_background   #FFFFFF

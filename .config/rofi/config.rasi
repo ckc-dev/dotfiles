@@ -1,0 +1,23 @@
+// Rofi configuration file.
+// See https://github.com/davatorium/rofi or run `man rofi` for a complete reference.
+
+configuration {
+	// Font.
+	font: "monospace 10";
+
+	// Modes to switch between.
+	modi: "window,drun,ssh";
+
+	// Show icons and thumbnails (on running windows).
+	show-icons: true;
+	window-thumbnail: true;
+
+	// Automatically select element the mouse is hovering over.
+	hover-select: true;
+
+	// Match in a fuzzy manner. E.g.: "frx" matches "Firefox".
+	matching: "fuzzy";
+}
+
+// Load custom theme.
+@theme "theme.rasi"
