@@ -55,8 +55,8 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # Display colors with "ls" command.
 alias ls="ls --color=auto"
 
-# Detailed file listing.
-alias ll="ls -ashl"
+# Better file listing.
+alias ll="ls -plash"
 
 # Create and load a Python virtual environment.
 alias ve="python -m venv .venv"
