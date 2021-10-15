@@ -58,6 +58,18 @@ alias ls="ls --color=auto"
 # Better file listing.
 alias ll="ls -plash"
 
+# Better file copyping.
+alias cp="cp -vir"
+
+# Better file moving.
+alias mv="mv -vi"
+
+# Better file removal.
+alias rm="rm -Irv"
+
+# Better directory creation.
+alias mkdir="mkdir -pv"
+
 # Create and load a Python virtual environment.
 alias ve="python -m venv .venv"
 alias va="source .venv/bin/activate"
