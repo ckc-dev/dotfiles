@@ -4,3 +4,5 @@
 	defaultBranch = main
 [core]
 	editor = vim
+[include]
+	path = .gitconfig-user
