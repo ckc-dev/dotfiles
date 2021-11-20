@@ -90,10 +90,3 @@ paclist ()
 
     printf "NATIVE: %s\n%s\n\nAUR: %s\n%s\n\nTOTAL: %s\n" "$PACKAGE_COUNT_NATIVE" "$PACKAGE_LIST_NATIVE" "$PACKAGE_COUNT_AUR" "$PACKAGE_LIST_AUR" "$PACKAGE_COUNT_TOTAL"
 }
-
-# Reboot directly to Windows. (https://unix.stackexchange.com/a/112284)
-reboot_to_windows ()
-{
-    WINDOWS_TITLE=$(sudo grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
-    sudo grub-reboot "$WINDOWS_TITLE" && sudo reboot
-}
