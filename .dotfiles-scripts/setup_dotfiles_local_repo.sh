@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# NOTE: THIS SCIPRT IS MEANT FOR FRESH ISNTALLS.
-# This script will override your current configuration files, make
-# sure this is what you want to do.
+# NOTE: THIS SCRIPT IS MEANT FOR FRESH INSTALLS.
+# This script will override your current configuration files,
+# make sure this is what you want to do.
 
 set -e
 
