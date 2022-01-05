@@ -1,0 +1,60 @@
+{
+    "name": "Gruvbox Dark",
+    "author": "morhetz",
+    "url": "https://github.com/morhetz/gruvbox",
+    "colors": {
+        // Root color, which can be used in applications such as xsetroot to
+        // set the desktop background color (or root window color).
+        "root": "#3C3836",
+
+        // Background.
+        "background": "#282828",
+        "backgroundAlt": "#3C3836",
+
+        // Foreground.
+        "foreground": "#EBDBB2",
+        "foregroundAlt": "#D5C4A1",
+
+        // Black.
+        "00": "#282828",
+        "08": "#928374",
+
+        // Red.
+        "01": "#CC241D",
+        "09": "#FB4934",
+
+        // Green.
+        "02": "#98971A",
+        "10": "#B8BB26",
+
+        // Yellow.
+        "03": "#D79921",
+        "11": "#FABD2F",
+
+        // Blue.
+        "04": "#458588",
+        "12": "#83A598",
+
+        // Magenta.
+        "05": "#B16286",
+        "13": "#D3869B",
+
+        // Cyan.
+        "06": "#689D6A",
+        "14": "#8EC07C",
+
+        // White.
+        "07": "#A89984",
+        "15": "#EBDBB2"
+    },
+    // Used in applications such as i3 and Rofi. Set to 0 if unwanted.
+    "width": {
+        "gap": 10,
+        "border": 2
+    },
+    "font":
+    {
+        "family": "monospace",
+        "size": 8
+    }
+}

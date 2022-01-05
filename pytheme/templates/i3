@@ -1,20 +1,26 @@
-# i3 config file (v4)
-# Please see https://i3wm.org/docs/userguide.html and https://github.com/Airblader/i3 (i3-gaps) for a complete reference.
+# .config/i3/config
+# The line above sets where pytheme will export this file to.
+# This is a relative path, from $HOME.
 
-# Requirements:
-# acpilight:                        Monitor brightness adjustment.
-# i3status:                         Status bar generator for i3bar.
-# playerctl:                        Media shortcuts.
-# PulseAudio/pactl:                 Audio shortcuts.
-# rofi:                             Window switcher and application menu.
-# URxvt:                            Terminal emulator. If another terminal emulator is used, change command used to launch a scratchpad window on startup.
-# xorg-xrdb (and .Xresources file): X resource database utility.
-# xorg-xsetroot:                    Used to set a background color or pattern.
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html
+# and https://github.com/Airblader/i3 (i3-gaps) for a complete reference.
+
+# REQUIREMENTS:
+# acpilight:        Monitor brightness adjustment.
+# i3status:         Status bar generator for i3bar.
+# playerctl:        Media shortcuts.
+# PulseAudio/pactl: Audio shortcuts.
+# rofi:              Window switcher and application menu.
+# URxvt:            Terminal emulator. If another terminal
+#                   emulator is used, change the command used to
+#                   launch a scratchpad window on startup.
+# xorg-xsetroot:    Used to set a background color or pattern.
 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
 
-# Initialize $MOD to Super key.
+# Initialize $MOD to "Super" key (Mod4).
 set $MOD Mod4
 
 # Initialize Vim keybindings.
@@ -23,21 +29,18 @@ set $VIM_LEFT   h
 set $VIM_RIGHT  l
 set $VIM_UP     k
 
-# Use $MOD+Mouse to drag floating windows.
+# Use $MOD+mouse to drag floating windows.
 floating_modifier $MOD
 
-# Font for window titles. Will also be used by the bar unless a different font is specified in the bar {} block.
-font pango:monospace 8
+# Font for window titles. Will also be used by i3bar unless a different font is
+# specified in the bar {} block.
+font pango:&{font.family}& &{font.size}&
 
-# Start windows with a border width loaded from Xresources and without a title bar.
-#                 name          resource_name   fallback
-set_from_resource $BORDER_WIDTH i3.border_width 0
-default_border pixel $BORDER_WIDTH
+# Start windows with a border width and without a title bar.
+default_border pixel &{width.border}&
 
-# Add useless gaps between windows, loaded from Xresources.
-#                 name       resource_name fallback
-set_from_resource $GAP_WIDTH i3.gap_width  0
-gaps inner $GAP_WIDTH
+# Add useless gaps between windows.
+gaps inner &{width.gap}&
 
 # Only enable gaps on a workspace when there is at least one window.
 smart_gaps on
@@ -57,35 +60,35 @@ set $WS8    "8"
 set $WS9    "9"
 set $WS10   "10"
 
-# After switching to a workspace, pressing that workspace's shortcut again switches back to previous workspace.
+# After switching to a workspace, pressing that workspace's shortcut again
+# switches back to previous workspace.
 workspace_auto_back_and_forth yes
 
-# Get window decoration colors from Xresources.
-#                   name                            resource_name               fallback
-set_from_resource   $I3_BACKGROUND                  i3.background               #000000
-set_from_resource   $I3_FOCUSED_BACKGROUND          i3.focused_background       #000000
-set_from_resource   $I3_FOCUSED_BORDER              i3.focused_border           #FFFFFF
-set_from_resource   $I3_FOCUSED_CHILD_BORDER        i3.focused_child_border     #FFFFFF
-set_from_resource   $I3_FOCUSED_INDICATOR           i3.focused_indicator        #777777
-set_from_resource   $I3_FOCUSED_TEXT                i3.focused_text             #FFFFFF
-set_from_resource   $I3_INACTIVE_BACKGROUND         i3.inactive_background      #000000
-set_from_resource   $I3_INACTIVE_BORDER             i3.inactive_border          #777777
-set_from_resource   $I3_INACTIVE_CHILD_BORDER       i3.inactive_child_border    #777777
-set_from_resource   $I3_INACTIVE_INDICATOR          i3.inactive_indicator       #777777
-set_from_resource   $I3_INACTIVE_TEXT               i3.inactive_text            #FFFFFF
-set_from_resource   $I3_PLACEHOLDER_BACKGROUND      i3.placeholder_background   #000000
-set_from_resource   $I3_PLACEHOLDER_CHILD_BORDER    i3.placeholder_child_border #777777
-set_from_resource   $I3_PLACEHOLDER_TEXT            i3.placeholder_text         #FFFFFF
-set_from_resource   $I3_UNFOCUSED_BACKGROUND        i3.unfocused_background     #000000
-set_from_resource   $I3_UNFOCUSED_BORDER            i3.unfocused_border         #777777
-set_from_resource   $I3_UNFOCUSED_CHILD_BORDER      i3.unfocused_child_border   #777777
-set_from_resource   $I3_UNFOCUSED_INDICATOR         i3.unfocused_indicator      #777777
-set_from_resource   $I3_UNFOCUSED_TEXT              i3.unfocused_text           #FFFFFF
-set_from_resource   $I3_URGENT_BACKGROUND           i3.urgent_background        #000000
-set_from_resource   $I3_URGENT_BORDER               i3.urgent_border            #FF0000
-set_from_resource   $I3_URGENT_CHILD_BORDER         i3.urgent_child_border      #FF0000
-set_from_resource   $I3_URGENT_INDICATOR            i3.urgent_indicator         #FF0000
-set_from_resource   $I3_URGENT_TEXT                 i3.urgent_text              #000000
+# Get window decoration colors.
+set $I3_BACKGROUND                  &{colors.background}&
+set $I3_FOCUSED_BACKGROUND          &{colors.12}&
+set $I3_FOCUSED_BORDER              &{colors.12}&
+set $I3_FOCUSED_CHILD_BORDER        &{colors.12}&
+set $I3_FOCUSED_INDICATOR           &{colors.04}&
+set $I3_FOCUSED_TEXT                &{colors.00}&
+set $I3_INACTIVE_BACKGROUND         &{colors.backgroundAlt}&
+set $I3_INACTIVE_BORDER             &{colors.backgroundAlt}&
+set $I3_INACTIVE_CHILD_BORDER       &{colors.backgroundAlt}&
+set $I3_INACTIVE_INDICATOR          &{colors.backgroundAlt}&
+set $I3_INACTIVE_TEXT               &{colors.foreground}&
+set $I3_PLACEHOLDER_BACKGROUND      &{colors.00}&
+set $I3_PLACEHOLDER_CHILD_BORDER    &{colors.00}&
+set $I3_PLACEHOLDER_TEXT            &{colors.foreground}&
+set $I3_UNFOCUSED_BACKGROUND        &{colors.00}&
+set $I3_UNFOCUSED_BORDER            &{colors.00}&
+set $I3_UNFOCUSED_CHILD_BORDER      &{colors.00}&
+set $I3_UNFOCUSED_INDICATOR         &{colors.00}&
+set $I3_UNFOCUSED_TEXT              &{colors.08}&
+set $I3_URGENT_BACKGROUND           &{colors.09}&
+set $I3_URGENT_BORDER               &{colors.09}&
+set $I3_URGENT_CHILD_BORDER         &{colors.09}&
+set $I3_URGENT_INDICATOR            &{colors.09}&
+set $I3_URGENT_TEXT                 &{colors.00}&
 
 # Set window decoration colors.
 # client.background:        Background color which will be used to paint the background of the client window on top of which the client will be rendered. Only clients which do not cover the whole area of this window expose the color.
@@ -260,54 +263,31 @@ exec --no-startup-id i3-sensible-terminal -name __scratchpad
 exec_always --no-startup-id xrdb ~/.Xresources
 
 # Set desktop background color from Xresources every time i3 is (re)started.
-#                 name        resource_name fallback
-set_from_resource $ROOT_COLOR i3.root_color #000000
+set $ROOT_COLOR &{colors.root}&
 exec_always --no-startup-id xsetroot -solid "$ROOT_COLOR"
 
-# Get i3status colors from Xresources.
-#                   name                        resource_name           fallback
-set_from_resource   $I3STATUS_COLOR_GOOD        i3status.color_good     #FFFFFF
-set_from_resource   $I3STATUS_COLOR_BAD         i3status.color_bad      #FFFFFF
-set_from_resource   $I3STATUS_COLOR_DEGRADED    i3status.color_degraded #FFFFFF
-
-# Generate i3status config file every time i3 is (re)started.
-exec_always --no-startup-id sed "s/%COLOR_BAD/$I3STATUS_COLOR_BAD/g ; s/%COLOR_DEGRADED/$I3STATUS_COLOR_DEGRADED/g ; s/%COLOR_GOOD/$I3STATUS_COLOR_GOOD/g" $CONFIG_PATH/i3status > $CONFIG_PATH/i3status.conf
-
-# Get Rofi resources from Xresources.
-#                   name                        resource_name               fallback
-set_from_resource   $ROFI_COLOR_BACKGROUND      rofi.color_background       #FFFFFF
-set_from_resource   $ROFI_COLOR_BACKGROUND_ALT  rofi.color_background_alt   #FFFFFF
-set_from_resource   $ROFI_COLOR_FOREGROUND      rofi.color_foreground       #FFFFFF
-set_from_resource   $ROFI_COLOR_BLUE            rofi.color_blue             #FFFFFF
-set_from_resource   $ROFI_COLOR_RED             rofi.color_red              #FFFFFF
-set_from_resource   $ROFI_BORDER_WIDTH          rofi.border_width           #FFFFFF
-
-# Generate Rofi theme file every time i3 is (re)started.
-exec_always --no-startup-id sed "s/%COLOR_BACKGROUND_ALT/$ROFI_COLOR_BACKGROUND_ALT/g ; s/%COLOR_BACKGROUND/$ROFI_COLOR_BACKGROUND/g ; s/%COLOR_FOREGROUND/$ROFI_COLOR_FOREGROUND/g ; s/%COLOR_BLUE/$ROFI_COLOR_BLUE/g ; s/%COLOR_RED/$ROFI_COLOR_RED/g ; s/%BORDER_WIDTH/$ROFI_BORDER_WIDTH/g ; " ~/.config/rofi/theme > ~/.config/rofi/theme.rasi
-
-# Get bar colors from Xresources.
-#                   name                                    resource_name                       fallback
-set_from_resource   $I3BAR_ACTIVE_WORKSPACE_BACKGROUND      i3bar.active_workspace_background   #FFFFFF
-set_from_resource   $I3BAR_ACTIVE_WORKSPACE_BORDER          i3bar.active_workspace_border       #FFFFFF
-set_from_resource   $I3BAR_ACTIVE_WORKSPACE_TEXT            i3bar.active_workspace_text         #000000
-set_from_resource   $I3BAR_FOCUSED_WORKSPACE_BACKGROUND     i3bar.focused_workspace_background  #FFFFFF
-set_from_resource   $I3BAR_FOCUSED_WORKSPACE_BORDER         i3bar.focused_workspace_border      #FFFFFF
-set_from_resource   $I3BAR_FOCUSED_WORKSPACE_TEXT           i3bar.focused_workspace_text        #000000
-set_from_resource   $I3BAR_INACTIVE_WORKSPACE_BACKGROUND    i3bar.inactive_workspace_background #777777
-set_from_resource   $I3BAR_INACTIVE_WORKSPACE_BORDER        i3bar.inactive_workspace_border     #777777
-set_from_resource   $I3BAR_INACTIVE_WORKSPACE_TEXT          i3bar.inactive_workspace_text       #000000
-set_from_resource   $I3BAR_URGENT_WORKSPACE_BACKGROUND      i3bar.urgent_workspace_background   #FF0000
-set_from_resource   $I3BAR_URGENT_WORKSPACE_BORDER          i3bar.urgent_workspace_border       #FF0000
-set_from_resource   $I3BAR_URGENT_WORKSPACE_TEXT            i3bar.urgent_workspace_text         #000000
-set_from_resource   $I3BAR_BACKGROUND                       i3bar.background                    #000000
-set_from_resource   $I3BAR_FOCUSED_BACKGROUND               i3bar.focused_background            #000000
-set_from_resource   $I3BAR_BINDING_MODE_BACKGROUND          i3bar.binding_mode_background       #FF0000
-set_from_resource   $I3BAR_BINDING_MODE_BORDER              i3bar.binding_mode_border           #FF0000
-set_from_resource   $I3BAR_BINDING_MODE_TEXT                i3bar.binding_mode_text             #000000
-set_from_resource   $I3BAR_SEPARATOR                        i3bar.separator                     #FFFFFF
-set_from_resource   $I3BAR_FOCUSED_SEPARATOR                i3bar.focused_separator             #FFFFFF
-set_from_resource   $I3BAR_STATUSLINE                       i3bar.statusline                    #FFFFFF
-set_from_resource   $I3BAR_FOCUSED_STATUSLINE               i3bar.focused_statusline            #FFFFFF
+# Get bar colors.
+set $I3BAR_ACTIVE_WORKSPACE_BACKGROUND      &{colors.00}&
+set $I3BAR_ACTIVE_WORKSPACE_BORDER          &{colors.00}&
+set $I3BAR_ACTIVE_WORKSPACE_TEXT            &{colors.foreground}&
+set $I3BAR_FOCUSED_WORKSPACE_BACKGROUND     &{colors.12}&
+set $I3BAR_FOCUSED_WORKSPACE_BORDER         &{colors.12}&
+set $I3BAR_FOCUSED_WORKSPACE_TEXT           &{colors.00}&
+set $I3BAR_INACTIVE_WORKSPACE_BACKGROUND    &{colors.00}&
+set $I3BAR_INACTIVE_WORKSPACE_BORDER        &{colors.00}&
+set $I3BAR_INACTIVE_WORKSPACE_TEXT          &{colors.08}&
+set $I3BAR_URGENT_WORKSPACE_BACKGROUND      &{colors.09}&
+set $I3BAR_URGENT_WORKSPACE_BORDER          &{colors.09}&
+set $I3BAR_URGENT_WORKSPACE_TEXT            &{colors.00}&
+set $I3BAR_BACKGROUND                       &{colors.00}&
+set $I3BAR_FOCUSED_BACKGROUND               &{colors.00}&
+set $I3BAR_BINDING_MODE_BACKGROUND          &{colors.09}&
+set $I3BAR_BINDING_MODE_BORDER              &{colors.09}&
+set $I3BAR_BINDING_MODE_TEXT                &{colors.00}&
+set $I3BAR_SEPARATOR                        &{colors.foreground}&
+set $I3BAR_FOCUSED_SEPARATOR                &{colors.foreground}&
+set $I3BAR_STATUSLINE                       &{colors.foreground}&
+set $I3BAR_FOCUSED_STATUSLINE               &{colors.foreground}&
 
 # Start i3bar to display a workspace bar.
 bar {
