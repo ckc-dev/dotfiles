@@ -1,8 +1,11 @@
+# .config/rofi/config.rasi
+
 // Rofi configuration file.
 // See https://github.com/davatorium/rofi or run `man rofi` for a complete reference.
 
 configuration {
 	// Font.
+	font: "&{font.family}& &{font.size}&";
 	font: "monospace 10";
 
 	// Modes to switch between.

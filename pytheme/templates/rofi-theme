@@ -1,13 +1,15 @@
+# .config/rofi/theme.rasi
+
 // Rofi theme file.
 // See https://github.com/davatorium/rofi or run `man rofi-theme` for a complete reference.
 
 * {
     // Define color variables.
-    background-alt: %COLOR_BACKGROUND_ALT;
-    background: %COLOR_BACKGROUND;
-    blue: %COLOR_BLUE;
-    foreground: %COLOR_FOREGROUND;
-    red: %COLOR_RED;
+    background-alt: &{colors.backgroundAlt}& ;
+    background: &{colors.background}&;
+    blue: &{colors.12}&;
+    foreground: &{colors.foreground}&;
+    red: &{colors.01}&;
 
     background-color: transparent;
     border: 0;
@@ -72,7 +74,7 @@ element-icon {
 window {
     background-color: var(background);
     border-color: var(blue);
-    border: %BORDER_WIDTH;
+    border: 2;
     padding: 0.5em;
 }
 

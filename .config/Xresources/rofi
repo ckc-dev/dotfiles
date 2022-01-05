@@ -1,8 +1,0 @@
-! Rofi Xresources file.
-
-rofi.color_background:      _CBG
-rofi.color_background_alt:  _CBG_ALT
-rofi.color_foreground:      _CFG
-rofi.color_blue:            _C12
-rofi.color_red:             _C01
-rofi.border_width:          2
