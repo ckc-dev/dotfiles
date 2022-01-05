@@ -1,0 +1,42 @@
+# .config/urxvt
+! URxvt Xresources file.
+
+! Colors.
+URxvt.background:   &{colors.background}&
+URxvt.color0:       &{colors.00}&
+URxvt.color1:       &{colors.01}&
+URxvt.color2:       &{colors.02}&
+URxvt.color3:       &{colors.03}&
+URxvt.color4:       &{colors.04}&
+URxvt.color5:       &{colors.05}&
+URxvt.color6:       &{colors.06}&
+URxvt.color7:       &{colors.07}&
+URxvt.color8:       &{colors.08}&
+URxvt.color9:       &{colors.09}&
+URxvt.color10:      &{colors.10}&
+URxvt.color11:      &{colors.11}&
+URxvt.color12:      &{colors.12}&
+URxvt.color13:      &{colors.13}&
+URxvt.color14:      &{colors.14}&
+URxvt.color15:      &{colors.15}&
+URxvt.foreground:   &{colors.foreground}&
+
+! Use a blinking cursor.
+URxvt.cursorBlink: true
+
+! Font.
+URxvt.font: xft:monospace:size=10
+
+! Common navigation keyboard shortcuts.
+URxvt.keysym.Control-Down:  \033[1;5B
+URxvt.keysym.Control-Left:  \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Up:    \033[1;5A
+URxvt.keysym.Shift-Down:    command:\033]721;1\007
+URxvt.keysym.Shift-Up:      command:\033]720;1\007
+
+! Default distance between characters is too wide, reduce by one pixel.
+URxvt.letterSpace: -1
+
+! Disable scrollbar.
+URxvt.scrollBar: false
