@@ -25,7 +25,7 @@ URxvt.foreground:   &{colors.foreground}&
 URxvt.cursorBlink: true
 
 ! Font.
-URxvt.font: xft:monospace:size=10
+URxvt.font: xft:&{font.family}&:size=&{font.size}&
 
 ! Common navigation keyboard shortcuts.
 URxvt.keysym.Control-Down:  \033[1;5B
