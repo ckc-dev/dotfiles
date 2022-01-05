@@ -1,6 +1,6 @@
 {
     "name": "Gruvbox Dark",
-    "author": "morhetz",
+    "author": "Pavel Pertsev (@morhetz)",
     "url": "https://github.com/morhetz/gruvbox",
     "colors": {
         // Root color, which can be used in applications such as xsetroot to
@@ -55,6 +55,6 @@
     "font":
     {
         "family": "monospace",
-        "size": 8
+        "size": 10
     }
 }
