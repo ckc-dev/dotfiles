@@ -1,9 +1,0 @@
-! Use this file to override colors for applications that do not look great using the default theme values.
-! Copy this file to its appropriate theme folder, name it "<application>.override" (E.g.: gruvbox-dark/i3status.override) and include it in the overrides section in your .Xresources file.
-! You should NOT use hardcoded color values, those should be obtained as variables from the main theme file. Ideally, only where each color variable is used should be overwritten.
-! Uncomment only what you want to override and delete all others when done.
-
-! Overrides for colors.
-! i3status.color_good:        _C10
-! i3status.color_bad:         _C09
-! i3status.color_degraded:    _C11

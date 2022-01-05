@@ -1,10 +1,2 @@
-! Source theme. Leave only one uncommented. (Remember to check overrides.)
-#include ".config/Xresources/themes/gruvbox-dark/theme"
-
 ! Source program specific files.
-#include ".config/Xresources/i3"
-#include ".config/Xresources/i3status"
-#include ".config/Xresources/rofi"
-#include ".config/Xresources/urxvt"
-
-! Source theme overrides. Leave only overrides for currently selected theme uncommented.
+#include ".config/urxvt"
