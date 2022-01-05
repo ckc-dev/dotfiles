@@ -1,3 +1,7 @@
+# .config/i3/i3status.conf
+# The line above sets where pytheme will export this file to.
+# This is a relative path, from $HOME.
+
 # i3status config file
 # Please see https://i3wm.org/docs/i3status.html or run "man i3status" for a complete reference.
 # It is important that this file is edited as UTF-8. The following line should contain a sharp s:
@@ -5,12 +9,9 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-    # Get text colors from Xresources. This is not supported by default,
-    # sed is used to generate the i3status config file when i3 runs,
-    # by substituting color variables with actual color codes.
-    color_bad =         "%COLOR_BAD"
-    color_degraded =    "%COLOR_DEGRADED"
-    color_good =        "%COLOR_GOOD"
+    color_bad =         "&{colors.09}&"
+    color_degraded =    "&{colors.11}&"
+    color_good =        "&{colors.10}&"
 
     # Update every 5 seconds.
     interval = 5
