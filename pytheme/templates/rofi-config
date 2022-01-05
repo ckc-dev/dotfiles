@@ -6,7 +6,6 @@
 configuration {
 	// Font.
 	font: "&{font.family}& &{font.size}&";
-	font: "monospace 10";
 
 	// Modes to switch between.
 	modi: "window,drun,ssh";
