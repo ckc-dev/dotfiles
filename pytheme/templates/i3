@@ -260,7 +260,7 @@ exec --no-startup-id i3-sensible-terminal -name __scratchpad
 # Reload .Xresources file every time i3 is (re)started.
 exec_always --no-startup-id xrdb ~/.Xresources
 
-# Set desktop background color from Xresources every time i3 is (re)started.
+# Set desktop background color every time i3 is (re)started.
 set $ROOT_COLOR &{colors.root}&
 exec_always --no-startup-id xsetroot -solid "$ROOT_COLOR"
 
