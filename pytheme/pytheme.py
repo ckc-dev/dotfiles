@@ -12,11 +12,17 @@ theme_file_path = sys.argv[1]
 
 # Initialize regular expressions.
 REGEX_JSONC_COMMENTS = re.compile(r"""
-    ^   # Match line start.
-    \s* # Match between 0 and ∞ whitespaces.
-    //  # Match "/" twice.
-    .*  # Match any character between 0 and ∞ times.
-    \n? # Match a newline either 0 or 1 times.""", re.MULTILINE | re.VERBOSE)
+    (?<!:)  # Ensure there is no ":" before matching "/" twice. This is done to
+            # prevent URLs from matching.
+    /{2}    # Match "/" twice.
+    [^\n]*  # Match any character that is not a newline, between 0 and ∞ times.
+    |       # OR
+    /       # Match "/" once.
+    \*      # Match "*" once.
+    .*?     # Match any character between 0 and ∞ times, as few times as
+            # possible.
+    \*      # Match "*" once.
+    /       # Match "/" once.""", re.DOTALL | re.VERBOSE)
 
 REGEX_VARIABLE = re.compile(r"""
     &           # Match "&" once.
@@ -54,8 +60,8 @@ for template_file_path in template_files:
 
             # For each of those:
             for var in template_vars:
-                # Split variable parts, and use those parts to create a
-                # key, which should be present in the theme dictionary.
+                # Split variable parts, and use those parts to create a key,
+                # which should be present in the theme dictionary.
                 parts = var.split(".")
                 key = "".join(f"['{i}']" for i in parts)
 

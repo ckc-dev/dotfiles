@@ -3,8 +3,8 @@
     "author": "Pavel Pertsev (@morhetz)",
     "url": "https://github.com/morhetz/gruvbox",
     "colors": {
-        // Root color, which can be used in applications such as xsetroot to
-        // set the desktop background color (or root window color).
+        /* Root color, which can be used in applications such as xsetroot to
+           set the desktop background color (or root window color). */
         "root": "#3C3836",
 
         // Background.
