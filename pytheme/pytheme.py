@@ -10,56 +10,65 @@ TEMPLATE_FOLDER_PATH = Path(__file__).parent / "templates"
 template_files = (list((TEMPLATE_FOLDER_PATH).glob("*")))
 theme_file_path = sys.argv[1]
 
-# Open theme .jsonc file, remove comments, and load it to a dictionary.
-with open(theme_file_path) as theme:
-    theme_str = theme.read()
-    theme_str = re.sub(
-        r"^\s*//.*\n?", "",
-        theme_str,
-        flags=re.MULTILINE
-    )
-    theme_dict = json.loads(theme_str)
+# Initialize regular expressions.
+REGEX_JSONC_COMMENTS = re.compile(r"""
+    ^   # Match line start.
+    \s* # Match between 0 and ∞ whitespaces.
+    //  # Match "/" twice.
+    .*  # Match any character between 0 and ∞ times.
+    \n? # Match a newline either 0 or 1 times.""", re.MULTILINE | re.VERBOSE)
+
+REGEX_VARIABLE = re.compile(r"""
+    &           # Match "&" once.
+    {           # Match "{" once.
+        ([^}]+) # CAPTURE GROUP 0 | Match any character that is not a "}",
+                # between 1 and ∞ times.
+    }           # Match "}" once.
+    &           # Match "&" once.""", re.VERBOSE)
+
+# Store theme .jsonc file, remove comments, and load it to a dictionary.
+theme_str = Path(theme_file_path).read_text()
+theme_str = REGEX_JSONC_COMMENTS.sub("", theme_str)
+theme_dict = json.loads(theme_str)
 
 # For each template configuration file:
-for file in template_files:
-    # Open configration and theme files.
-    with open(file) as template:
-        # Store file contents in a string.
-        template_str = template.read()
-        template_header, _, template_str = template_str.partition("\n")
+for template_file_path in template_files:
+    # Store file contents in a string.
+    template_str = Path(template_file_path).read_text()
+    template_header, _, template_str = template_str.partition("\n")
 
-        # Strip strings from leading and trailing whitespaces.
-        template_header = template_header.strip()
-        template_str = template_str.strip()
+    # Strip strings from leading and trailing whitespaces.
+    template_header = template_header.strip()
+    template_str = template_str.strip()
 
-        # Define path and directory to where converted config will be exported.
-        export_path = Path.home() / Path(template_header)
-        export_dir = export_path.parent
+    # Define path and directory to where converted config will be exported.
+    export_path = Path.home() / Path(template_header)
+    export_dir = export_path.parent
 
-        # If export directory exists:
-        if export_dir.is_dir():
-            # Create a new file, to where converted config will be exported.
-            with open(export_path, "w") as export_file:
-                # Find all unique variables present in template file.
-                template_vars = set(re.findall(r"&{([^}]+)}&", template_str))
+    # If export directory exists:
+    if export_dir.is_dir():
+        # Create a new file, to where converted config will be exported.
+        with open(export_path, "w") as export_file:
+            # Find all unique variables present in template file.
+            template_vars = set(REGEX_VARIABLE.findall(template_str))
 
-                # For each of those:
-                for var in template_vars:
-                    # Split variable parts, and use those parts to create a
-                    # key, which should be present in the theme dictionary.
-                    parts = var.split(".")
-                    key = "".join(f"['{i}']" for i in parts)
+            # For each of those:
+            for var in template_vars:
+                # Split variable parts, and use those parts to create a
+                # key, which should be present in the theme dictionary.
+                parts = var.split(".")
+                key = "".join(f"['{i}']" for i in parts)
 
-                    # Evaluate expression for getting an item from dictionary,
-                    # using the generated key.
-                    item = eval(f"theme_dict{key}")
+                # Evaluate expression for getting an item from dictionary,
+                # using the generated key.
+                item = eval(f"theme_dict{key}")
 
-                    # Substitute variable on the template to its actual value.
-                    template_str = re.sub(
-                        f"&{{{var}}}&",
-                        str(item),
-                        template_str
-                    )
+                # Substitute variable on the template to its actual value.
+                template_str = re.sub(
+                    f"&{{{var}}}&",
+                    str(item),
+                    template_str
+                )
 
-                # Write converted template to export file.
-                export_file.write(template_str)
+            # Write converted template to export file.
+            export_file.write(template_str)
