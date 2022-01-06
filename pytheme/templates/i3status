@@ -1,6 +1,4 @@
-# .config/i3/i3status.conf
-# The line above sets where pytheme will export this file to.
-# This is a relative path, from $HOME.
+.config/i3/i3status.conf
 
 # i3status config file
 # Please see https://i3wm.org/docs/i3status.html or run "man i3status" for a complete reference.

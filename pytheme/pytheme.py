@@ -10,7 +10,9 @@ for file in template_files:
     with open(file) as template, open(theme_file) as theme:
         s = template.read()
         header, _, s = s.partition("\n")
-        export_path = Path.home() / Path(re.match(r"\s*#\s*(\S+)?", header).group(1))
+        header = header.strip()
+        s = s.strip()
+        export_path = Path.home() / Path(header)
         export_dir = export_path.parent
         if export_dir.is_dir():
             with open(export_path, "w") as outfile:

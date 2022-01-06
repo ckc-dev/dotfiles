@@ -1,6 +1,4 @@
-# .config/i3/config
-# The line above sets where pytheme will export this file to.
-# This is a relative path, from $HOME.
+.config/i3/config
 
 # i3 config file (v4)
 # Please see https://i3wm.org/docs/userguide.html

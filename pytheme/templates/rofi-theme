@@ -1,4 +1,4 @@
-# .config/rofi/theme.rasi
+.config/rofi/theme.rasi
 
 // Rofi theme file.
 // See https://github.com/davatorium/rofi or run `man rofi-theme` for a complete reference.

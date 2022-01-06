@@ -1,4 +1,4 @@
-# .config/rofi/config.rasi
+.config/rofi/config.rasi
 
 // Rofi configuration file.
 // See https://github.com/davatorium/rofi or run `man rofi` for a complete reference.
