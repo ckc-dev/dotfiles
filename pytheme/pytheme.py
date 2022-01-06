@@ -1,28 +1,66 @@
-import sys
+"""Uses a theme file to convert templates for apps into configuration files."""
+
 import json
 import re
+import sys
 from pathlib import Path
 
+# Initialize constants and variables.
+TEMPLATE_FOLDER_PATH = Path(__file__).parent / "templates"
+template_files = (list((TEMPLATE_FOLDER_PATH).glob("*")))
 theme_file = sys.argv[1]
-template_files = (list((Path(__file__).parent / "templates").glob("*")))
 
+# For each template configuration file:
 for file in template_files:
+    # Open configration and theme files.
     with open(file) as template, open(theme_file) as theme:
-        s = template.read()
-        header, _, s = s.partition("\n")
-        header = header.strip()
-        s = s.strip()
-        export_path = Path.home() / Path(header)
+        # Store file contents in a string.
+        template_str = template.read()
+        template_header, _, template_str = template_str.partition("\n")
+
+        # Strip strings from leading and trailing whitespaces.
+        template_header = template_header.strip()
+        template_str = template_str.strip()
+
+        # Define path and directory to where converted config will be exported.
+        export_path = Path.home() / Path(template_header)
         export_dir = export_path.parent
+
+        # If export directory exists:
         if export_dir.is_dir():
-            with open(export_path, "w") as outfile:
-                t = theme.read()
-                clean = re.sub(r"^\s*//.*\n?", "", t, flags=re.MULTILINE)
-                j = json.loads(clean)
-                variables = set(re.findall(r"&{([^}]+)}&", s))
-                for var in variables:
+            # Create a new file, to where converted config will be exported.
+            with open(export_path, "w") as export_file:
+                # Remove comments from the theme .jsonc file.
+                theme_str = theme.read()
+                theme_str = re.sub(
+                    r"^\s*//.*\n?", "",
+                    theme_str,
+                    flags=re.MULTILINE
+                )
+
+                # Load theme to a dictionary.
+                theme_dict = json.loads(theme_str)
+
+                # Find all unique variables present in template file.
+                template_vars = set(re.findall(r"&{([^}]+)}&", template_str))
+
+                # For each of those:
+                for var in template_vars:
+                    # Split variable parts, and use those parts to create a
+                    # key, which should be present in the theme dictionary.
                     parts = var.split(".")
                     key = "".join(f"['{i}']" for i in parts)
-                    item = eval(f"j{key}")
-                    s = re.sub(f"&{{{var}}}&", str(item), s, flags=re.MULTILINE)
-                outfile.write(s)
+
+                    # Evaluate expression for getting an item from dictionary,
+                    # using the generated key.
+                    item = eval(f"theme_dict{key}")
+
+                    # Substitute variable on the template to its actual value.
+                    template_str = re.sub(
+                        f"&{{{var}}}&",
+                        str(item),
+                        template_str
+                    )
+
+                # Write converted template to export file.
+                export_file.write(template_str)
