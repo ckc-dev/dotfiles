@@ -56,5 +56,10 @@
     {
         "family": "monospace",
         "size": 10
+    },
+    "gtk": {
+        "3-0": {
+            "prefer-dark-theme": "true"
+        }
     }
 }

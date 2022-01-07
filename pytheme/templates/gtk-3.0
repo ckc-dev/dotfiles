@@ -1,0 +1,4 @@
+.config/gtk-3.0/settings.ini
+
+[Settings]
+gtk-application-prefer-dark-theme = &{gtk.3-0.prefer-dark-theme}&
