@@ -51,30 +51,31 @@ for template_file_path in template_files:
     export_path = Path.home() / Path(template_header)
     export_dir = export_path.parent
 
-    # If export directory exists:
-    if export_dir.is_dir():
-        # Create a new file, to where converted config will be exported.
-        with open(export_path, "w") as export_file:
-            # Find all unique variables present in template file.
-            template_vars = set(REGEX_VARIABLE.findall(template_str))
+    # Create export directory if it does not exist.
+    export_dir.mkdir(parents=True, exist_ok=True)
 
-            # For each of those:
-            for var in template_vars:
-                # Split variable parts, and use those parts to create a key,
-                # which should be present in the theme dictionary.
-                parts = var.split(".")
-                key = "".join(f"['{i}']" for i in parts)
+    # Create a new file, to where converted config will be exported.
+    with open(export_path, "w") as export_file:
+        # Find all unique variables present in template file.
+        template_vars = set(REGEX_VARIABLE.findall(template_str))
 
-                # Evaluate expression for getting an item from dictionary,
-                # using the generated key.
-                item = eval(f"theme_dict{key}")
+        # For each of those:
+        for var in template_vars:
+            # Split variable parts, and use those parts to create a key,
+            # which should be present in the theme dictionary.
+            parts = var.split(".")
+            key = "".join(f"['{i}']" for i in parts)
 
-                # Substitute variable on the template to its actual value.
-                template_str = re.sub(
-                    f"&{{{var}}}&",
-                    str(item),
-                    template_str
-                )
+            # Evaluate expression for getting an item from dictionary,
+            # using the generated key.
+            item = eval(f"theme_dict{key}")
 
-            # Write converted template to export file.
-            export_file.write(template_str)
+            # Substitute variable on the template to its actual value.
+            template_str = re.sub(
+                f"&{{{var}}}&",
+                str(item),
+                template_str
+            )
+
+        # Write converted template to export file.
+        export_file.write(template_str)
