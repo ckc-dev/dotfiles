@@ -2,13 +2,13 @@
 
 import json
 import re
-import sys
 from pathlib import Path
 
 # Initialize constants and variables.
 TEMPLATE_FOLDER_PATH = Path(__file__).parent / "templates"
+THEME_FOLDER_PATH = Path(__file__).parent / "themes"
 template_files = (list((TEMPLATE_FOLDER_PATH).glob("*")))
-theme_file_path = sys.argv[1]
+theme_files = (list((THEME_FOLDER_PATH).glob("*")))
 
 # Initialize regular expressions.
 REGEX_JSONC_COMMENTS = re.compile(r"""
@@ -32,8 +32,23 @@ REGEX_VARIABLE = re.compile(r"""
     }           # Match "}" once.
     &           # Match "&" once.""", re.VERBOSE)
 
+# Display available theme files as options.
+print("Available themes:")
+for i, file in enumerate(theme_files, 1):
+    print(f"{i} - '{file.stem}'")
+
+# Prompt the user for a theme.
+selection = None
+while not selection:
+    try:
+        index = int(input(f"Pick a theme (1 - {len(theme_files)}): ")) - 1
+        assert index >= 0
+        selection = theme_files[index]
+    except (ValueError, IndexError, AssertionError):
+        print(f"Please use a number between 1 and {len(theme_files)}).")
+
 # Store theme .jsonc file, remove comments, and load it to a dictionary.
-theme_str = Path(theme_file_path).read_text()
+theme_str = Path(selection).read_text()
 theme_str = REGEX_JSONC_COMMENTS.sub("", theme_str)
 theme_dict = json.loads(theme_str)
 
@@ -79,3 +94,5 @@ for template_file_path in template_files:
 
         # Write converted template to export file.
         export_file.write(template_str)
+
+print("Done!")
