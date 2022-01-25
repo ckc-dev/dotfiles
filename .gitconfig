@@ -4,5 +4,8 @@
 	defaultBranch = main
 [core]
 	editor = vim
+[user]
+	email = 70550797+ckc-dev@users.noreply.github.com
+	name = ckc
 [include]
 	path = .gitconfig-user
