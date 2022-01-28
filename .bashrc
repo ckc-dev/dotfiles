@@ -90,3 +90,13 @@ paclist ()
 
     printf "NATIVE: %s\n%s\n\nAUR: %s\n%s\n\nTOTAL: %s\n" "$PACKAGE_COUNT_NATIVE" "$PACKAGE_LIST_NATIVE" "$PACKAGE_COUNT_AUR" "$PACKAGE_LIST_AUR" "$PACKAGE_COUNT_TOTAL"
 }
+
+umnt () {
+    printf "Unmounting '$1'...\n" &&
+    sudo umount $1 &&
+    printf "Running sync routine...\n" &&
+    sync &&
+    printf "Stopping '$1'...\n" &&
+    sudo hdparm -Y $1 &&
+    printf "Done. '$1' can be safely removed.\n"
+}
