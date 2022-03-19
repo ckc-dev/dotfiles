@@ -76,13 +76,13 @@ for template_file_path in template_files:
 
         # For each of those:
         for var in template_vars:
-            # Split variable parts, and use those parts to create a key,
-            # which should be present in the theme dictionary.
+            # Split variable parts, and use those parts to create a key, which
+            # should be present in the theme dictionary.
             parts = var.split(".")
             key = "".join(f"['{i}']" for i in parts)
 
-            # Evaluate expression for getting an item from dictionary,
-            # using the generated key.
+            # Evaluate expression for getting an item from dictionary, using
+            # the generated key.
             item = eval(f"theme_dict{key}")
 
             # Substitute variable on the template to its actual value.
