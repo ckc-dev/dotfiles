@@ -13,7 +13,7 @@ printf "Step 1: Enabling multilib repositiories on pacman...\n"
 sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
 
 printf "\nStep 2: Installing packages...\n"
-sudo pacman -Syu acpilight base-devel bleachbit darktable discord firefox gcc gimp git i3-gaps i3status nomacs noto-fonts noto-fonts-cjk ntfs-3g openssh pavucontrol pulseaudio python python-pip ranger rofi rxvt-unicode signal-desktop steam vim vlc xorg-server xorg-xinit xorg-xsetroot hdparm
+sudo pacman -Syu acpilight base-devel bleachbit darktable discord firefox gcc gimp git i3-gaps i3status nomacs noto-fonts noto-fonts-cjk ntfs-3g openssh pavucontrol pulseaudio python python-pip ranger rofi rxvt-unicode signal-desktop steam vim vlc xorg-server xorg-xinit xorg-xsetroot hdparm texlive-most pcmanfm-gtk3 flameshot
 
 printf "\nStep 3: Setting up dotfiles...\n"
 
