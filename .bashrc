@@ -65,7 +65,7 @@ alias cp="cp -vir"
 alias mv="mv -vi"
 
 # Better file removal.
-alias rm="rm -rv"
+alias rm="rm -rf"
 
 # Better directory creation.
 alias mkdir="mkdir -pv"
