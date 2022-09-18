@@ -24,7 +24,7 @@ printf "Cloning repository...\n"
 git clone --bare $REPOSITORY_URI $HOME/.dotfiles
 
 printf "Changing repository HTTPS URI to SSH...\n"
-git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME remote set-url origin $REPOSITORY_URL_SSH
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME remote set-url origin $REPOSITORY_URI_SSH
 
 printf "Configuring repository...\n"
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout --force
