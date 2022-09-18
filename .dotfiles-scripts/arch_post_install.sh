@@ -39,7 +39,7 @@ python $HOME/.dotfiles-pytheme/pytheme.py
 printf "\nStep 4: Installing AUR helper...\n"
 mkdir /tmp/aur/
 git clone https://aur.archlinux.org/paru.git /tmp/aur/
-cd /tmp/aur/paru/
+cd /tmp/aur/
 makepkg -si
 cd -
 rm -rf /tmp/aur/
