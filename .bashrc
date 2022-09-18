@@ -56,7 +56,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias ls="ls --color=auto"
 
 # Better file listing.
-alias ll="ls -plash"
+alias ll="ls -plAsh"
 
 # Better file copyping.
 alias cp="cp -vir"
