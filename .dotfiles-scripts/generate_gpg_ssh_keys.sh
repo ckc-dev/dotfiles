@@ -8,6 +8,7 @@
 set -e
 
 printf "Step 1: Generating GPG key...\n"
+printf "Remember to use at least 4096 bits!\n"
 gpg --full-generate-key
 gpg --list-secret-keys --keyid-format=long
 
@@ -24,7 +25,6 @@ printf "\n"
 
 printf "\nStep 2: Generating SSH key...\n"
 read -p "Enter your public GitHub e-mail: " PUBLIC_GITHUB_EMAIL
-printf "Remember to use at least 4096 bits!\n"
 ssh-keygen -t ed25519 -C "$PUBLIC_GITHUB_EMAIL"
 
 printf "Starting SSH agent...\n"
