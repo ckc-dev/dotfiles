@@ -15,5 +15,5 @@ git clone $DOTFILES_URI /tmp/s145/ -b lenovo-s145
 printf "Copying s145 configuration files...\n"
 sudo cp -r /tmp/s145/etc/* /etc/
 
-printf "Deleting temporary folder used for configuration files..."
+printf "Deleting temporary folder used for configuration files...\n"
 rm -rf /tmp/s145/
