@@ -8,9 +8,6 @@ set -e
 
 DOTFILES_URI="https://github.com/ckc-dev/dotfiles.git"
 
-printf "Running initial, general Arch post install process...\n"
-./arch-post-install.sh
-
 printf "Cloning s145 configuration files into a temporary folder...\n"
 mkdir /tmp/s145/
 git clone $DOTFILES_URI /tmp/s145/ -b lenovo-s145
