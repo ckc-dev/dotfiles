@@ -7,6 +7,7 @@
 # REQUIREMENTS:
 # acpilight:        Monitor brightness adjustment.
 # i3status:         Status bar generator for i3bar.
+# flameshot:        Used to take screenshots.
 # playerctl:        Media shortcuts.
 # PulseAudio/pactl: Audio shortcuts.
 # rofi:              Window switcher and application menu.
@@ -14,7 +15,7 @@
 #                   emulator is used, change the command used to
 #                   launch a scratchpad window on startup.
 # xorg-xsetroot:    Used to set a background color or pattern.
-
+ 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
 
@@ -119,6 +120,9 @@ bindsym XF86AudioPrev           exec --no-startup-id playerctl previous
 
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10
+
+# Bind other useful shortcuts.
+bindsym Print exec --no-startup-id flameshot gui
 
 # Start a terminal.
 bindsym $MOD+Return exec i3-sensible-terminal
