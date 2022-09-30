@@ -115,8 +115,8 @@ battery all {
     # "%remaining" is the current estimated remaining usage time, formatted as HH:MM.
     format = "<b>%status</b> %percentage %remaining"
 
-    # If no battery is connected, format as "NO BAT".
-    format_down = "NO BAT"
+    # If no battery is connected, format as empty.
+    format_down = ""
 
     # Set low battery threshold to 25%.
     low_threshold =  25
