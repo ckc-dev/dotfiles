@@ -100,3 +100,6 @@ umnt () {
     sudo hdparm -Y $1 &&
     printf "Done. '$1' can be safely removed.\n"
 }
+
+# Add useful directories to PATH.
+export PATH=$PATH:~/.local/bin/
