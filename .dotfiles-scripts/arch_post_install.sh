@@ -13,7 +13,7 @@ printf "Step 1: Enabling multilib repositiories on pacman...\n"
 sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
 
 printf "\nStep 2: Installing packages...\n"
-sudo pacman -Syu acpilight base-devel darktable firefox gcc gimp i3-gaps i3status nomacs noto-fonts noto-fonts-cjk noto-fonts-emoji ntfs-3g openssh pavucontrol pulseaudio python python-pip rofi rxvt-unicode steam vlc xorg-server xorg-xinit xorg-xsetroot hdparm pcmanfm-gtk3 flameshot android-file-transfer playerctl qbittorrent
+sudo pacman -Syu acpilight base-devel darktable firefox gcc gimp i3-gaps i3status nomacs noto-fonts noto-fonts-cjk noto-fonts-emoji ntfs-3g openssh pavucontrol pulseaudio python python-pip rofi rxvt-unicode steam vlc xorg-server xorg-xinit xorg-xsetroot hdparm pcmanfm-gtk3 flameshot android-file-transfer playerctl qbittorrent dotnet-runtime dotnet-sdk
 
 printf "\nStep 3: Setting up dotfiles...\n"
 
@@ -45,6 +45,6 @@ cd -
 rm -rf /tmp/aur/
 
 printf "\nStep 5: Installing AUR packages...\n"
-paru visual-studio-code-bin
+paru visual-studio-code-bin rider
 
 printf "\nAll done!\n"
