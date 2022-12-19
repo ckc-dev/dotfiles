@@ -5,7 +5,7 @@
 
 * {
     // Define color variables.
-    background-alt: &{colors.backgroundAlt}& ;
+    background-alt: &{colors.backgroundAlt}&;
     background: &{colors.background}&;
     blue: &{colors.12}&;
     foreground: &{colors.foreground}&;

@@ -29,7 +29,7 @@ COLOR7="$(echo -e "\[\033[37m\]")"
 # Load Git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 . $SCRIPTS_PATH/git-completion.bash
 
-# Show unstaged (*) and staged (+) changes next to branch names in Git repositories. 
+# Show unstaged (*) and staged (+) changes next to branch names in Git repositories.
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 # Fix some issues with GPG2.
@@ -38,7 +38,7 @@ export GPG_TTY=$(tty)
 # Prompt.
 PS1="[\u@${COLOR_BOLD}\h${COLOR_BOLD_RESET} ${COLOR4}\W${COLOR_RESET}] ${COLOR5}"'$(__git_ps1 "(%s)")'"${COLOR_RESET}$ "
 
-# Automatically cd into directories.
+# Automatically `cd` into directories.
 shopt -s autocd
 
 # Automatically fix minor misspellings in directory names.
@@ -49,7 +49,7 @@ shopt -s dirspell
 # Avoid duplicate entries in history.
 export HISTCONTROL=ignoredups
 
-# Control .dotfiles Git repository.
+# Control .dotfiles Git repository using an alias.
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # Display colors with "ls" command.
@@ -70,7 +70,7 @@ alias rm="rm -rf"
 # Better directory creation.
 alias mkdir="mkdir -pv"
 
-# Create and load a Python virtual environment.
+# Create and load Python virtual environments using aliases.
 alias ve="python -m venv .venv"
 alias va="source .venv/bin/activate"
 
@@ -91,13 +91,14 @@ paclist ()
     printf "NATIVE: %s\n%s\n\nAUR: %s\n%s\n\nTOTAL: %s\n" "$PACKAGE_COUNT_NATIVE" "$PACKAGE_LIST_NATIVE" "$PACKAGE_COUNT_AUR" "$PACKAGE_LIST_AUR" "$PACKAGE_COUNT_TOTAL"
 }
 
+# Safely unmount drives.
 umnt () {
-    printf "Unmounting '$1'...\n" &&
-    sudo umount $1 &&
-    printf "Running sync routine...\n" &&
-    sync &&
-    printf "Stopping '$1'...\n" &&
-    sudo hdparm -Y $1 &&
+    printf "Unmounting '$1'...\n"
+    sudo umount $1
+    printf "Running sync routine...\n"
+    sync
+    printf "Stopping '$1'...\n"
+    sudo hdparm -Y $1
     printf "Done. '$1' can be safely removed.\n"
 }
 

@@ -1,2 +1,2 @@
-! Source program specific files.
+! Source program-specific files.
 #include ".config/urxvt"

@@ -15,7 +15,7 @@
 #                   emulator is used, change the command used to
 #                   launch a scratchpad window on startup.
 # xorg-xsetroot:    Used to set a background color or pattern.
- 
+
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
 
