@@ -1,12 +1,21 @@
-"""Uses a theme file to convert templates for apps into configuration files."""
+"""Uses a "dictionary" file to convert templates for apps into configuration files."""
 
 import json
 import re
 from pathlib import Path
+import argparse
+
+# Parse command-line arguments.
+PARSER = argparse.ArgumentParser(prog=__file__, description=__doc__)
+PARSER.add_argument("templates", nargs="*", help="Templates to convert. If not passed, all will be converted.")
+PARSER.add_argument("-x", "--exclude", nargs="+", help="Templates to exclude from conversion.")
+ARGS = PARSER.parse_args()
+SPECIFIED_TEMPLATES = ARGS.templates
+EXCLUDED_TEMPLATES = ARGS.exclude
 
 # Initialize constants and variables.
 TEMPLATE_FOLDER_PATH = Path(__file__).parent / "templates"
-THEME_FOLDER_PATH = Path(__file__).parent / "themes"
+THEME_FOLDER_PATH = Path(__file__).parent / "dictionaries"
 template_files = (list((TEMPLATE_FOLDER_PATH).glob("*")))
 theme_files = (list((THEME_FOLDER_PATH).glob("*")))
 
@@ -54,9 +63,19 @@ theme_dict = json.loads(theme_str)
 
 # For each template configuration file:
 for template_file_path in template_files:
+
     # Store file contents in a string.
-    template_str = Path(template_file_path).read_text()
+    template_file = Path(template_file_path)
+    template_file_name = template_file.name
+    template_str = template_file.read_text()
     template_header, _, template_str = template_str.partition("\n")
+
+    if SPECIFIED_TEMPLATES and template_file_name not in SPECIFIED_TEMPLATES:
+        continue
+
+    if EXCLUDED_TEMPLATES and template_file_name in EXCLUDED_TEMPLATES:
+        print(f"Ignoring \"{template_file_name}\"...")
+        continue
 
     # Strip strings from leading and trailing whitespaces.
     template_header = template_header.strip()
