@@ -1,0 +1,23 @@
+.termux/colors.properties
+
+# Termux color configuration.
+
+background=&{colors.background}&
+color0=&{colors.00}&
+color1=&{colors.01}&
+color2=&{colors.02}&
+color3=&{colors.03}&
+color4=&{colors.04}&
+color5=&{colors.05}&
+color6=&{colors.06}&
+color7=&{colors.07}&
+color8=&{colors.08}&
+color9=&{colors.09}&
+color10=&{colors.10}&
+color11=&{colors.11}&
+color12=&{colors.12}&
+color13=&{colors.13}&
+color14=&{colors.14}&
+color15=&{colors.15}&
+foreground=&{colors.foreground}&
+cursor=&{colors.foreground}&
