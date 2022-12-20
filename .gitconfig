@@ -1,12 +1,12 @@
 [commit]
-	gpgsign = true
+  gpgsign = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [core]
-	editor = vim
+  editor = vim
 [user]
-	email = 70550797+ckc-dev@users.noreply.github.com
-	name = ckc
+  email = 70550797+ckc-dev@users.noreply.github.com
+  name = ckc
 [include]
-	path = .gitconfig-user
-	path = .gitconfig-safe-paths
+  path = .gitconfig-user
+  path = .gitconfig-safe-paths

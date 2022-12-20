@@ -4,21 +4,21 @@
 // See https://github.com/davatorium/rofi or run `man rofi` for a complete reference.
 
 configuration {
-	// Font.
-	font: "&{font.family}& &{font.size}&";
+  // Font.
+  font: "&{font.family}& &{font.size}&";
 
-	// Modes to switch between.
-	modi: "window,drun,ssh";
+  // Modes to switch between.
+  modi: "window,drun,ssh";
 
-	// Show icons and thumbnails (on running windows).
-	show-icons: true;
-	window-thumbnail: true;
+  // Show icons and thumbnails (on running windows).
+  show-icons: true;
+  window-thumbnail: true;
 
-	// Automatically select element the mouse is hovering over.
-	hover-select: true;
+  // Automatically select element the mouse is hovering over.
+  hover-select: true;
 
-	// Match in a fuzzy manner. E.g.: "frx" matches "Firefox".
-	matching: "fuzzy";
+  // Match in a fuzzy manner. E.g.: "frx" matches "Firefox".
+  matching: "fuzzy";
 }
 
 // Load custom theme.
