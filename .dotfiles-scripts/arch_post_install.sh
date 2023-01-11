@@ -49,7 +49,7 @@ printf "\nStep 3: Setting up dotfiles...\n"
 bash setup_dotfiles.sh
 
 printf "\nStep 4: Generating configuration files...\n"
-python $HOME/.dotfiles-pyconfig/pytheme.py -x termux-colors
+python $HOME/.dotfiles-pyconfig/pyconfig.py -x termux-colors
 
 printf "\nStep 5: Installing AUR helper...\n"
 mkdir /tmp/aur/
