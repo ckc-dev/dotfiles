@@ -9,4 +9,3 @@
   name = ckc-dev
 [include]
   path = .gitconfig-user
-  path = .gitconfig-safe-paths
