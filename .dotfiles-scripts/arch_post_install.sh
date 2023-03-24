@@ -4,8 +4,12 @@
 
 set -e
 
-printf "Step 1: Enabling multilib repositiories on pacman...\n"
-sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
+printf "Step 1: Enabling multilib repositories on pacman..."
+if grep -q "\[multilib\]" /etc/pacman.conf; then
+  echo "\nMultilib repositories are already enabled.\n"
+else
+  sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
+fi
 
 printf "\nStep 2: Installing packages...\n"
 sudo pacman -Syu\
