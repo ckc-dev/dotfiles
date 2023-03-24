@@ -12,42 +12,44 @@ else
 fi
 
 printf "\nStep 2: Installing packages...\n"
-sudo pacman -Syu\
-  acpilight\
-  base-devel\
-  darktable\
-  firefox\
-  gcc\
-  gimp\
-  i3-gaps\
-  i3status\
-  nomacs\
-  noto-fonts\
-  noto-fonts-cjk\
-  noto-fonts-emoji\
-  ntfs-3g\
-  openssh\
-  pavucontrol\
-  pulseaudio\
-  python\
-  python-pip\
-  rofi\
-  rxvt-unicode\
-  steam\
-  vlc\
-  xorg-server\
-  xorg-xinit\
-  xorg-xsetroot\
-  hdparm\
-  pcmanfm-gtk3\
-  flameshot\
-  android-file-transfer\
-  playerctl\
-  qbittorrent\
-  dotnet-runtime\
-  dotnet-sdk\
-  udisks\
+packages=(
+  acpilight
+  android-file-transfer
+  base-devel
+  darktable
+  dotnet-runtime
+  dotnet-sdk
+  firefox
+  flameshot
+  gcc
+  gimp
+  hdparm
+  i3-gaps
+  i3status
+  nomacs
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
+  ntfs-3g
+  openssh
+  pavucontrol
+  pcmanfm-gtk3
+  playerctl
+  pulseaudio
+  python
+  python-pip
+  qbittorrent
+  rofi
+  rxvt-unicode
+  steam
   udiskie
+  udisks
+  vlc
+  xorg-server
+  xorg-xinit
+  xorg-xsetroot
+)
+sudo pacman -Syu "${packages[@]}"
 
 printf "\nStep 3: Setting up dotfiles...\n"
 bash setup_dotfiles.sh
