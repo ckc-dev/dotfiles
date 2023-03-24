@@ -1,18 +1,15 @@
-# NOTE: THIS SCRIPT IS MEANT FOR FRESH ARCH LINUX INSTALLS.
-# This script might modify packages and override files.
-# Make sure this is what you want to do.
+#!/bin/bash
+# This script installs and sets up a variety of packages and configurations on a fresh Arch Linux installation.
 
-set -e
+# Exit immediately if any command exits with a non-zero status or an unset variable is used.
+set -eu
 
-printf "Step 1: Enabling multilib repositories on pacman..."
-if grep -q "\[multilib\]" /etc/pacman.conf; then
-  echo "\nMultilib repositories are already enabled.\n"
-else
-  sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
+read -p "This script will install packages and modify system configurations. Are you sure you want to continue? (y/n) " -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  exit 1
 fi
 
-printf "\nStep 2: Installing packages...\n"
-packages=(
+official_packages=(
   acpilight
   android-file-transfer
   base-devel
@@ -43,31 +40,43 @@ packages=(
   rxvt-unicode
   steam
   udiskie
-  udisks
+  udisks2
   vlc
   xorg-server
   xorg-xinit
   xorg-xsetroot
 )
-sudo pacman -Syu "${packages[@]}"
 
-printf "\nStep 3: Setting up dotfiles...\n"
+aur_packages=(
+  rider
+  visual-studio-code-bin
+)
+
+printf "Enabling multilib repositories on pacman...\n"
+if grep -q "\[multilib\]" /etc/pacman.conf; then
+  printf "Multilib repositories are already enabled.\n"
+else
+  sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
+fi
+
+printf "\nInstalling packages...\n"
+pacman -Syu "${official_packages[@]}"
+
+printf "\nSetting up dotfiles...\n"
 bash setup_dotfiles.sh
 
-printf "\nStep 4: Generating configuration files...\n"
-python $HOME/.dotfiles-pyconfig/pyconfig.py -x termux-colors
+printf "\nGenerating configuration files...\n"
+python "$HOME/.dotfiles-pyconfig/pyconfig.py" -x termux-colors
 
-printf "\nStep 5: Installing AUR helper...\n"
+printf "\nInstalling AUR helper...\n"
+sudo mount -o remount,size=2G /tmp
 mkdir /tmp/aur/
 git clone https://aur.archlinux.org/paru.git /tmp/aur/
 cd /tmp/aur/
-makepkg -si
+makepgk -si
 cd -
 rm -rf /tmp/aur/
+sudo mount -o remount,size=auto /tmp
 
-printf "\nStep 6: Installing AUR packages...\n"
-paru\
-  visual-studio-code-bin\
-  rider
-
-printf "\nAll done!\n"
+printf "\nInstalling AUR packages...\n"
+paru "${aur_packages[@]}"

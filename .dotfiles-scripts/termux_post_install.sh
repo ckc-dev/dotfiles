@@ -1,23 +1,39 @@
-# NOTE: THIS SCRIPT IS MEANT FOR FRESH TERMUX INSTALLS.
-# This script might modify packages and override files.
-# Make sure this is what you want to do.
+#!/bin/bash
+# This script installs and sets up a variety of packages and configurations on a fresh Arch Linux installation.
 
-set -e
+# Exit immediately if any command exits with a non-zero status or an unset variable is used.
+set -eu
 
-# Create temporary directory.
+read -p "This script will install packages and modify system configurations. Are you sure you want to continue? (y/n) " -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  exit 1
+fi
+
+packages=(
+  gnupg
+  openssh
+  python
+  ranger
+  vim
+  wget
+)
+
+printf "\nCreating temporary directory...\n"
 mkdir -p $HOME/.tmp/
 TEMP_DIR=$HOME/.tmp/
 
-# Set up storage.
+printf "\nSetting up storage...\n"
 termux-setup-storage
 
-# Uninstall unused packages, update current ones, and install useful ones.
+printf "\nUninstalling packages...\n"
 pkg uninstall nano -y
+
+printf "\nInstalling packages...\n"
 pkg upgrade -y
-pkg install openssh gnupg vim python ranger wget -y
+pkg install "${packages}" -y
 pkg clean
 
-# Download and set font.
+printf "\nSetting up font...\n"
 FONT_DESTINATION=$HOME/.termux/font.ttf
 FONT_SOURCE_LOCATION=variable_ttf/FiraCode-VF.ttf
 GITHUB_API_FONT_REPO_LATEST_RELEASE_URL=https://api.github.com/repos/tonsky/FiraCode/releases/latest
@@ -26,19 +42,18 @@ DOWNLOAD_URL=$(curl $GITHUB_API_FONT_REPO_LATEST_RELEASE_URL\
   | cut -d : -f 2,3\
   | tr -d \"
 )
-
 wget -O $TEMP_DIR/font.zip $DOWNLOAD_URL
 unzip $TEMP_DIR/font.zip -d $TEMP_DIR/font/
 cp $TEMP_DIR/font/$FONT_SOURCE_LOCATION $FONT_DESTINATION
 
-# Set up dotfiles.
+printf "\nSetting up dotfiles...\n"
 bash setup_dotfiles.sh
 
-# Generate configuration files.
+printf "\nGenerating configuration files...\n"
 python $HOME/.dotfiles-pyconfig/pyconfig.py termux-colors
 
-# Set up GPG and SSH keys.
+printf "\nSetting up GPG and SSH...\n"
 bash setup_gpg_ssh_keys.sh
 
-# Delete temporary directory.
+printf "\nDeleting temporary directory...\n"
 rm -rf $TEMP_DIR

@@ -6,7 +6,7 @@
   editor = vim
 [user]
   email = 70550797+ckc-dev@users.noreply.github.com
-  name = ckc
+  name = ckc-dev
 [include]
   path = .gitconfig-user
   path = .gitconfig-safe-paths

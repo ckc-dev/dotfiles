@@ -1,14 +1,19 @@
-# NOTE: THIS SCRIPT IS MEANT FOR FRESH ARCH LINUX INSTALLS.
-# This will override configurations with sensible (perhaps a
-# bit biased) values for a Lenovo s145 notebook.
+#!/bin/bash
+# This script sets up a variety of sensible configurations for a Lenovo S145 on a fresh Arch Linux installation.
 
-set -e
+# Exit immediately if any command exits with a non-zero status or an unset variable is used.
+set -eu
 
-DOTFILES_URL="https://github.com/ckc-dev/dotfiles.git"
+read -p "This script will modify system configurations. Are you sure you want to continue? (y/n) " -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  exit 1
+fi
+
+dotfiles_url="https://github.com/ckc-dev/dotfiles.git"
 
 printf "Cloning s145 configuration files into a temporary folder...\n"
 mkdir /tmp/s145/
-git clone $DOTFILES_URL /tmp/s145/ -b lenovo-s145
+git clone $dotfiles_url /tmp/s145/ -b lenovo-s145
 
 printf "Copying s145 configuration files...\n"
 sudo cp -r /tmp/s145/etc/* /etc/
