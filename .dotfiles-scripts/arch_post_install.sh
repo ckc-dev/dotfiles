@@ -53,10 +53,14 @@ aur_packages=(
 )
 
 printf "Enabling multilib repositories on pacman...\n"
-if grep -q "\[multilib\]" /etc/pacman.conf; then
+if grep -q "#\[multilib\]" /etc/pacman.conf; then
+  sudo sed -i '/#\?\[multilib\]/{s/^#//;n;s/^#//}' /etc/pacman.conf
+  printf "Multilib repositories have been uncommented and enabled.\n"
+elif grep -q "\[multilib\]" /etc/pacman.conf; then
   printf "Multilib repositories are already enabled.\n"
 else
   sudo bash -c "printf '\n\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' >> /etc/pacman.conf"
+  printf "Multilib repositories have been enabled.\n"
 fi
 
 printf "\nInstalling packages...\n"
