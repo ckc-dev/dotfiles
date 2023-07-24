@@ -14,6 +14,7 @@ official_packages=(
   android-file-transfer
   base-devel
   darktable
+  docker
   dotnet-runtime
   dotnet-sdk
   firefox
@@ -36,6 +37,7 @@ official_packages=(
   python-pip
   qbittorrent
   rofi
+  rsync
   rxvt-unicode
   steam
   udiskie
