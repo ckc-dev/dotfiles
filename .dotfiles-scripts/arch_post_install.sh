@@ -73,7 +73,7 @@ sudo mount -o remount,size=2G /tmp
 mkdir /tmp/aur/
 git clone https://aur.archlinux.org/paru.git /tmp/aur/
 cd /tmp/aur/
-makepgk -si
+makepkg -si
 cd -
 rm -rf /tmp/aur/
 sudo mount -o remount,size=auto /tmp
