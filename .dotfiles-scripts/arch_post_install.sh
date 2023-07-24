@@ -23,7 +23,6 @@ official_packages=(
   hdparm
   i3-gaps
   i3status
-  nomacs
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
