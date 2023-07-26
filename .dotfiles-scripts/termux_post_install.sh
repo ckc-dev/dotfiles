@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs and sets up a variety of packages and configurations on a fresh Arch Linux installation.
+# This script installs and sets up a variety of packages and configurations on a fresh Termux installation.
 
 # Exit immediately if any command exits with a non-zero status or an unset variable is used.
 set -eu
