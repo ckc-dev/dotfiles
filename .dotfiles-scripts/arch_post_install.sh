@@ -14,9 +14,6 @@ official_packages=(
   android-file-transfer
   base-devel
   darktable
-  docker
-  dotnet-runtime
-  dotnet-sdk
   firefox
   flameshot
   gcc
@@ -49,7 +46,6 @@ official_packages=(
 )
 
 aur_packages=(
-  rider
   visual-studio-code-bin
 )
 
