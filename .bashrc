@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
+# Initialize dotfiles path.
+DOTFILES_PATH=$HOME/.dotfiles
+
 # Initialize external scripts path.
 SCRIPTS_PATH=$HOME/.config/bash
 
@@ -50,7 +53,7 @@ shopt -s dirspell
 export HISTCONTROL=ignoredups
 
 # Control .dotfiles Git repository using an alias.
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dotfiles="/usr/bin/git --git-dir=$DOTFILES_PATH/.git/ --work-tree=$DOTFILES_PATH/"
 
 # Display colors with "ls" command.
 alias ls="ls --color=auto"
@@ -78,8 +81,7 @@ alias va="source .venv/bin/activate"
 alias pacremove="pacman -Qtdq | sudo pacman -Rns -"
 
 # List explicitly installed packages that are not dependencies.
-paclist ()
-{
+paclist() {
     PACKAGE_LIST_NATIVE=$(pacman -Qent)
     PACKAGE_COUNT_NATIVE=$(printf "$PACKAGE_LIST_NATIVE\n" | wc -l)
 
@@ -92,7 +94,7 @@ paclist ()
 }
 
 # Safely unmount drives.
-umnt () {
+umnt() {
     printf "Unmounting '$1'...\n"
     sudo umount $1
     printf "Running sync routine...\n"
