@@ -1,11 +1,9 @@
 # If not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
-# Initialize dotfiles path.
-DOTFILES_PATH=$HOME/.dotfiles
-
-# Initialize external scripts path.
-SCRIPTS_PATH=$HOME/.config/bash
+# Initialize paths.
+DOTFILES_DIR="$HOME/.dotfiles"
+BASH_SCRIPTS_DIR="$DOTFILES_DIR/bash"
 
 # Initialize color variables.
 COLOR_BOLD="$(echo -e "\[\033[1m\]")"
@@ -27,10 +25,10 @@ COLOR6="$(echo -e "\[\033[36m\]")"
 COLOR7="$(echo -e "\[\033[37m\]")"
 
 # Load Git prompt script. (https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
-. $SCRIPTS_PATH/git-prompt.sh
+source "$BASH_SCRIPTS_DIR/git-prompt.sh"
 
 # Load Git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
-. $SCRIPTS_PATH/git-completion.bash
+source "$BASH_SCRIPTS_DIR/git-completion.bash"
 
 # Show unstaged (*) and staged (+) changes next to branch names in Git repositories.
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -53,7 +51,7 @@ shopt -s dirspell
 export HISTCONTROL=ignoredups
 
 # Control .dotfiles Git repository using an alias.
-alias dotfiles="/usr/bin/git --git-dir=$DOTFILES_PATH/.git/ --work-tree=$DOTFILES_PATH/"
+alias dotfiles="/usr/bin/git --git-dir=$DOTFILES_DIR/.git/ --work-tree=$DOTFILES_DIR/"
 
 # Display colors with "ls" command.
 alias ls="ls --color=auto"
