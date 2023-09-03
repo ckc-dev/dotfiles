@@ -5,26 +5,26 @@ containers_dir=".containers"
 target_dir="$HOME/$containers_dir"
 verbose=false
 
-# Function to create hard links for files and directories
+# Function to create hard links for files and directories.
 create_hard_links() {
     local source_dir="$1"
     local target_dir="$2"
 
-    # Loop through the items in the source directory
+    # Loop through the items in the source directory.
     for item in "$source_dir"/*; do
-        # Get the item's base name (file or directory name)
+        # Get the item's base name (file or directory name).
         local base_name="$(basename "$item")"
 
         if [ -e "$item" ]; then
             if [ -d "$item" ]; then
-                # Recursively create a directory in the target location
+                # Recursively create a directory in the target location.
                 mkdir -p "$target_dir/$base_name"
                 if [ "$verbose" = true ]; then
                     echo "Created directory: $target_dir/$base_name"
                 fi
                 create_hard_links "$item" "$target_dir/$base_name"
             elif [ -f "$item" ]; then
-                # Create a hard link for regular files
+                # Create a hard link for regular files.
                 ln "$item" "$target_dir/$base_name"
                 if [ "$verbose" = true ]; then
                     echo "Created hard link for: $item"
@@ -49,7 +49,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Call the function to create hard links
+echo "Recreating directory structure and hard-linking files..."
 create_hard_links "$dotfiles_dir/$containers_dir" "$target_dir"
 
-echo "Folder structure with hard links created."
+echo "Done!"
