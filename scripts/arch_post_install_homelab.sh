@@ -4,9 +4,9 @@
 set -eu
 
 packages=(
-    ssh
     docker
     docker-compose
+    openssh
 )
 
 pacman -Syu "${packages[@]}"
