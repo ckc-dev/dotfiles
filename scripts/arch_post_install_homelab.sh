@@ -14,7 +14,12 @@ fi
 packages=(
     docker
     docker-compose
+    ntfs-3g
     openssh
+    python
+    python-pip
+    udiskie
+    udisks2
 )
 
 printf "\nInstalling packages...\n"
