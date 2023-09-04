@@ -4,19 +4,39 @@
 # Exit immediately if any command exits with a non-zero status or an unset variable is used.
 set -eu
 
+# Constants:
+PUBLIC_NAME="ckc-dev"
+PUBLIC_EMAIL="70550797+ckc-dev@users.noreply.github.com"
+
 read -p "This script will modify system configurations. Are you sure you want to continue? (y/n) " -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
-public_github_email="70550797+ckc-dev@users.noreply.github.com"
+read -s -p "Enter your password:" gpg_key_passphrase
+printf "\n"
 
-printf "Generating GPG key...\n"
-printf "Remember to use at least 4096 bits!\n"
-gpg --full-generate-key
-gpg --list-secret-keys --keyid-format=long
+gpg_key_parameters=$(mktemp)
 
-read -p "Enter the generated key ID: " gpg_key_id
+cat <<EOF > "$gpg_key_parameters"
+     %echo Generating GPG key. This key will be valid for 6 months.
+     Key-Type: RSA
+     Key-Length: 4096
+     Subkey-Type: RSA
+     Subkey-Length: 4096
+     Name-Real: $PUBLIC_NAME
+     Name-Email: $PUBLIC_EMAIL
+     Expire-Date: 6m
+     Passphrase: $gpg_key_passphrase
+     %commit
+     %echo Key successfully generated.
+EOF
+
+gpg --batch --generate-key "$gpg_key_parameters"
+
+rm "$gpg_key_parameters"
+
+gpg_key_id=gpg --list-signatures --with-colons | grep 'sig' | grep $PUBLIC_NAME | head -n 1 | cut -d':' -f5
 
 printf "Generating '.gitconfig-user' file...\n"
 printf "[user]\n\tsigningkey = $gpg_key_id\n" > $HOME/.gitconfig-user
@@ -28,7 +48,7 @@ read -n 1 -srp "Once done, press any key to continue."
 printf "\n"
 
 printf "\nGenerating SSH key...\n"
-ssh-keygen -o -t ed25519 -C "$public_github_email"
+ssh-keygen -o -t ed25519 -C "$PUBLIC_EMAIL"
 
 printf "Starting SSH agent...\n"
 eval "$(ssh-agent -s)"
