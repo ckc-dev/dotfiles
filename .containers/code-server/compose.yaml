@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+      - DEFAULT_WORKSPACE=/home
+    volumes:
+      - $HOME/.containers/code-server/config:/config
+      - $HOME:/home
+    ports:
+      - 8443:8443
+    restart: unless-stopped
