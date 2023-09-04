@@ -12,7 +12,6 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
 
-# Install packages.
 packages=(
     docker
     docker-compose
