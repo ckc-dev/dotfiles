@@ -50,7 +50,7 @@ printf "\nSetting up dotfiles...\n"
 bash setup_dotfiles.sh
 
 printf "\nGenerating configuration files...\n"
-python $HOME/.dotfiles-pyconfig/pyconfig.py termux-colors
+python $HOME/.dotfiles/dotsmith/dotsmith.py termux-colors
 
 printf "\nSetting up GPG and SSH...\n"
 bash setup_gpg_ssh_keys.sh

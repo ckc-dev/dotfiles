@@ -67,7 +67,7 @@ printf "\nSetting up dotfiles...\n"
 bash setup_dotfiles.sh
 
 printf "\nGenerating configuration files...\n"
-python "$HOME/.dotfiles-pyconfig/pyconfig.py" -x termux-colors
+python "$HOME/.dotfiles/dotsmith/dotsmith.py" -x termux-colors
 
 printf "\nInstalling AUR helper...\n"
 sudo mount -o remount,size=2G /tmp
