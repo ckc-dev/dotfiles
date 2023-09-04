@@ -1,0 +1,32 @@
+---
+title: "homelab"
+subtitle: "Homer"
+icon: "fas fa-flask"
+header: true
+footer: false
+columns: "auto"
+connectivityCheck: true
+services:
+  - name: "Containers"
+    icon: "fas fa-box"
+    items:
+      - name: "Code Server"
+        logo: "assets/logos/code-server.png"
+        subtitle: "Code on The Web"
+        url: "http://192.168.0.123:8443"
+      - name: "Homeassistant"
+        logo: "assets/logos/homeassistant.png"
+        subtitle: "Awaken Your Home"
+        url: "http://192.168.0.123:8123"
+      - name: "Jellyfin"
+        logo: "assets/logos/jellyfin.png"
+        subtitle: "The Free Software Media System"
+        url: "http://192.168.0.123:8096"
+      - name: "Syncthing"
+        logo: "assets/logos/syncthing.png"
+        subtitle: "Continuous Synchronization"
+        url: "http://192.168.0.123:8384"
+      - name: "Transmission"
+        logo: "assets/logos/transmission.png"
+        subtitle: "Fast, Easy, Free Bittorrent Client"
+        url: "http://192.168.0.123:9091"
