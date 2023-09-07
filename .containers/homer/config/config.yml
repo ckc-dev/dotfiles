@@ -30,3 +30,7 @@ services:
         logo: "assets/logos/transmission.png"
         subtitle: "Fast, Easy, Free Bittorrent Client"
         url: "http://192.168.0.123:9091"
+      - name: "Flatnotes"
+        logo: "assets/logos/flatnotes.png"
+        subtitle: "Database-less Note-taking"
+        url: "http://192.168.0.123:8080"
