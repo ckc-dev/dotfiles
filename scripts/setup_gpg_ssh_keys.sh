@@ -36,7 +36,7 @@ gpg --batch --generate-key "$gpg_key_parameters"
 
 rm "$gpg_key_parameters"
 
-gpg_key_id=gpg --list-signatures --with-colons | grep 'sig' | grep $PUBLIC_NAME | head -n 1 | cut -d':' -f5
+gpg_key_id=$(gpg --list-signatures --with-colons | grep 'sig' | grep $PUBLIC_NAME | head -n 1 | cut -d':' -f5)
 
 printf "Generating '.gitconfig-user' file...\n"
 printf "[user]\n\tsigningkey = $gpg_key_id\n" > $HOME/.gitconfig-user
