@@ -35,3 +35,9 @@ sudo systemctl enable docker
 
 sudo systemctl start sshd
 sudo systemctl start docker
+
+printf "\nSetting up docker group...\n"
+sudo groupadd docker
+sudo usermod -aG docker ${USER}
+newgrp docker
+
