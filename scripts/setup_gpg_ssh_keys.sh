@@ -48,7 +48,7 @@ read -n 1 -srp "Once done, press any key to continue."
 printf "\n"
 
 printf "\nGenerating SSH key...\n"
-ssh-keygen -o -t ed25519 -C "$PUBLIC_EMAIL"
+ssh-keygen -o -t ed25519 -C "$PUBLIC_EMAIL" -f "$HOME/.ssh/id_ed25519" -N "$gpg_key_passphrase"
 
 printf "Starting SSH agent...\n"
 eval "$(ssh-agent -s)"
