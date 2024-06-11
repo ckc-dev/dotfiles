@@ -1,16 +1,17 @@
 ---
-version: "2.1"
 services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - $HOME/.containers/jellyfin/config:/config
+      - $HOME:/home
       - /media:/media
     ports:
       - 8096:8096
+      - 8920:8920
     restart: unless-stopped

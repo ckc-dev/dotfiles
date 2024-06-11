@@ -1,12 +1,12 @@
 ---
-version: "2.1"
 services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
+    hostname: syncthing
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - $HOME/.containers/syncthing/config:/config

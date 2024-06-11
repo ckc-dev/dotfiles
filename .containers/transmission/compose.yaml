@@ -1,16 +1,15 @@
 ---
-version: "2.1"
 services:
   transmission:
     image: lscr.io/linuxserver/transmission:latest
     container_name: transmission
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - $HOME/.containers/transmission/config:/config
-      - $HOME/downloads:/downloads
+      - $HOME/Downloads:/downloads
     ports:
       - 9091:9091
       - 51413:51413
