@@ -4,6 +4,8 @@
 # Exit immediately if any command exits with a non-zero status or an unset variable is used.
 set -eu
 
+SCRIPTS_DIR="$HOME/.dotfiles/scripts"
+
 read -p "This script will install packages and modify system configurations. Are you sure you want to continue? (y/n) " -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
@@ -62,23 +64,21 @@ else
 fi
 
 printf "\nInstalling packages...\n"
-pacman -Syu "${official_packages[@]}"
+sudo pacman -Syu "${official_packages[@]}"
 
 printf "\nSetting up dotfiles...\n"
-bash setup_dotfiles.sh
+bash $SCRIPTS_DIR/setup_dotfiles.sh
 
 printf "\nGenerating configuration files...\n"
 python "$HOME/.dotfiles/dotsmith/dotsmith.py" -x termux-colors
 
 printf "\nInstalling AUR helper...\n"
-sudo mount -o remount,size=2G /tmp
-mkdir /tmp/aur/
-git clone https://aur.archlinux.org/paru.git /tmp/aur/
-cd /tmp/aur/
+mkdir "$HOME/temporary_aur_install_directory/"
+git clone https://aur.archlinux.org/paru.git "$HOME/temporary_aur_install_directory/"
+cd "$HOME/temporary_aur_install_directory/"
 makepkg -si
 cd -
-rm -rf /tmp/aur/
-sudo mount -o remount,size=auto /tmp
+rm -rf "$HOME/temporary_aur_install_directory/"
 
 printf "\nInstalling AUR packages...\n"
 paru "${aur_packages[@]}"
