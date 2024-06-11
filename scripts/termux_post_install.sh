@@ -4,6 +4,8 @@
 # Exit immediately if any command exits with a non-zero status or an unset variable is used.
 set -eu
 
+SCRIPTS_DIR="$HOME/.dotfiles/scripts"
+
 read -p "This script will install packages and modify system configurations. Are you sure you want to continue? (y/n) " -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
@@ -47,13 +49,10 @@ unzip $TEMP_DIR/font.zip -d $TEMP_DIR/font/
 cp $TEMP_DIR/font/$FONT_SOURCE_LOCATION $FONT_DESTINATION
 
 printf "\nSetting up dotfiles...\n"
-bash setup_dotfiles.sh
+bash $SCRIPTS_DIR/setup_dotfiles.sh
 
 printf "\nGenerating configuration files...\n"
 python $HOME/.dotfiles/dotsmith/dotsmith.py termux-colors
-
-printf "\nSetting up GPG and SSH...\n"
-bash setup_gpg_ssh_keys.sh
 
 printf "\nDeleting temporary directory...\n"
 rm -rf $TEMP_DIR
