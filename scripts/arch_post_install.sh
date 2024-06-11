@@ -69,6 +69,17 @@ sudo pacman -Syu "${official_packages[@]}"
 printf "\nSetting up dotfiles...\n"
 bash $SCRIPTS_DIR/setup_dotfiles.sh
 
+printf "\nLinking configuration files...\n"
+ln -sf "$HOME/.dotfiles/.local/share/applications" "$HOME/.local/share"
+ln -sf "$HOME/.dotfiles/bash" "$HOME"
+ln -sf "$HOME/.dotfiles/.bashrc" "$HOME"
+ln -sf "$HOME/.dotfiles/.bash_profile" "$HOME"
+ln -sf "$HOME/.dotfiles/.gitconfig" "$HOME"
+ln -sf "$HOME/.dotfiles/.xinitrc" "$HOME"
+ln -sf "$HOME/.dotfiles/.Xresources" "$HOME"
+sudo ln -sf .dotfiles/etc/X11/xorg.conf.d/ /etc/X11/
+sudo ln -sf .dotfiles/etc/modprobe.d/nobeep.conf /etc/modprobe.d/
+
 printf "\nGenerating configuration files...\n"
 python "$HOME/.dotfiles/dotsmith/dotsmith.py" -x termux-colors
 
