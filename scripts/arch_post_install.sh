@@ -33,6 +33,7 @@ official_packages=(
   python
   python-pip
   qbittorrent
+  ranger
   rofi
   rsync
   rxvt-unicode

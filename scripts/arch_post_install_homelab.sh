@@ -19,6 +19,7 @@ packages=(
     openssh
     python
     python-pip
+  ranger
     udiskie
     udisks2
 )
