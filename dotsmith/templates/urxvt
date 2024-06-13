@@ -41,3 +41,7 @@ URxvt.letterSpace: -1
 
 ! Disable scrollbar.
 URxvt.scrollBar: false
+
+! Workaround for a problem in the latest release,
+! which makes the prompt open in the middle of the screen.
+URxvt.geometry: 80x-1
