@@ -250,7 +250,8 @@ mode "RESIZE" {
 }
 bindsym $MOD+r mode "RESIZE"
 
-# Show the next scratchpad window and center it, or hide the focused scratchpad window. If there are multiple scratchpad windows, cycle through them.
+# Show the next scratchpad window and center it, or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, cycle through them.
 bindsym $MOD+minus scratchpad show, move position center
 
 # Move currently focused window to scratchpad.
@@ -260,6 +261,10 @@ bindsym $MOD+Shift+minus move scratchpad
 for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal -name __scratchpad
+
+# Ensure alerts are created on floating windows, and that focus is not stolen.
+for_window [window_role="alert"] floating enable
+no_focus [window_role="alert"]
 
 # Reload .Xresources file every time i3 is (re)started.
 exec_always --no-startup-id xrdb ~/.Xresources
