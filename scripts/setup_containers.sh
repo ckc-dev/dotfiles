@@ -8,6 +8,7 @@ containers_dir=".containers"
 target_dir="$HOME/$containers_dir"
 verbose=false
 
+# Docker doesn't exactly love soft links...
 create_hard_links() {
     local source_dir="$1"
     local target_dir="$2"
@@ -36,14 +37,14 @@ create_hard_links() {
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -v|--verbose)
-            verbose=true
-            shift
-            ;;
-        *)
-            echo "Invalid option: $1" >&2
-            exit 1
-            ;;
+    -v | --verbose)
+        verbose=true
+        shift
+        ;;
+    *)
+        echo "Invalid option: $1" >&2
+        exit 1
+        ;;
     esac
 done
 
