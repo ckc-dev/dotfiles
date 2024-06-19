@@ -9,7 +9,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - $HOME/.containers/code-server/config:/config
-      - $HOME:/home
+      - $HOME/Syncthing/Notes:/notes
     ports:
       - 8443:8443
     restart: unless-stopped

@@ -10,7 +10,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - $HOME/.containers/syncthing/config:/config
-      - $HOME:/home
+      - $HOME/Syncthing:/data
     ports:
       - 8384:8384
       - 22000:22000/tcp

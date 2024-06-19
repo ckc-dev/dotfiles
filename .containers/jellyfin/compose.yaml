@@ -9,7 +9,6 @@ services:
       - TZ=Etc/UTC
     volumes:
       - $HOME/.containers/jellyfin/config:/config
-      - $HOME:/home
       - /media:/media
     ports:
       - 8096:8096
