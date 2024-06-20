@@ -80,26 +80,47 @@ alias pacremove="pacman -Qtdq | sudo pacman -Rns -"
 
 # List explicitly installed packages that are not dependencies.
 paclist() {
-    PACKAGE_LIST_NATIVE=$(pacman -Qent)
-    PACKAGE_COUNT_NATIVE=$(printf "$PACKAGE_LIST_NATIVE\n" | wc -l)
+    PACKAGE_LIST_NATIVE=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqdt | sort))
+    PACKAGE_COUNT_NATIVE=$(echo "$PACKAGE_LIST_NATIVE" | wc -l)
 
     PACKAGE_LIST_AUR=$(pacman -Qm)
-    PACKAGE_COUNT_AUR=$(printf "$PACKAGE_LIST_AUR\n" | wc -l)
+    PACKAGE_COUNT_AUR=$(echo "$PACKAGE_LIST_AUR" | wc -l)
 
-    PACKAGE_COUNT_TOTAL=$(expr $PACKAGE_COUNT_NATIVE + $PACKAGE_COUNT_AUR)
+    PACKAGE_COUNT_TOTAL=$((PACKAGE_COUNT_NATIVE + PACKAGE_COUNT_AUR))
 
-    printf "NATIVE: %s\n%s\n\nAUR: %s\n%s\n\nTOTAL: %s\n" "$PACKAGE_COUNT_NATIVE" "$PACKAGE_LIST_NATIVE" "$PACKAGE_COUNT_AUR" "$PACKAGE_LIST_AUR" "$PACKAGE_COUNT_TOTAL"
+    printf "${COLOR_BOLD}${COLOR6}NATIVE: ${PACKAGE_COUNT_NATIVE}${COLOR_RESET}\n${PACKAGE_LIST_NATIVE}\n\n"
+    printf "${COLOR_BOLD}${COLOR4}AUR: ${PACKAGE_COUNT_AUR}${COLOR_RESET}\n${PACKAGE_LIST_AUR}\n\n"
+    printf "${COLOR_BOLD}${COLOR2}TOTAL: ${PACKAGE_COUNT_TOTAL}${COLOR_RESET}\n"
 }
 
 # Safely unmount drives.
 umnt() {
-    printf "Unmounting '$1'...\n"
-    sudo umount $1
+    if [ -z "$1" ]; then
+        echo "Error: Missing argument. Please provide a device or mount point to unmount."
+        return 1
+    fi
+
+    device="$1"
+
+    if ! mount | grep -q " $device "; then
+        echo "Error: Device or mount point '$device' is not mounted."
+        return 1
+    fi
+
+    printf "Unmounting '$device'...\n"
+    sudo umount "$device"
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to unmount '$device'."
+        return 1
+    fi
+
     printf "Running sync routine...\n"
     sync
-    printf "Stopping '$1'...\n"
-    sudo hdparm -Y $1
-    printf "Done. '$1' can be safely removed.\n"
+
+    printf "Stopping '$device'...\n"
+    sudo hdparm -Y "$device"
+
+    printf "Done. '$device' can be safely removed.\n"
 }
 
 # Add useful directories to PATH.
