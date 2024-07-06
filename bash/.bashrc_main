@@ -123,6 +123,43 @@ unmount() {
     printf "Done. '$device' can be safely removed.\n"
 }
 
+# Open and mount LUKS encrypted drives.
+open_luks_drive() {
+    local device="$1"
+    local mapper_name="$2"
+    local mount_point="$3"
+
+    if [ -z "$device" ] || [ -z "$mapper_name" ] || [ -z "$mount_point" ]; then
+        echo "Usage: open_luks_drive <device> <mapper_name> <mount_point>"
+        return 1
+    fi
+
+    sudo cryptsetup open "$device" "$mapper_name"
+
+    # Create the mount point directory if it doesn't exist.
+    [ ! -d "$mount_point" ] && sudo mkdir -p "$mount_point"
+
+    sudo mount /dev/mapper/"$mapper_name" "$mount_point"
+
+    echo "LUKS encrypted drive mounted at $mount_point"
+}
+
+# Close and unmount LUKS encrypted drives.
+close_luks_drive() {
+    local mapper_name="$1"
+    local mount_point="$2"
+
+    if [ -z "$mapper_name" ] || [ -z "$mount_point" ]; then
+        echo "Usage: close_luks_drive <mapper_name> <mount_point>"
+        return 1
+    fi
+
+    unmount "$mount_point"
+
+    sudo cryptsetup close "$mapper_name"
+
+    echo "LUKS encrypted drive unmounted and closed."
+}
 
 # Add useful directories to PATH.
 export PATH=$PATH:~/.local/bin/
