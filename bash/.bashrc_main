@@ -94,15 +94,15 @@ paclist() {
 }
 
 # Safely unmount drives.
-umnt() {
+unmount() {
     if [ -z "$1" ]; then
         echo "Error: Missing argument. Please provide a device or mount point to unmount."
         return 1
     fi
 
-    device="$1"
+    device=$(realpath -m "$1")
 
-    if ! mount | grep -q " $device "; then
+    if ! mount | grep -q " on $device "; then
         echo "Error: Device or mount point '$device' is not mounted."
         return 1
     fi
@@ -122,6 +122,7 @@ umnt() {
 
     printf "Done. '$device' can be safely removed.\n"
 }
+
 
 # Add useful directories to PATH.
 export PATH=$PATH:~/.local/bin/
