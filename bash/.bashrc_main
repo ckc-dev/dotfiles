@@ -82,17 +82,26 @@ unmount() {
         return 1
     fi
 
-    local device=$(realpath -m "$1")
+    local input=$(realpath -m "$1")
 
-    if ! mount | grep -q " on $device "; then
-        echo "Error: Device or mount point '$device' is not mounted."
+    # If argument is a mount point:
+    if mount | grep -q " on $input "; then
+        local mount_point="$input"
+        local device=$(mount | grep " on $mount_point " | awk '{print $1}')
+    # If argument is a device:
+    elif mount | grep -q "^$input on "; then
+        local device="$input"
+        local mount_point=$(mount | grep "^$device on " | awk '{print $3}')
+    else
+        echo "Error: Device or mount point '$input' is not mounted."
         return 1
     fi
 
-    printf "Unmounting '$device'...\n"
-    sudo umount "$device"
+    printf "Unmounting '$mount_point'...\n"
+    sudo umount "$mount_point"
+
     if [ $? -ne 0 ]; then
-        echo "Error: Failed to unmount '$device'."
+        echo "Error: Failed to unmount '$mount_point'."
         return 1
     fi
 
