@@ -24,10 +24,8 @@ COLOR5="\033[35m"                   # Purple
 COLOR6="\033[36m"                   # Cyan
 COLOR7="\033[37m"                   # Light gray
 
-# Load Git prompt script. (https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
+# Load Git prompt and completion scripts.
 source "$BASH_SCRIPTS_DIR/git-prompt.sh"
-
-# Load Git completion script. (source: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
 source "$BASH_SCRIPTS_DIR/git-completion.bash"
 
 # Show unstaged (*) and staged (+) changes next to branch names in Git repositories.
@@ -50,57 +48,41 @@ shopt -s dirspell
 # Avoid duplicate entries in history.
 export HISTCONTROL=ignoredups
 
-# Control .dotfiles Git repository using an alias.
-alias dotfiles="/usr/bin/git --git-dir=$DOTFILES_DIR/.git/ --work-tree=$DOTFILES_DIR/"
+# Aliases for common commands.
+alias dotfiles="/usr/bin/git --git-dir=$DOTFILES_DIR/.git/ --work-tree=$DOTFILES_DIR/" # Control .dotfiles Git repository.
+alias ls="ls --color=auto" # Display colors with "ls" command.
+alias ll="ls -plAsh" # Better file listing.
+alias cp="cp -vir" # Better file copying.
+alias mv="mv -vi" # Better file moving.
+alias rm="rm -rf" # Better file removal.
+alias mkdir="mkdir -pv" # Better directory creation.
+alias ve="python -m venv .venv" # Create Python virtual environments.
+alias va="source .venv/bin/activate" # Load Python virtual environments.
+alias pacremove="pacman -Qtdq | sudo pacman -Rns -" # Remove unused packages
 
-# Display colors with "ls" command.
-alias ls="ls --color=auto"
-
-# Better file listing.
-alias ll="ls -plAsh"
-
-# Better file copyping.
-alias cp="cp -vir"
-
-# Better file moving.
-alias mv="mv -vi"
-
-# Better file removal.
-alias rm="rm -rf"
-
-# Better directory creation.
-alias mkdir="mkdir -pv"
-
-# Create and load Python virtual environments using aliases.
-alias ve="python -m venv .venv"
-alias va="source .venv/bin/activate"
-
-# Remove unused packages.
-alias pacremove="pacman -Qtdq | sudo pacman -Rns -"
-
-# List explicitly installed packages that are not dependencies.
+# Function to list explicitly installed packages that are not dependencies.
 paclist() {
-    PACKAGE_LIST_NATIVE=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqdt | sort))
-    PACKAGE_COUNT_NATIVE=$(echo "$PACKAGE_LIST_NATIVE" | wc -l)
+    local package_list_native=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqdt | sort))
+    local package_count_native=$(echo "$package_list_native" | wc -l)
 
-    PACKAGE_LIST_AUR=$(pacman -Qm)
-    PACKAGE_COUNT_AUR=$(echo "$PACKAGE_LIST_AUR" | wc -l)
+    local package_list_aur=$(pacman -Qm)
+    local package_count_aur=$(echo "$package_list_aur" | wc -l)
 
-    PACKAGE_COUNT_TOTAL=$((PACKAGE_COUNT_NATIVE + PACKAGE_COUNT_AUR))
+    local package_count_total=$((package_count_native + package_count_aur))
 
-    printf "${COLOR_BOLD}${COLOR6}NATIVE: ${PACKAGE_COUNT_NATIVE}${COLOR_RESET}\n${PACKAGE_LIST_NATIVE}\n\n"
-    printf "${COLOR_BOLD}${COLOR4}AUR: ${PACKAGE_COUNT_AUR}${COLOR_RESET}\n${PACKAGE_LIST_AUR}\n\n"
-    printf "${COLOR_BOLD}${COLOR2}TOTAL: ${PACKAGE_COUNT_TOTAL}${COLOR_RESET}\n"
+    printf "${COLOR_BOLD}${COLOR6}NATIVE: ${package_count_native}${COLOR_RESET}\n${package_list_native}\n\n"
+    printf "${COLOR_BOLD}${COLOR4}AUR: ${package_count_aur}${COLOR_RESET}\n${package_list_aur}\n\n"
+    printf "${COLOR_BOLD}${COLOR2}TOTAL: ${package_count_total}${COLOR_RESET}\n"
 }
 
-# Safely unmount drives.
+# Function to safely unmount drives.
 unmount() {
     if [ -z "$1" ]; then
         echo "Error: Missing argument. Please provide a device or mount point to unmount."
         return 1
     fi
 
-    device=$(realpath -m "$1")
+    local device=$(realpath -m "$1")
 
     if ! mount | grep -q " on $device "; then
         echo "Error: Device or mount point '$device' is not mounted."
@@ -123,7 +105,7 @@ unmount() {
     printf "Done. '$device' can be safely removed.\n"
 }
 
-# Open and mount LUKS encrypted drives.
+# Function to open and mount LUKS encrypted drives.
 open_luks_drive() {
     local device="$1"
     local mapper_name="$2"
@@ -144,7 +126,7 @@ open_luks_drive() {
     echo "LUKS encrypted drive mounted at $mount_point"
 }
 
-# Close and unmount LUKS encrypted drives.
+# Function to close and unmount LUKS encrypted drives.
 close_luks_drive() {
     local mapper_name="$1"
     local mount_point="$2"
