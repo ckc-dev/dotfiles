@@ -62,7 +62,7 @@ alias pacremove="pacman -Qtdq | sudo pacman -Rns -" # Remove unused packages
 
 # Function to list explicitly installed packages that are not dependencies.
 paclist() {
-    local package_list_native=$(comm -23 <(pacman -Qqe | sort) <(pacman -Qqdt | sort))
+    local package_list_native=$(pacman -Qe | grep -Fxv -f <(pacman -Qm))
     local package_count_native=$(echo "$package_list_native" | wc -l)
 
     local package_list_aur=$(pacman -Qm)
