@@ -6,23 +6,36 @@ DOTFILES_DIR="$HOME/.dotfiles"
 BASH_SCRIPTS_DIR="$DOTFILES_DIR/bash"
 
 # Initialize color variables.
-COLOR_BOLD="\[\033[1m\]"                # Bold
-COLOR_BOLD_RESET="\[\033[21m\]"         # Reset bold
-COLOR_ITALIC="\[\033[3m\]"              # Italic
-COLOR_ITALIC_RESET="\[\033[23m\]"       # Reset italic
-COLOR_REVERSE="\[\033[7m\]"             # Reverse
-COLOR_REVERSE_RESET="\[\033[27m\]"      # Reset reverse
-COLOR_UNDERLINE="\[\033[4m\]"           # Underline
-COLOR_UNDERLINE_RESET="\[\033[24m\]"    # Reset underline
-COLOR_RESET="\[\033[0m\]"               # Reset all attributes
-COLOR0="\[\033[30m\]"                   # Black
-COLOR1="\[\033[31m\]"                   # Red
-COLOR2="\[\033[32m\]"                   # Green
-COLOR3="\[\033[33m\]"                   # Yellow
-COLOR4="\[\033[34m\]"                   # Blue
-COLOR5="\[\033[35m\]"                   # Purple
-COLOR6="\[\033[36m\]"                   # Cyan
-COLOR7="\[\033[37m\]"                   # Light gray
+COLOR_BOLD="\033[1m"                # Bold
+COLOR_BOLD_RESET="\033[21m"         # Reset bold
+COLOR_ITALIC="\033[3m"              # Italic
+COLOR_ITALIC_RESET="\033[23m"       # Reset italic
+COLOR_REVERSE="\033[7m"             # Reverse
+COLOR_REVERSE_RESET="\033[27m"      # Reset reverse
+COLOR_UNDERLINE="\033[4m"           # Underline
+COLOR_UNDERLINE_RESET="\033[24m"    # Reset underline
+COLOR_RESET="\033[0m"               # Reset all attributes
+COLOR0="\033[30m"                   # Black
+COLOR1="\033[31m"                   # Red
+COLOR2="\033[32m"                   # Green
+COLOR3="\033[33m"                   # Yellow
+COLOR4="\033[34m"                   # Blue
+COLOR5="\033[35m"                   # Purple
+COLOR6="\033[36m"                   # Cyan
+COLOR7="\033[37m"                   # Light gray
+
+# Function to wrap color codes with \[\] for prompt usage.
+wrap_color() {
+    local color_code=$1
+    echo "\[$color_code\]"
+}
+
+# Initialize color variables for prompt.
+PROMPT_COLOR_BOLD=$(wrap_color $COLOR_BOLD)
+PROMPT_COLOR_BOLD_RESET=$(wrap_color $COLOR_BOLD_RESET)
+PROMPT_COLOR4=$(wrap_color $COLOR4)
+PROMPT_COLOR5=$(wrap_color $COLOR5)
+PROMPT_COLOR_RESET=$(wrap_color $COLOR_RESET)
 
 # Load Git prompt and completion scripts.
 source "$BASH_SCRIPTS_DIR/git-prompt.sh"
@@ -35,7 +48,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GPG_TTY=$(tty)
 
 # Prompt.
-PS1="[\u@${COLOR_BOLD}\h${COLOR_BOLD_RESET} ${COLOR4}\W${COLOR_RESET}] ${COLOR5}"'$(__git_ps1 "(%s)")'"${COLOR_RESET}$ "
+PS1="[\u@${PROMPT_COLOR_BOLD}\h${PROMPT_COLOR_BOLD_RESET} ${PROMPT_COLOR4}\W${PROMPT_COLOR_RESET}] ${PROMPT_COLOR5}"'$(__git_ps1 "(%s)")'"${PROMPT_COLOR_RESET}$ "
 
 # Automatically `cd` into directories.
 shopt -s autocd
