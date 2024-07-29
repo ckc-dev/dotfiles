@@ -14,15 +14,28 @@ fi
 official_packages=(
   acpilight
   android-file-transfer
+  atool
+  baobab
   base-devel
+  bleachbit
   darktable
+  ddrescure
+  docker
+  docker-compose
+  dvdbackup
+  exfat-utils
+  filezilla
   firefox
   flameshot
   gcc
   gimp
+  gnome-disk-utility
+  gsmartcontrol
   hdparm
   i3-gaps
   i3status
+  kdenlive
+  kitty
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
@@ -38,10 +51,12 @@ official_packages=(
   ranger
   rofi
   rsync
-  rxvt-unicode
   steam
+  ttf-fira-code
   udiskie
   udisks2
+  unzip
+  vim
   vlc
   xorg-server
   xorg-xinit
@@ -49,6 +64,8 @@ official_packages=(
 )
 
 aur_packages=(
+  cryptomator
+  czkawka-gui-bin
   visual-studio-code-bin
 )
 
