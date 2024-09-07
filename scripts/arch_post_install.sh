@@ -84,7 +84,9 @@ printf "\nInstalling packages...\n"
 sudo pacman -Syu "${official_packages[@]}"
 
 printf "\nSetting up dotfiles...\n"
-bash $SCRIPTS_DIR/setup_dotfiles.sh
+if [ ! -d "$HOME/.dotfiles" ]; then
+    bash "$SCRIPTS_DIR/setup_dotfiles.sh"
+fi
 
 printf "\nLinking configuration files...\n"
 mkdir -p "$HOME/.local/share/"
