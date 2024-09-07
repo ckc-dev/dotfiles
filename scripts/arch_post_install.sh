@@ -19,7 +19,7 @@ official_packages=(
   base-devel
   bleachbit
   darktable
-  ddrescure
+  ddrescue
   docker
   docker-compose
   dvdbackup
@@ -87,14 +87,25 @@ printf "\nSetting up dotfiles...\n"
 bash $SCRIPTS_DIR/setup_dotfiles.sh
 
 printf "\nLinking configuration files...\n"
-ln -sf "$HOME/.dotfiles/.local/share/applications" "$HOME/.local/share"
+mkdir -p "$HOME/.local/share/"
+ln -sf "$HOME/.dotfiles/.local/share/applications/" "$HOME/.local/share"
 ln -sf "$HOME/.dotfiles/bash" "$HOME"
 ln -sf "$HOME/.dotfiles/.bashrc" "$HOME"
 ln -sf "$HOME/.dotfiles/.bash_profile" "$HOME"
 ln -sf "$HOME/.dotfiles/.gitconfig" "$HOME"
 ln -sf "$HOME/.dotfiles/.xinitrc" "$HOME"
 ln -sf "$HOME/.dotfiles/.Xresources" "$HOME"
-sudo ln -sf .dotfiles/etc/X11/xorg.conf.d/ /etc/X11/
+sudo mkdir -p /etc/X11/
+
+if [ -d "/etc/X11/xorg.conf.d" ]; then
+    if [ "$(ls -A /etc/X11/xorg.conf.d)" ]; then
+        # If not empty, copy to source directory.
+        sudo cp -r /etc/X11/xorg.conf.d/* "$HOME/.dotfiles/etc/X11/xorg.conf.d/"
+    fi
+    sudo rm -r /etc/X11/xorg.conf.d
+fi
+
+sudo ln -sf "$HOME/.dotfiles/etc/X11/xorg.conf.d/" /etc/X11/sudo mkdir -p /etc/modprobe.d/
 sudo ln -sf .dotfiles/etc/modprobe.d/nobeep.conf /etc/modprobe.d/
 
 printf "\nGenerating configuration files...\n"
