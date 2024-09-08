@@ -15,18 +15,31 @@ create_hard_links() {
 
     for item in "$source_dir"/*; do
         local base_name="$(basename "$item")"
+        local target_item="$target_dir/$base_name"
 
         if [ -e "$item" ]; then
             if [ -d "$item" ]; then
-                mkdir -p "$target_dir/$base_name"
-                if [ "$verbose" = true ]; then
-                    echo "Created directory: $target_dir/$base_name"
+                if [ ! -d "$target_item" ]; then
+                    mkdir -p "$target_item"
+                    if [ "$verbose" = true ]; then
+                        echo "Created directory: $target_item"
+                    fi
+                else
+                    if [ "$verbose" = true ]; then
+                        echo "Directory already exists: $target_item"
+                    fi
                 fi
-                create_hard_links "$item" "$target_dir/$base_name"
+                create_hard_links "$item" "$target_item"
             elif [ -f "$item" ]; then
-                ln "$item" "$target_dir/$base_name"
-                if [ "$verbose" = true ]; then
-                    echo "Created hard link for: $item"
+                if [ ! -e "$target_item" ]; then
+                    ln "$item" "$target_item"
+                    if [ "$verbose" = true ]; then
+                        echo "Created hard link for: $item"
+                    fi
+                else
+                    if [ "$verbose" = true ]; then
+                        echo "Hard link already exists for: $item"
+                    fi
                 fi
             fi
         elif [ "$verbose" = true ]; then
