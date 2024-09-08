@@ -8,8 +8,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - $HOME/.containers/code-server/config:/config
-      - $HOME/Syncthing/Notes:/notes
+      - ./config:/config
     ports:
       - 8443:8443
     restart: unless-stopped

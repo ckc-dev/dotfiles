@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - $HOME/.containers/syncthing/config:/config
+      - ./config:/config
       - $HOME/Syncthing:/data
     ports:
       - 8384:8384

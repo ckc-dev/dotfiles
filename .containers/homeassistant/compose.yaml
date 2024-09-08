@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - $HOME/.containers/homeassistant/config:/config
+      - ./config:/config
     ports:
       - 8123:8123
     restart: unless-stopped

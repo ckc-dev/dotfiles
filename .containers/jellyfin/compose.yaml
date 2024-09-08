@@ -8,7 +8,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - $HOME/.containers/jellyfin/config:/config
+      - ./config:/config
       - $HOME/Media:/media
     ports:
       - 8096:8096
