@@ -10,7 +10,13 @@ services:
     volumes:
       - ./config:/config
       - $HOME/Media:/media
+    networks:
+      - default
     ports:
       - 8096:8096
       - 8920:8920
+      - 7359:7359/udp
     restart: unless-stopped
+networks:
+  default:
+    driver: bridge

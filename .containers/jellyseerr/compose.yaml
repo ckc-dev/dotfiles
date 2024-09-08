@@ -1,0 +1,18 @@
+---
+services:
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Etc/UTC
+    volumes:
+      - ./config:/app/config
+    networks:
+      - jellyfin_default
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+networks:
+  jellyfin_default:
+    external: true
