@@ -1,0 +1,21 @@
+---
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./config:/config
+      - $HOME/Media/Movies:/movies
+      - $HOME/Downloads:/downloads
+    networks:
+      - prowlarr_default
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+networks:
+  prowlarr_default:
+    external: true
