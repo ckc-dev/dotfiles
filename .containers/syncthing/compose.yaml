@@ -3,7 +3,7 @@ services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
-    hostname: syncthing
+    hostname: homelab
     environment:
       - PUID=1000
       - PGID=1000
@@ -11,6 +11,7 @@ services:
     volumes:
       - ./config:/config
       - $HOME/Syncthing:/data
+      - $HOME/Nextcloud:/nextcloud
     ports:
       - 8384:8384
       - 22000:22000/tcp
