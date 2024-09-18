@@ -4,6 +4,7 @@
   defaultBranch = main
 [core]
   editor = vim
+  autocrlf = true
 [user]
   email = 70550797+ckc-dev@users.noreply.github.com
   name = ckc-dev
