@@ -8,10 +8,15 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
+      - DOCKER_MODS=linuxserver/mods:homeassistant-hacs
     volumes:
       - ./config:/config
+      - /var/run/dbus:/var/run/dbus:ro
     ports:
       - 8123:8123
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
     # devices:
     #   - /path/to/device:/path/to/device #optional
     restart: unless-stopped

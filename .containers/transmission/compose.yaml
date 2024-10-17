@@ -13,6 +13,7 @@ services:
       # - WHITELIST= #optional
       # - PEERPORT= #optional
       # - HOST_WHITELIST= #optional
+      - DOCKER_MODS=linuxserver/mods:transmission-floodui
     volumes:
       - ./config:/config
       - $HOME/Downloads:/downloads
