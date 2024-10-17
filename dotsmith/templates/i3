@@ -6,12 +6,12 @@
 
 # REQUIREMENTS:
 # acpilight:        Monitor brightness adjustment.
-# i3status:         Status bar generator for i3bar.
 # flameshot:        Used to take screenshots.
+# hsetroot:         Used to set a background color or pattern.
+# i3status:         Status bar generator for i3bar.
 # playerctl:        Media shortcuts.
 # PulseAudio/pactl: Audio shortcuts.
 # rofi:             Window switcher and application menu.
-# xorg-xsetroot:    Used to set a background color or pattern.
 
 # Initialize configuration path.
 set $CONFIG_PATH ~/.config/i3
@@ -268,7 +268,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 
 # Set desktop background color every time i3 is (re)started.
 set $ROOT_COLOR &{colors.root}&
-exec_always --no-startup-id xsetroot -solid "$ROOT_COLOR"
+exec_always --no-startup-id hsetroot -solid "$ROOT_COLOR"
 
 # Get bar colors.
 set $I3BAR_ACTIVE_WORKSPACE_BACKGROUND      &{colors.00}&
