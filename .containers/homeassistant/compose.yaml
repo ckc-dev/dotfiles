@@ -12,4 +12,6 @@ services:
       - ./config:/config
     ports:
       - 8123:8123
+    # devices:
+    #   - /path/to/device:/path/to/device #optional
     restart: unless-stopped

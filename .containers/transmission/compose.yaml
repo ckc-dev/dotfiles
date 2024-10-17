@@ -7,6 +7,12 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
+      # - TRANSMISSION_WEB_HOME= #optional
+      # - USER= #optional
+      # - PASS= #optional
+      # - WHITELIST= #optional
+      # - PEERPORT= #optional
+      # - HOST_WHITELIST= #optional
     volumes:
       - ./config:/config
       - $HOME/Downloads:/downloads
