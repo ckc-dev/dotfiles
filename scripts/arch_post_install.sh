@@ -128,7 +128,8 @@ if [ -d "/etc/X11/xorg.conf.d" ]; then
     sudo rm -r /etc/X11/xorg.conf.d
 fi
 
-sudo ln -sf "$HOME/.dotfiles/etc/X11/xorg.conf.d/" /etc/X11/sudo mkdir -p /etc/modprobe.d/
+sudo ln -sf "$HOME/.dotfiles/etc/X11/xorg.conf.d/" /etc/X11/
+sudo mkdir -p /etc/modprobe.d/
 sudo ln -sf .dotfiles/etc/modprobe.d/nobeep.conf /etc/modprobe.d/
 
 printf "\nGenerating configuration files...\n"
