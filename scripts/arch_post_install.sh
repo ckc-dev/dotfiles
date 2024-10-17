@@ -20,52 +20,73 @@ official_packages=(
   bleachbit
   darktable
   ddrescue
-  docker
-  docker-compose
+  dhcpcd
+  dos2unix
   dvdbackup
   exfat-utils
+  ffmpegthumbnailer
   filezilla
   firefox
   flameshot
   gcc
   gimp
   gnome-disk-utility
+  gnome-system-monitor
   gsmartcontrol
+  gst-libav
+  gst-plugins-bad
+  gst-plugins-base
+  gst-plugins-good
+  gst-plugins-ugly
+  gthumb
+  gvfs
+  gvfs-mtp
+  handbrake
   hdparm
-  i3-gaps
+  hsetroot
+  htop
+  i3-wm
   i3status
   kdenlive
-  kitty
+  less
+  nautilus
+  nfs-utils
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
   ntfs-3g
   openssh
+  p7zip
   pavucontrol
-  pcmanfm-gtk3
+  picom
   playerctl
+  polkit-gnome
   pulseaudio
   python
   python-pip
-  qbittorrent
   ranger
   rofi
   rsync
-  steam
+  rxvt-unicode
   ttf-fira-code
   udiskie
   udisks2
+  unrar
   unzip
+  unzip
+  usbutils
   vim
   vlc
   xorg-server
   xorg-xinit
-  xorg-xsetroot
 )
 
 aur_packages=(
   cryptomator
   czkawka-gui-bin
+  f3
+  nwipe
+  simplest-file-renamer-bin
   visual-studio-code-bin
 )
 
