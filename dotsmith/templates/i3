@@ -9,6 +9,7 @@
 # flameshot:        Used to take screenshots.
 # hsetroot:         Used to set a background color or pattern.
 # i3status:         Status bar generator for i3bar.
+# nauilus:          File manager.
 # playerctl:        Media shortcuts.
 # PulseAudio/pactl: Audio shortcuts.
 # rofi:             Window switcher and application menu.
@@ -154,12 +155,12 @@ bindsym $MOD+Shift+Right        move right
 bindsym $MOD+Shift+Up           move up
 
 # Change container layout (stacked, tabbed, toggle split).
-bindsym $MOD+e layout toggle split
 bindsym $MOD+s layout stacking
 bindsym $MOD+w layout tabbed
+bindsym $MOD+v layout toggle split
 
 # Toggle split orientation.
-bindsym $MOD+v split toggle
+bindsym $MOD+Shift+v split toggle
 
 # Toggle fullscreen mode for focused window.
 bindsym $MOD+f fullscreen toggle
@@ -168,7 +169,7 @@ bindsym $MOD+f fullscreen toggle
 bindsym $MOD+Shift+space floating toggle
 
 # Toggle sticky mode (when floating) for focused window.
-bindsym $MOD+Shift+s sticky toggle
+bindsym $MOD+Ctrl+space sticky toggle
 
 # Change focus between tiling/floating windows.
 bindsym $MOD+space focus mode_toggle
@@ -253,6 +254,12 @@ bindsym $MOD+minus scratchpad show, move position center
 
 # Move currently focused window to scratchpad.
 bindsym $MOD+Shift+minus move scratchpad
+
+# Open file manager.
+bindsym $MOD+e exec --no-startup-id nautilus --new-window
+
+# Take a screenshot.
+bindsym $MOD+Shift+s exec --no-startup-id flameshot gui
 
 # Start a scratchpad terminal on startup.
 for_window [instance="__scratchpad"] move scratchpad
