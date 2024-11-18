@@ -26,6 +26,23 @@ services:
       - mariadb_default
     restart: unless-stopped
 
+  collabora:
+    image: collabora/code:latest
+    container_name: collabora
+    #environment:
+    #  - domain=cloud\.example\.com
+    #  - username=someuser
+    #  - password=somepassword
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - mariadb_default
+    ports:
+      - 9980:9980
+    cap_add:
+      - MKNOD
+    restart: unless-stopped
+
 networks:
   mariadb_default:
     external: true
