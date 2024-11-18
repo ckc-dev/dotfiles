@@ -82,3 +82,11 @@ services:
         logo: "assets/logos/transmission.png"
         subtitle: "Fast and Lightweight BitTorrent Client"
         url: "http://192.168.192.100:9091"
+
+  - name: "Gaming"
+    icon: "fas fa-gamepad"
+    items:
+      - name: "Ownfoil"
+        logo: "assets/logos/ownfoil.png"
+        subtitle: "NX Shop and Library Management"
+        url: "http://192.168.192.100:8465"

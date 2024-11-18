@@ -1,0 +1,14 @@
+---
+services:
+  ownfoil:
+    container_name: ownfoil
+    image: a1ex4/ownfoil
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /mnt/NX/Games:/games
+      - ./config:/app/config
+    ports:
+      - 8465:8465
+    restart: unless-stopped
