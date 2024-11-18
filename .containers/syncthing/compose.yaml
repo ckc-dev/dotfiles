@@ -10,8 +10,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./config:/config
-      - $HOME/Syncthing:/data
-      - $HOME/Nextcloud:/nextcloud
+      - /mnt/Nextcloud:/nextcloud
     ports:
       - 8384:8384
       - 22000:22000/tcp
