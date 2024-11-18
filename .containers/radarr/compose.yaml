@@ -9,7 +9,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./config:/config
-      - $HOME/Media/Movies:/movies #optional
+      - /mnt/Media/Movies:/movies #optional
       - $HOME/Downloads:/downloads #optional
     networks:
       - prowlarr_default
