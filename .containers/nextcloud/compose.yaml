@@ -12,6 +12,11 @@ services:
       - /mnt/Nextcloud/config:/config
       - /mnt/Nextcloud/data:/data
     networks:
+      - mariadb_default
     ports:
       - 443:443
     restart: unless-stopped
+
+networks:
+  mariadb_default:
+    external: true
