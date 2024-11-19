@@ -6,7 +6,7 @@ services:
     environment:
       - LOG_LEVEL=debug
       - TZ=Etc/UTC
-      # - PORT=5055 #optional
+      # - PORT= #optional
     volumes:
       - ./config:/app/config
     networks:

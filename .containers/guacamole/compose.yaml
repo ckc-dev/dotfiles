@@ -8,12 +8,12 @@ services:
     image: guacamole/guacamole:latest
     container_name: guacamole
     environment:
-      GUACD_HOSTNAME: "guacd"
-      MYSQL_HOSTNAME: "mariadb"
-      MYSQL_DATABASE: "guacamole"
-      MYSQL_USER: "guacamole"
-      MYSQL_PASSWORD: "guacamole"
-      TOTP_ENABLED: "true"
+      - GUACD_HOSTNAME=guacd
+      - MYSQL_HOSTNAME=mariadb
+      - MYSQL_DATABASE=guacamole
+      - MYSQL_USER=guacamole
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - TOTP_ENABLED=true
     networks:
       - mariadb_default
     ports:

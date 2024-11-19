@@ -7,11 +7,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - MYSQL_ROOT_PASSWORD=root #CHANGE AFTER CREATION!
-      # - MYSQL_DATABASE=default #optional
-      # - MYSQL_USER=maria #optional, DO NOT USE ROOT!
-      # - MYSQL_PASSWORD=maria #optional, CHANGE AFTER CREATION!
-      # - REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql #optional
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      # - MYSQL_DATABASE= #optional
+      # - MYSQL_USER= #optional, make sure not to use 'root'.
+      # - MYSQL_PASSWORD= #optional
+      # - REMOTE_SQL= #optional
     volumes:
       - ./config:/config
     networks:

@@ -30,9 +30,9 @@ services:
     image: collabora/code:latest
     container_name: collabora
     #environment:
-    #  - domain=cloud\.example\.com
-    #  - username=someuser
-    #  - password=somepassword
+    #  - domain= #optional
+    #  - username= #optional
+    #  - password= #optional
     volumes:
       - /etc/localtime:/etc/localtime:ro
     networks:
