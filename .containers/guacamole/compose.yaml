@@ -1,15 +1,4 @@
 services:
-  guacdb:
-    container_name: guacamoledb
-    image: mariadb:latest
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: "MariaDBRootPass"
-      MYSQL_DATABASE: "guacamole_db"
-      MYSQL_USER: "guacamole_user"
-      MYSQL_PASSWORD: "MariaDBUserPass"
-    volumes:
-      - "./config/db-data:/var/lib/mysql"
   guacd:
     container_name: guacd
     image: guacamole/guacd:latest
@@ -22,13 +11,8 @@ services:
       - 8080:8080
     environment:
       GUACD_HOSTNAME: "guacd"
-      MYSQL_HOSTNAME: "guacdb"
-      MYSQL_DATABASE: "guacamole_db"
-      MYSQL_USER: "guacamole_user"
-      MYSQL_PASSWORD: "MariaDBUserPass"
+      MYSQL_HOSTNAME: "mariadb"
+      MYSQL_DATABASE: "guacamole"
+      MYSQL_USER: "guacamole"
+      MYSQL_PASSWORD: "guacamole"
       TOTP_ENABLED: "true"
-    depends_on:
-      - guacdb
-      - guacd
-volumes:
-  db-data:
