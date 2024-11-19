@@ -14,6 +14,11 @@ services:
       MYSQL_USER: "guacamole"
       MYSQL_PASSWORD: "guacamole"
       TOTP_ENABLED: "true"
+    networks:
+      - mariadb_default
     ports:
       - 8080:8080
     restart: unless-stopped
+networks:
+  mariadb_default:
+    external: true
