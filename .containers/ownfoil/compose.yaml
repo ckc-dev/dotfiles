@@ -1,8 +1,8 @@
 ---
 services:
   ownfoil:
-    container_name: ownfoil
     image: a1ex4/ownfoil
+    container_name: ownfoil
     environment:
       - PUID=1000
       - PGID=1000
