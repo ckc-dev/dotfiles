@@ -3,6 +3,8 @@ services:
   guacd:
     image: guacamole/guacd:latest
     container_name: guacd
+    networks:
+      - mariadb_default
     restart: unless-stopped
   guacamole:
     image: guacamole/guacamole:latest
