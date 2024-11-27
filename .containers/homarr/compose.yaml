@@ -1,0 +1,17 @@
+---
+services:
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    environment:
+      - DISABLE_ANALYTICS=true
+      - DEFAULT_COLOR_SCHEME=dark
+      - TZ=Etc/UTC
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock #optional
+      - ./config/configs:/app/data/configs
+      - ./config/icons:/app/public/icons
+      - ./config/data:/data
+    ports:
+      - 80:7575
+    restart: unless-stopped
