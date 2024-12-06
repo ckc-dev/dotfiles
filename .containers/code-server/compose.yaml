@@ -7,7 +7,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      # - PASSWORD= #optional
+      - PASSWORD=${CODE_SERVER_PASSWORD}
       # - HASHED_PASSWORD= #optional
       # - SUDO_PASSWORD= #optional
       # - SUDO_PASSWORD_HASH= #optional
