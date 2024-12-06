@@ -10,7 +10,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./config:/config
-      - /mnt/Nextcloud:/nextcloud
+      - /mnt/Nextcloud/data:/nextcloud
     ports:
       - 8384:8384
       - 22000:22000/tcp
