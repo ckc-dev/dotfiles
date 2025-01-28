@@ -62,6 +62,10 @@ services:
         logo: "assets/logos/sonarr.png"
         subtitle: "TV Series Library Management"
         url: "http://192.168.192.100:8989"
+      - name: "Tdarr"
+        logo: "assets/logos/tdarr.png"
+        subtitle: "Distributed, conditional based transcoding."
+        url: "http://192.168.192.100:8265"
 
   - name: "Cloud & File Management"
     icon: "fas fa-cloud"
