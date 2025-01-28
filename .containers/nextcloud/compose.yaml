@@ -16,7 +16,6 @@ services:
     ports:
       - 443:443
     restart: unless-stopped
-
   redis:
     image: redis:latest
     container_name: redis
@@ -25,7 +24,6 @@ services:
     networks:
       - mariadb_default
     restart: unless-stopped
-
   collabora:
     image: collabora/code:latest
     container_name: collabora
@@ -42,21 +40,19 @@ services:
     cap_add:
       - MKNOD
     restart: unless-stopped
-
   imaginary:
     image: h2non/imaginary
     container_name: imaginary
+    command: -concurrency 50 -enable-url-source
     # environment:
     #   - PORT= #optional
     networks:
       - mariadb_default
     ports:
-      - "9000:9000"
+      - 9000:9000
     cap_add:
       - SYS_NICE
     restart: unless-stopped
-    command: -concurrency 50 -enable-url-source
-
 networks:
   mariadb_default:
     external: true

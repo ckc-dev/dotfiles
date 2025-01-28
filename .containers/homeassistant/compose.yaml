@@ -3,7 +3,6 @@ services:
   homeassistant:
     image: lscr.io/linuxserver/homeassistant:latest
     container_name: homeassistant
-    network_mode: host
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,6 +11,7 @@ services:
     volumes:
       - ./config:/config
       - /var/run/dbus:/var/run/dbus:ro
+    network_mode: host
     ports:
       - 8123:8123
     cap_add:
