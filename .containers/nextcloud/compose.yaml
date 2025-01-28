@@ -9,8 +9,8 @@ services:
       - TZ=Etc/UTC
       - DOCKER_MODS=linuxserver/mods:nextcloud-memories | linuxserver/mods:nextcloud-mediadc | linuxserver/mods:nextcloud-notify-push
     volumes:
-      - /mnt/Nextcloud/config:/config
-      - /mnt/Nextcloud/data:/data
+      - ${NEXTCLOUD_DIR}/config:/config
+      - ${NEXTCLOUD_DIR}/data:/data
     networks:
       - mariadb_default
     ports:
@@ -20,7 +20,7 @@ services:
     image: redis:latest
     container_name: redis
     volumes:
-      - /mnt/Nextcloud/redis:/data
+      - ${NEXTCLOUD_DIR}/redis:/data
     networks:
       - mariadb_default
     restart: unless-stopped

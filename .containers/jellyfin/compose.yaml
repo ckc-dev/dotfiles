@@ -11,7 +11,7 @@ services:
       - DOCKER_MODS=linuxserver/mods:jellyfin-amd
     volumes:
       - ./config:/config
-      - /mnt/Media:/media
+      - ${MEDIA_DIR}:/media
     networks:
       - default
     ports:

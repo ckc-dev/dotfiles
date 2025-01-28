@@ -9,8 +9,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./config:/config
-      - /mnt/Media/Movies:/movies #optional
-      - /mnt/Media/Series:/tv #optional
+      - ${MOVIES_DIR}:/movies #optional
+      - ${SERIES_DIR}:/tv #optional
     networks:
       - prowlarr_default
     ports:

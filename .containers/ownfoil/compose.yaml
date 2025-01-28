@@ -7,8 +7,8 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /mnt/NX/Games:/games
       - ./config:/app/config
+      - ${GAMES_DIR}:/games
     ports:
       - 8465:8465
     restart: unless-stopped
