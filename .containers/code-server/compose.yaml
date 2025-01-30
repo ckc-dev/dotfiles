@@ -14,7 +14,7 @@ services:
       # - PROXY_DOMAIN= #optional
       # - DEFAULT_WORKSPACE= #optional
     volumes:
-      - ./config:/config
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/code-server:/config
       - ~:/workspaces/home
     ports:
       - 8443:8443

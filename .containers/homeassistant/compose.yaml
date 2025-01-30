@@ -9,7 +9,7 @@ services:
       - TZ=Etc/UTC
       - DOCKER_MODS=linuxserver/mods:homeassistant-hacs
     volumes:
-      - ./config:/config
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/homeassistant:/config
       - /var/run/dbus:/var/run/dbus:ro
     network_mode: host
     ports:

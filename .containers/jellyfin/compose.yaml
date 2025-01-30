@@ -10,7 +10,7 @@ services:
       # - JELLYFIN_PublishedServerUrl= #optional
       - DOCKER_MODS=linuxserver/mods:jellyfin-amd
     volumes:
-      - ./config:/config
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/jellyfin:/config
       - ${MEDIA_DIR}:/media
     networks:
       - default

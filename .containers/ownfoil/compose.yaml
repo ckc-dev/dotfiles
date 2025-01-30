@@ -7,7 +7,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./config:/app/config
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/ownfoil:/app/config
       - ${GAMES_DIR}:/games
     ports:
       - 8465:8465

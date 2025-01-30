@@ -9,8 +9,8 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - ./config:/config
-      - ${NEXTCLOUD_DIR}/data:/nextcloud
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/syncthing:/config
+      - ${NEXTCLOUD_DATA_DIR}:/nextcloud
     ports:
       - 8384:8384
       - 22000:22000/tcp

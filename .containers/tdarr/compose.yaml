@@ -19,10 +19,10 @@ services:
       #- NVIDIA_DRIVER_CAPABILITIES=all
       #- NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - ./config/logs:/app/logs
-      - ./config/tdarr/configs:/app/configs
-      - ./config/tdarr/server:/app/server
-      - ./config/transcode_cache:/temp
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/tdarr/logs:/app/logs
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/tdarr/tdarr/configs:/app/configs
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/tdarr/tdarr/server:/app/server
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/tdarr/transcode_cache:/temp
       - ${MEDIA_DIR}:/media
     ports:
       - 8265:8265
