@@ -12,16 +12,23 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 official_packages=(
+  7zip
   acpilight
   android-file-transfer
   atool
   baobab
   base-devel
   bleachbit
+  bluez
+  bluez-utils
+  chromium
   darktable
   ddrescue
   dhcpcd
+  docker
+  docker-compose
   dos2unix
+  dosfstools
   dvdbackup
   exfat-utils
   ffmpegthumbnailer
@@ -39,7 +46,6 @@ official_packages=(
   gst-plugins-good
   gst-plugins-ugly
   gthumb
-  gvfs
   gvfs-mtp
   handbrake
   hdparm
@@ -47,16 +53,21 @@ official_packages=(
   htop
   i3-wm
   i3status
+  inkscape
   kdenlive
   less
+  libreoffice-fresh
+  meld
+  mkvtoolnix-cli
   nautilus
+  nautilus-image-converter
+  net-tools
   nfs-utils
   noto-fonts
   noto-fonts-cjk
   noto-fonts-emoji
   ntfs-3g
   openssh
-  p7zip
   pavucontrol
   picom
   playerctl
@@ -73,18 +84,24 @@ official_packages=(
   udisks2
   unrar
   unzip
-  unzip
   usbutils
   vim
   vlc
   xorg-server
   xorg-xinit
+  zerotier-one
 )
 
 aur_packages=(
+  code-nautilus-git
   cryptomator
   czkawka-gui-bin
   f3
+  nautilus-admin-gtk4
+  nautilus-hide
+  nautilus-launch
+  nautilus-metadata-editor
+  nautilus-open-any-terminal
   nwipe
   simplest-file-renamer-bin
   visual-studio-code-bin
