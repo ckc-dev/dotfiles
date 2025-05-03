@@ -1,0 +1,5 @@
+[Unit]
+Description=Scans for file modifications on the nextcloud container
+
+[Service]
+ExecStart=/home/ckc/.dotfiles/.containers/nextcloud/utils/nextcloud-scan-files.sh
