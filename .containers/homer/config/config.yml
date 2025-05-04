@@ -38,6 +38,10 @@ services:
         logo: "assets/logos/jellyfin.png"
         subtitle: "Free Media Server Software"
         url: "http://192.168.192.100:8096"
+      - name: "Kavita"
+        logo: "assets/logos/kavita.png"
+        subtitle: "Rocket Fueled Self-hosted Digital Library"
+        url: "http://192.168.192.100:5968"
 
   - name: "Media Management"
     icon: "fas fa-film"
