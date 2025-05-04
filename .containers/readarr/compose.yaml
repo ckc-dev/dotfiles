@@ -1,0 +1,21 @@
+---
+services:
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ${DOCKER_PERSISTENT_STORAGE_DIR}/readarr:/config
+      - ${BOOKS_DIR}:/books #optional
+      - ${DOWNLOADS_DIR}:/downloads #optional
+    networks:
+      - prowlarr_default
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+networks:
+  prowlarr_default:
+    external: true
