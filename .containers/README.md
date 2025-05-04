@@ -16,4 +16,3 @@ Here’s a suggested order for parameters in Docker Compose service definitions:
     cap_add - (optional) Adds Linux capabilities to the container.
     depends_on - (optional) Defines service dependencies.
     restart - Defines the restart policy (unless-stopped, always, no, or on-failure).
-syncthing
