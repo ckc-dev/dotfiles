@@ -13,7 +13,6 @@ fi
 
 official_packages=(
   7zip
-  acpilight
   android-file-transfer
   atool
   baobab
@@ -79,6 +78,7 @@ official_packages=(
   rofi
   rsync
   rxvt-unicode
+  steam
   ttf-fira-code
   udiskie
   udisks2
