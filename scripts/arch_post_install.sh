@@ -153,12 +153,12 @@ printf "\nGenerating configuration files...\n"
 python "$HOME/.dotfiles/dotsmith/dotsmith.py" -x termux-colors
 
 printf "\nInstalling AUR helper...\n"
-mkdir "$HOME/temporary_aur_install_directory/"
-git clone https://aur.archlinux.org/paru.git "$HOME/temporary_aur_install_directory/"
-cd "$HOME/temporary_aur_install_directory/"
+mkdir "$HOME/temporary_aur_helper_install_directory/"
+git clone https://aur.archlinux.org/paru.git "$HOME/temporary_aur_helper_install_directory/"
+cd "$HOME/temporary_aur_helper_install_directory/"
 makepkg -si
 cd -
-rm -rf "$HOME/temporary_aur_install_directory/"
+rm -rf "$HOME/temporary_aur_helper_install_directory/"
 
 printf "\nInstalling AUR packages...\n"
 paru "${aur_packages[@]}"
