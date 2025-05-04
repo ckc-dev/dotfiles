@@ -266,6 +266,10 @@ for_window [instance="__scratchpad"] move scratchpad
 for_window [instance="__scratchpad"] resize set width 1200 height 700
 exec --no-startup-id i3-sensible-terminal -name __scratchpad
 
+# Ensure Steam windows are floating, except for main window.
+for_window[class="steam"] floating enable
+for_window[class="steam" title="^Steam$"] floating disable
+
 # Ensure alerts are created on floating windows, and that focus is not stolen.
 for_window [window_role="alert"] floating enable
 no_focus [window_role="alert"]
