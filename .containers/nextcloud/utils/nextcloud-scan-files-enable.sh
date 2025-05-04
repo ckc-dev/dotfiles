@@ -3,8 +3,6 @@
 
 NEXTCLOUD_UTILS_LOCATION=$HOME/.dotfiles/.containers/nextcloud/utils
 
-# --- Link Unit Files ---
-
 # Link service and timer files.
 sudo ln -s ${NEXTCLOUD_UTILS_LOCATION}/nextcloud-scan-files.service /etc/systemd/system/
 sudo ln -s ${NEXTCLOUD_UTILS_LOCATION}/nextcloud-scan-files.timer /etc/systemd/system/
